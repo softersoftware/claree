@@ -1,10 +1,10 @@
 # Clarée
 
-It is a platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to an application that eases their work.
+Platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to a fluid application that eases their life.
 
 ## What is application co-creation
 
-With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses :
+With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses:
 
 1. **Workshop** — the domain experts and the maker meet. What was said, shown or recorded is kept as it came.
 2. **Domain** — the business is written from it: its terms, its rules, its open questions, in the domain experts' words.
@@ -15,15 +15,15 @@ With or without a supporting platform, a typical project goes round the followin
 7. **Version** — done stories are gathered, deployed to production.
 8. **Feedback** — the users can give feedback, potentially generating new workshops.
 
-
 ## Why a supporting platform
 
-GitHub or other software forge does support some of this cycle, but is oriented to developers, not to domain experts, or end users, and it would be overwhelming to ask them to use it. The domain experts and the maker would have to keep their own notes, and the project would be split between the forge and those notes.
+GitHub, or any other software forge, supports some of this cycle, but it is made for developers, not for domain experts or end users, and it would be overwhelming to ask them to use it. The domain experts and the maker would have to keep their own notes, and the project would be split between the forge and those notes.
 
-The aim of the platform is to support the cycle above, and to do it in a way that keeps the whole project in one GitHub repository: the business in its files, the solution in its issues, and code. So any new participant can read the whole project in one place, and the project is absolutely not tied to the platform: if it stops existing, the project is still a repository, and they still own it.
+The aim of the platform is to support the cycle above, and to do it in a way that keeps the whole project in one GitHub repository: the business in its files, the solution in its issues, and code. So any new participant can read the whole project in one place, and the project is not tied to the platform: if it stops existing, the project is still a repository, and they still own it.
 
 ## How: an interface to GitHub
- The project owner owns a GitHub organisation, where their projects live and they invite the makers as members. The platform is just an **interface to GitHub**: it reads a project's repository, shows it to the domain experts, and writes changes back as commits, pull requests and issues. Nothing is stored in the platform itself, and nothing is lost if the platform stops existing.
+
+The project owner owns a GitHub organisation, where their projects live and they invite the makers as members. The platform is just an **interface to GitHub**: it reads a project's repository, shows it to the domain experts, and writes changes back as commits, pull requests and issues. Nothing is stored in the platform itself, and nothing is lost if the platform stops existing.
 
 The business is in files, and changes with the code that applies it:
 
