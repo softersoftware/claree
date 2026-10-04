@@ -1,10 +1,10 @@
 # Clarée
 
-It is a platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to an application that eases their work.
+Platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to a fluid application that eases their life.
 
-## The business
+## What is application co-creation
 
-A project goes round the same cycle, once for every feature:
+With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses:
 
 1. **Workshop** — the domain experts and the maker meet. What was said, shown or recorded is kept as it came.
 2. **Domain** — the business is written from it: its terms, its rules, its open questions, in the domain experts' words.
@@ -15,12 +15,15 @@ A project goes round the same cycle, once for every feature:
 7. **Version** — done stories are gathered, deployed to production.
 8. **Feedback** — the users can give feedback, potentially generating new workshops.
 
-The written business is the source of truth; the application is a consequence of it. [`docs/domain/`](docs/domain/README.md) says the rest.
+## Why a supporting platform
 
-## The solution
+GitHub, or any other software forge, supports some of this cycle, but it is made for developers, not for domain experts or end users, and it would be overwhelming to ask them to use it. The domain experts and the maker would have to keep their own notes, and the project would be split between the forge and those notes.
 
-The aim of the platform is to support the cycle above, and to do it in a way that keeps the whole project in one GitHub repository: the business in its files, the solution in its issues. The project owner, the domain experts and the maker can read and change that repository without the platform, and if the platform stops existing, the project goes on GitHub.
- The project owner owns a GitHub organisation, where their projects live and the maker is a member. The platform reads a project's repository, shows it to the domain experts, and writes changes back as commits, pull requests and issues. Nothing is stored in the platform itself, and nothing is lost if the platform stops existing.
+The aim of the platform is to support the cycle above, and to do it in a way that keeps the whole project in one GitHub repository: the business in its files, the solution in its issues, and code. So any new participant can read the whole project in one place, and the project is not tied to the platform: if it stops existing, the project is still a repository, and they still own it.
+
+## How: an interface to GitHub
+
+The project owner owns a GitHub organisation, where their projects live and they invite the makers as members. The platform is just an **interface to GitHub**: it reads a project's repository, shows it to the domain experts, and writes changes back as commits, pull requests and issues. Nothing is stored in the platform itself, and nothing is lost if the platform stops existing.
 
 The business is in files, and changes with the code that applies it:
 
@@ -35,22 +38,26 @@ project/
     └── glossary.md             # each term ↔ its name in the code
 ```
 
-The solution is in the repository's issues:
+Each step of the cycle has its place in the project:
 
-- a **feature** is an issue labelled `feature`, and its **stories** are its sub-issues;
-- **business value** and **effort** are labels, `value: M` and `effort: S`, and what blocks a story is GitHub's "blocked by";
-- a story is **in progress** while an open pull request closes it, and **done** once closed;
-- a **version** is gathered in a milestone, then cut as a git tag and a section of `CHANGELOG.md`.
+| Step | Where it lives |
+|---|---|
+| Scope | `README.md`: what the application is for |
+| 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
+| 2. Domain | `docs/domain/`: one file per domain, its terms, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
+| 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
+| 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
+| 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
+| 6. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
+| 7. Version | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
+| 8. Feedback | an issue, which may call for a new workshop |
 
-`main` is production. Each story is built on a `stories/<number>-<title>` branch, and each prototype lives on a `prototypes/<number>` branch.
-
-Hence the one rule over all the others: **no part of a project may depend on the platform continuing to exist.** Without the platform, a project is still a repository any maker can read, change and take over.
 
 The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).
 
 ## This repository
 
-The platform is built with its own method, so this repository follows the layout above, and its features and stories are its [issues](https://github.com/softersoftware/claree/issues). The code:
+This platform is built with its own method, so this repository follows the layout above, and its features and stories are its [issues](https://github.com/softersoftware/claree/issues). The code:
 
 ```bash
 apps/web/            # the application
@@ -65,5 +72,3 @@ pnpm --filter @claree/web dev                                # projects read fro
 CLAREE_ADAPTERS=mock pnpm --filter @claree/web dev           # no outside service at all
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production
 ```
-
-Early and deliberately small: the application opens a project at the address of its repository. What comes next is in its [issues](https://github.com/softersoftware/claree/issues).
