@@ -38,16 +38,20 @@ project/
     └── glossary.md             # each term ↔ its name in the code
 ```
 
-The solution is in the repository's issues:
+Each step of the cycle has its place in the project:
 
-- a **feature** is an issue labelled `feature`, and its **stories** are its sub-issues;
-- **business value** and **effort** are labels, `value: M` and `effort: S`, and what blocks a story is GitHub's "blocked by";
-- a story is **in progress** while an open pull request closes it, and **done** once closed;
-- a **version** is gathered in a milestone, then cut as a git tag and a section of `CHANGELOG.md`.
+| Step | Where it lives |
+|---|---|
+| Scope | `README.md`: what the application is for |
+| 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
+| 2. Domain | `docs/domain/`: one file per domain, its terms, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
+| 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
+| 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
+| 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
+| 6. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
+| 7. Version | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
+| 8. Feedback | an issue, which may call for a new workshop |
 
-`main` is production. Each story is built on a `stories/<number>-<title>` branch, and each prototype lives on a `prototypes/<number>` branch.
-
-Hence the one rule over all the others: **no part of a project may depend on the platform continuing to exist.** Without the platform, a project is still a repository any maker can read, change and take over.
 
 The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).
 
