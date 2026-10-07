@@ -7,10 +7,12 @@ FROM base AS build
 WORKDIR /repo
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY packages/domain/package.json packages/domain/
-COPY packages/adapters/package.json packages/adapters/
+COPY packages/adapters/git/package.json packages/adapters/git/
+COPY packages/adapters/mock/package.json packages/adapters/mock/
 COPY apps/web/package.json apps/web/
 RUN pnpm install --frozen-lockfile
 COPY . .
+# Built without CLAREE_ADAPTERS: the real adapters, and no mock in the image (ADR 0012).
 RUN pnpm --filter @claree/web build
 
 FROM node:22-alpine AS run

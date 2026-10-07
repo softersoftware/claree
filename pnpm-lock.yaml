@@ -10,12 +10,15 @@ importers:
 
   apps/web:
     dependencies:
-      '@claree/adapters':
-        specifier: workspace:*
-        version: link:../../packages/adapters
       '@claree/domain':
         specifier: workspace:*
         version: link:../../packages/domain
+      '@claree/git-adapters':
+        specifier: workspace:*
+        version: link:../../packages/adapters/git
+      '@claree/mock-adapters':
+        specifier: workspace:*
+        version: link:../../packages/adapters/mock
       next:
         specifier: 16.2.10
         version: 16.2.10(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -48,15 +51,28 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  packages/adapters:
+  packages/adapters/git:
     dependencies:
       '@claree/domain':
         specifier: workspace:*
-        version: link:../domain
+        version: link:../../domain
     devDependencies:
       '@types/node':
         specifier: ^22.20.2
         version: 22.20.2
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+      vitest:
+        specifier: ^3.0.0
+        version: 3.2.7(@types/debug@4.1.13)(@types/node@22.20.2)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0)
+
+  packages/adapters/mock:
+    dependencies:
+      '@claree/domain':
+        specifier: workspace:*
+        version: link:../../domain
+    devDependencies:
       typescript:
         specifier: ^5.7.0
         version: 5.9.3

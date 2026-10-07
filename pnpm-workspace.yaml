@@ -1,9 +1,14 @@
 packages:
   - apps/*
   - packages/*
+  - packages/adapters/*
 
 # Dependencies whose postinstall scripts we skip: everything works without
 # them (prebuilt binaries) — verified via typecheck + tests.
 ignoredBuiltDependencies:
   - esbuild
   - sharp
+
+# Scripts run through pnpm's own shell, so that `NAME=value command` works on
+# every system, Windows included.
+shellEmulator: true

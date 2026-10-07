@@ -1,18 +1,21 @@
 {
-  "name": "@claree/domain",
+  "name": "@claree/git-adapters",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./contracts": "./src/contracts.ts"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@claree/domain": "workspace:*"
+  },
   "devDependencies": {
+    "@types/node": "^22.20.2",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0"
   }
