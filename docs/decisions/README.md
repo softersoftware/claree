@@ -19,3 +19,4 @@ Format: **Status** (proposed / accepted / superseded by NNNN), **Context** (the 
 - [0009 — Supersoft is named Clarée](0009-supersoft-is-named-claree.md)
 - [0010 — The platform acts through a GitHub App, in the name of the person signed in](0010-the-platform-acts-through-a-github-app.md)
 - [0011 — The product is not named in its own specification](0011-the-product-is-not-named-in-its-specification.md)
+- [0012 — Adapters are packaged by outside service, mocks included](0012-adapters-are-packaged-by-outside-service.md)
