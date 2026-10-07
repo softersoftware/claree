@@ -70,7 +70,7 @@ packages/adapters/   # what the domain reaches outside itself, one package per o
 ```bash
 pnpm install
 pnpm test                                                    # the domain and the adapters
-pnpm --filter @claree/web dev                                # projects read from their repositories
-CLAREE_ADAPTERS=mock pnpm --filter @claree/web dev           # no outside service at all, chosen when built
+pnpm dev                                                     # projects read from their repositories
+pnpm dev:mock                                                # no outside service at all, invented projects
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production
 ```

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:mock": "CLAREE_ADAPTERS=mock next dev",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit"

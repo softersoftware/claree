@@ -8,3 +8,7 @@ packages:
 ignoredBuiltDependencies:
   - esbuild
   - sharp
+
+# Scripts run through pnpm's own shell, so that `NAME=value command` works on
+# every system, Windows included.
+shellEmulator: true
