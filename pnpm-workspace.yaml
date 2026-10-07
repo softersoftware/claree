@@ -1,6 +1,7 @@
 packages:
   - apps/*
   - packages/*
+  - packages/adapters/*
 
 # Dependencies whose postinstall scripts we skip: everything works without
 # them (prebuilt binaries) — verified via typecheck + tests.

@@ -9,8 +9,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@claree/adapters": "workspace:*",
     "@claree/domain": "workspace:*",
+    "@claree/git-adapters": "workspace:*",
+    "@claree/mock-adapters": "workspace:*",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4",

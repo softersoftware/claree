@@ -1,7 +1,8 @@
 import { execFileSync } from 'node:child_process'
-import { mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
+import { projectFilesContract } from '@claree/domain/contracts'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { gitProjectFiles } from './git-project-files'
 
@@ -15,7 +16,10 @@ const git = (cwd: string, ...args: string[]) =>
   execFileSync('git', ['-c', 'user.name=Test', '-c', 'user.email=test@example.org', ...args], { cwd })
 
 const commit = (at: string, files: Record<string, string | Buffer>) => {
-  for (const [path, content] of Object.entries(files)) writeFileSync(join(at, path), content)
+  for (const [path, content] of Object.entries(files)) {
+    mkdirSync(dirname(join(at, path)), { recursive: true })
+    writeFileSync(join(at, path), content)
+  }
   git(at, 'add', '.')
   git(at, 'commit', '--quiet', '-m', 'change')
 }
@@ -50,44 +54,24 @@ afterAll(() => rmSync(scratch, { recursive: true, force: true }))
 let caches = 0
 const aCache = () => join(scratch, `cache-${++caches}`)
 
+let repositories = 0
+
+projectFilesContract('projects read from their repository', async () => ({
+  projectFiles: gitProjectFiles({ cache: aCache(), local: true }),
+  async keep(files) {
+    const at = join(scratch, `repository-${++repositories}`)
+    execFileSync('git', ['init', '--quiet', at])
+    commit(at, files)
+    return at
+  },
+  async change(at, files) {
+    commit(at, files)
+  },
+  nowhere: join(scratch, 'nowhere'),
+}))
+
 describe('projects read from their repository', () => {
   const files = gitProjectFiles({ cache: aCache(), local: true })
-
-  it('opens a repository at its address and reads its files', async () => {
-    const opened = await files.open(repository)
-    expect(opened?.address).toBe(repository)
-    expect(await opened?.read('README.md')).toBe('# Medito')
-  })
-
-  it('links to nothing for a repository on this machine', async () => {
-    expect((await files.open(repository))?.link).toBeUndefined()
-  })
-
-  it('opens nothing where nothing is kept', async () => {
-    expect(await files.open(join(scratch, 'nowhere'))).toBeUndefined()
-  })
-
-  it('reads nothing where a project has no such file', async () => {
-    const opened = await files.open(repository)
-    expect(await opened?.read('docs/missing.md')).toBeUndefined()
-  })
-
-  it('reads nothing outside the project', async () => {
-    const opened = await files.open(repository)
-    expect(await opened?.read('../medito/README.md')).toBeUndefined()
-    expect(await opened?.read('/etc/hostname')).toBeUndefined()
-  })
-
-  it('keeps a project as it was when it was opened', async () => {
-    const at = join(scratch, 'changing')
-    execFileSync('git', ['init', '--quiet', at])
-    commit(at, { 'README.md': '# Medito' })
-    const before = await files.open(at)
-    commit(at, { 'README.md': '# Changed' })
-    const after = await files.open(at)
-    expect(await before?.read('README.md')).toBe('# Medito')
-    expect(await after?.read('README.md')).toBe('# Changed')
-  })
 
   it('opens nothing on this machine unless asked to', async () => {
     const cache = aCache()

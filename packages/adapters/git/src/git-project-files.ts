@@ -3,10 +3,9 @@ import { createHash } from 'node:crypto'
 import { mkdir, readdir, rm, stat, utimes } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import type { KeptFiles, ProjectFiles } from '@claree/domain'
+import { type KeptFiles, type ProjectFiles, repositoryLink } from '@claree/domain'
 import { atMost } from './at-most'
 import { type Lookup, publicAddress, systemLookup } from './public-address'
-import { repositoryLink } from './repository-link'
 
 export interface GitProjectFilesOptions {
   /** Where the copies are kept. Anything here can be lost at any restart. */

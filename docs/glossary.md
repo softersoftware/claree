@@ -23,22 +23,18 @@ When a new concept appears: define it first in [`docs/domain/`](domain/README.md
 | Language of a project | `Project.language` | the domain experts'; never translated |
 | Language the platform speaks | `Locale` | chosen by the person; a convenience |
 | Speaking the project's language | `localeIn` | asked for by the person; translates nothing |
-| Someone arriving | `Account` | who they are where their projects live |
-| Project on offer | `AvailableProject` | what the platform found |
 | Address of a project | `address` | where its project owner keeps it |
 | Opening a project | `ProjectFiles.open` | reads what is kept at its address, or nothing when it cannot be read |
 | What is kept at an address | `KeptFiles` | read as it was when the project was opened |
 | Repository of a project | `KeptFiles` | its files and their history, kept at its address |
 | README of a project | `readme` | where it says what it is: its name and its scope |
 | Reading the name and scope | `nameAndScope` | from the README; never written by the platform |
-| Link to a repository | `KeptFiles.link` | where a person looks at it without the platform; none when a browser cannot open it |
-| Public project | `isPublic` | read without saying who you are |
-| Private project | `isPublic` false | read only by the people it recognises |
-| Recognised by the project | `guardians` | who may change it |
-| May open it | `mayOpen` | |
-| May change it | `mayChange` | |
-| Projects someone added | `addedProjects` | kept for them alone; grants nothing |
-| Someone's projects | `projectsFor` | the ones they added and can open |
+| Link to a repository | `KeptFiles.link`, `repositoryLink` | where a person looks at it without the platform; none when a browser cannot open it |
+| Public project | — | read without saying who you are; not in the code yet |
+| Private project | — | read only by the people it recognises; not in the code yet |
+| Recognised by the project | — | who may change it; not in the code yet |
+| Projects someone added | — | kept for them alone; grants nothing; not in the code yet |
+| Someone's projects | — | the ones they added and can open; not in the code yet |
 
 ## The business — [business.md](domain/business.md)
 

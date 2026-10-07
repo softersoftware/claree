@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { nameAndScope } from '@claree/domain'
-import { projectFiles } from '@/adapters'
+import { adapters } from '@/adapters'
 import { en as t } from '@/i18n/en'
 import { Card, Page, Section } from '../ui'
 
@@ -12,7 +12,7 @@ export default async function ProjectPage({
 }) {
   const address = (await searchParams).address?.trim() ?? ''
   if (address === '') redirect('/')
-  const project = await projectFiles.open(address)
+  const project = await adapters.projectFiles.open(address)
   if (project === undefined) redirect(`/?unreadable=${encodeURIComponent(address)}`)
   const { name, scope } = nameAndScope(project.address, await project.read('README.md'))
 

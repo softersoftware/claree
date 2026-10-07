@@ -54,3 +54,10 @@ export const nameAndScope = (
   }
   return { name, scope: paragraph.join(' ') }
 }
+
+/**
+ * Where a person looks at a project's repository without the platform: its
+ * address, when a browser can open it. Nothing else ever becomes a link.
+ */
+export const repositoryLink = (address: string): string | undefined =>
+  /^https:\/\/[^\s]+$/i.test(address) ? address : undefined

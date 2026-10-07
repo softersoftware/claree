@@ -23,6 +23,9 @@
       }
     ],
     "paths": {
+      "@/adapters": [
+        "./src/adapters/real.ts"
+      ],
       "@/*": [
         "./src/*"
       ]
