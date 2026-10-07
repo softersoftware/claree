@@ -1,6 +1,6 @@
 # Clarée
 
-Platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to a fluid application that eases their life.
+A platform where domain experts and makers build an application together, step by step, from a problem the domain experts live with to a fluid application that eases their life.
 
 ## What is application co-creation
 
