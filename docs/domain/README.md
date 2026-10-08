@@ -22,18 +22,4 @@ With or without a supporting platform, a project goes round the same cycle for e
 
 What belongs to no step — what a project is, who takes part, its language, arriving at it, and the rules of the whole project — is in [Project and participants](project.md).
 
-A step gets its file when something runnable needs its first rule.
-
-Each file has the same shape: a few sentences, with the previous step, the next one and what it takes to move on; its **glossary** — every term it defines, with one name and one definition — and its **rules**.
-
-## Writing conventions
-
-- No mention of a tool, a piece of software or a technique. The platform is a tool for making software, so the temptation is constant — resist it.
-- **These documents change only when the business changes** — never when the tooling changes. Nothing here says what is "already built", "in progress" or "planned".
-- Keep it short. A rule nobody can find is a rule nobody follows.
-
-## Language
-
-Unlike another project, whose domain documents are written in the language of its own domain experts, the platform's are written in English: its domain experts are its makers.
-
-When a new concept appears: define it in the glossary of its domain first, then add it to the [glossary](../glossary.md) **before** giving it a name anywhere else.
+How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md).

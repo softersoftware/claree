@@ -1,13 +1,12 @@
 # Instructions for Claude Code
 
-Read `README.md` for the full picture. The essentials:
+Read `README.md` for the full picture, and `CONTRIBUTING.md` for how its files are written. The essentials:
 
 - The platform this repository builds is a tool for specifying, prototyping and maintaining applications with the domain experts in the conversation. **It is built with the method it sells**: specification first, pure domain, mock adapters everywhere. Every cost it imposes on its users, its makers pay first.
 - `docs/domain/` is the source of truth for business rules, tool-free. **A rule not written there does not exist.** Each domain file defines its terms in its own glossary; `docs/glossary.md` maps each of them to its name in the code, and a test in `packages/domain` checks both against the documents and the code.
-- **No tool names in `docs/domain/`** — no framework, no host, no database, no model, no product name. The platform is a tool for making software, so the temptation is constant. `Specification`, `prototype`, `demonstration` are business concepts of this product; named products are not. Tool names belong in `docs/decisions/` or `README.md`, nowhere else.
+- **No tool names in `docs/domain/`**, as `CONTRIBUTING.md` says. The platform is a tool for making software, so the temptation is constant. `Specification`, `prototype`, `demonstration` are business concepts of this product; named products are not.
 - **The product is not named in its own specification** ([0011](docs/decisions/0011-the-product-is-not-named-in-its-specification.md)). `docs/domain/`, the glossary, decisions from 0010 on, stories, features and code comments say "the platform". The name appears only in the README's title, `docs/branding/`, and the one value the screens take it from.
-- `docs/domain/` describes the business only, never the tooling and never implementation status — no "already handled", "planned", "to be integrated". These documents change only when the business changes.
-- Any new business rule: document it in `docs/domain/` first, with its terms in that domain's glossary, add their rows to `docs/glossary.md`, then implement it in `packages/domain` with its tests (pure, no I/O), then integrate it in the app. A concept gets its glossary entry before it gets a name in the code.
+- Any new business rule follows the order in `CONTRIBUTING.md`; here, it is implemented in `packages/domain` with its tests (pure, no I/O), then integrated in the app.
 - **Hexagonal**: the domain never imports a framework, an ORM or an SDK. The repository host, the code generator and any language model are **ports**, not dependencies. One external service = one port + one adapter.
 - **Every port has a mock adapter**, so the platform runs end-to-end with no external service. Adding a port means adding its mock alongside.
 - Structural decisions go in `docs/decisions/` as ADRs before they go in the code. The three that constrain everything: [0001](docs/decisions/0001-specification-lives-in-the-project-repository.md) specification lives in the project's repository; [0002](docs/decisions/0002-customer-edits-the-specification-never-the-code.md) the domain expert edits the specification, never the code; [0003](docs/decisions/0003-hexagonal-monorepo-pure-domain.md) hexagonal monorepo, pure domain.
