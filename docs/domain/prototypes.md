@@ -15,7 +15,7 @@ Making a prototype is a shared work: the domain experts and the people who will 
 
 **Rule.** Every prototype belongs to exactly one feature: it lets people try what that feature's stories ask for.
 
-**Rule.** A prototype applies the rules of the [domains](domains.md); it never holds one of its own. Trying it refines the rules, and the rules refine it: a rule found while trying a prototype is written in the description before the prototype uses it.
+**Rule.** A prototype applies the rules of the [domains](domains.md); it never holds one of its own. Trying it refines the rules, and the rules refine it: a rule found while trying a prototype is written in its domain before the prototype uses it.
 
 **Rule.** A prototype depends on nothing outside itself: everything it shows is invented for it. It can be tried at any moment, by anyone, with no consequence.
 

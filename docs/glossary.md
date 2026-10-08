@@ -68,11 +68,11 @@ A test in the domain package checks all three.
 | Business term | Name in the code |
 | --- | --- |
 | Domain | `Domain` |
-| What a domain is | `Domain.description` |
+| Description of a domain | `Domain.description` |
 | Term | `Term` |
 | Glossary of a domain | `termsOf` |
 | Finding a term by its name | `termNamed` |
-| Description of a domain | `rulesOf` |
+| Rules of a domain | `rulesOf` |
 | Rule | `Rule` |
 | State of a rule | `RuleState` |
 | Proposed | `proposed` |

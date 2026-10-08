@@ -50,7 +50,7 @@ export interface Term {
 
 export type RuleState = 'proposed' | 'agreed'
 
-/** One sentence of the description: something true of the business. */
+/** One sentence, true of a domain, that a domain expert can confirm or deny. */
 export interface Rule {
   readonly id: string
   readonly statement: string

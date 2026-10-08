@@ -103,7 +103,7 @@ describe('questions', () => {
   })
 })
 
-describe('the description', () => {
+describe('a rule', () => {
   it('is agreed once a domain expert has confirmed it', () => {
     expect(agree(rule('A membership runs for a year')).state).toBe('agreed')
   })
