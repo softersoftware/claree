@@ -1,93 +1,140 @@
 # Glossary of business terms
 
-The bridge between the business documentation ([`docs/domain/`](domain/README.md), tool-free) and the code. Every business term used in the domain documents maps here to its name in the code.
+The bridge between the business documentation ([`docs/domain/`](domain/README.md), tool-free) and the code. Each domain defines its terms in its own glossary; this file says which name each of them has in the code.
 
 The platform's domain documents and its code are both in English, so this glossary is not a translation — it fixes **which** English word is used, and forbids the synonyms. Most naming drift in a codebase is not a wrong word; it is three right ones for the same thing.
 
-When a new concept appears: define it first in [`docs/domain/`](domain/README.md), choose its name, and add it here **before** using it in the code.
+- Every term a domain's glossary defines has a row here, with "—" while the code does not name it.
+- Every name here exists in the code, and every name the domain package exports has a row. A change that adds a name adds its row.
+
+A test in the domain package checks all three.
 
 > Every project has its own glossary, in its own language. This one is the platform's.
 
 ## Project and participants — [project.md](domain/project.md)
 
-| Business term | Name in the code | Note |
-| --- | --- | --- |
-| Project | `Project` | one application, carried by its project owner |
-| Name of a project | `Project.name` | the title of its README; its address when there is none |
-| Scope | `Project.scope` | short, broad, deliberately vague |
-| The platform | `productName` | what this repository builds; called by its name only on its screens, in the README's title and in its branding |
-| Participant | `Participant` | anyone taking part |
-| Domain expert | `domainExpert` | knows the business; their words are the business's; confirms and validates. Not *customer* or *client* |
-| Project owner | `projectOwner` | keeps the repository; settles what the domain experts leave open |
-| Maker | `maker` | listens, brings the craft, builds and maintains |
-| Language of a project | `Project.language` | the domain experts'; never translated |
-| Language the platform speaks | `Locale` | chosen by the person; a convenience |
-| Speaking the project's language | `localeIn` | asked for by the person; translates nothing |
-| Address of a project | `address` | where its project owner keeps it |
-| Opening a project | `ProjectFiles.open` | reads what is kept at its address, or nothing when it cannot be read |
-| What is kept at an address | `KeptFiles` | read as it was when the project was opened |
-| Repository of a project | `KeptFiles` | its files and their history, kept at its address |
-| README of a project | `readme` | where it says what it is: its name and its scope |
-| Reading the name and scope | `nameAndScope` | from the README; never written by the platform |
-| Link to a repository | `KeptFiles.link`, `repositoryLink` | where a person looks at it without the platform; none when a browser cannot open it |
-| Public project | — | read without saying who you are; not in the code yet |
-| Private project | — | read only by the people it recognises; not in the code yet |
-| Recognised by the project | — | who may change it; not in the code yet |
-| Projects someone added | — | kept for them alone; grants nothing; not in the code yet |
-| Someone's projects | — | the ones they added and can open; not in the code yet |
+| Business term | Name in the code |
+| --- | --- |
+| Project | `Project` |
+| Business | `Business` |
+| Solution | — |
+| The platform | `productName` |
+| Participant | `Participant` |
+| Role of a participant | `Role` |
+| Domain expert | `domainExpert` |
+| Project owner | `projectOwner` |
+| Maker | `maker` |
+| Who may agree | `mayAgree` |
+| Language of a project | `Project.language` |
+| Language the platform speaks | — |
+| Repository | `Repository` |
+| Address of a project | `Repository.address` |
+| Opening a project | `ProjectFiles.open` |
+| Where the platform reads projects | `ProjectFiles` |
+| What the platform reaches outside itself | `Ports` |
+| README | `readme` |
+| Name of a project | `Project.name` |
+| Reading the name and scope | `nameAndScope` |
+| Link to a repository | `Repository.link`, `repositoryLink` |
+| Public project | — |
+| Private project | — |
+| Recognised by a project | — |
+| Someone's projects | — |
 
-## The business — [business.md](domain/business.md)
+## Scope — [scope.md](domain/scope.md)
 
-| Business term | Name in the code | Note |
-| --- | --- | --- |
-| Business | `Business` | what the application serves |
-| Workshop | `Workshop` | one working session and what came out of it |
-| Date of a workshop | `Workshop.date` | the day it was held |
-| Title of a workshop | `Workshop.title` | what it was about |
-| Document | `WorkshopDocument` | one thing a workshop left behind |
-| Slides / video / recording / notes / report / transcript | `slides` / `video` / `audio` / `notes` / `report` / `transcript` | the kinds of document |
-| Where a document is kept | `WorkshopDocument.location` | to go back to it |
-| Text of a document | `WorkshopDocument.text` | when it is written in the project |
-| Adding a document | `addDocument` | possible after the day |
-| Correcting a document | `correctDocument` | replaces its text |
-| Workshops by date | `workshopsByDate` | most recent first |
-| Domain | `Domain` | one part of the business, with its own words |
-| What a domain is | `Domain.description` | business only; never what the application does |
-| Lexicon | `Term` | one concept, one name, one definition |
-| Lexicon of a domain | `termsOf` | |
-| Description of a domain | `rulesOf` | |
-| Description | `Rule` | one sentence a domain expert can confirm or deny |
-| Proposed (state) | `proposed` | written, not yet confirmed |
-| Agreed (state) | `agreed` | confirmed by a domain expert |
-| Agreeing | `agree` | |
-| Rewriting a rule | `restate` | makes it `proposed` again |
-| Question | `Question` | something the project knows it does not know |
-| Domain of a question | `Question.domainId` | every question belongs to exactly one |
-| Questions of a domain | `questionsOf` | |
-| Open question | `openQuestions` | unanswered; always countable |
+| Business term | Name in the code |
+| --- | --- |
+| Scope | `Project.scope` |
 
-## The solution — [solution.md](domain/solution.md)
+## Workshops — [workshops.md](domain/workshops.md)
 
-| Business term | Name in the code | Note |
-| --- | --- | --- |
-| Prototype | `Prototype` | the application as it can be tried before it is real |
-| Where a prototype is tried | `Prototype.location` | |
-| Prototypes of a feature | `prototypesOf` | each belongs to exactly one feature |
-| Being tried / validated | `being_tried` / `validated` | |
-| Validating a prototype | `validate` | by a domain expert |
-| Mock-up / demonstration | — | a refined prototype, connected to nothing; not in the code yet |
-| Feature | `Feature` | one thing the application offers |
-| Stories of a feature | `storiesOf` | a feature with none describes nothing |
-| State of a feature | `stateOf` | derived from its stories, never set by hand |
-| Story | `Story` | person + intention + reason |
-| Reason | `Story.reason` | mandatory |
-| Business value | `Story.value` | a size, set by the domain experts |
-| Effort | `Story.effort` | a size, stated by the maker before the value |
-| Size | `Size`, `sizes` | `XXS` / `XS` / `S` / `M` / `L` / `XL` |
-| What a size stands for | `pointsOf` | 1 / 2 / 3 / 5 / 8 / 13 |
-| To do / in progress / done | `to_do` / `in_progress` / `done` | |
-| Blocked by | `Story.blockedBy` | the stories it needs done first |
-| Blocked | `isBlocked` | while one of them is not done |
-| What comes next | `nextStory` | the most value for its effort, still to do and not blocked, unless the project owner puts another first |
-| Version | `Version` | gathers done stories |
-| The version that carried a story | `versionCarrying` | |
+| Business term | Name in the code |
+| --- | --- |
+| Workshop | `Workshop` |
+| Date of a workshop | `Workshop.date` |
+| Title of a workshop | `Workshop.title` |
+| Document | `WorkshopDocument` |
+| Kind of document | `DocumentKind` |
+| Slides / video / recording / notes / report / transcript | `slides` / `video` / `audio` / `notes` / `report` / `transcript` |
+| Where a document is | `WorkshopDocument.location` |
+| Text of a document | `WorkshopDocument.text` |
+| Adding a document | `addDocument` |
+| Correcting a document | `correctDocument` |
+| Workshops by date | `workshopsByDate` |
+
+## Domains — [domains.md](domain/domains.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Domain | `Domain` |
+| What a domain is | `Domain.description` |
+| Term | `Term` |
+| Glossary of a domain | `termsOf` |
+| Finding a term by its name | `termNamed` |
+| Description of a domain | `rulesOf` |
+| Rule | `Rule` |
+| State of a rule | `RuleState` |
+| Proposed | `proposed` |
+| Agreed | `agreed` |
+| Agreeing | `agree` |
+| Rewriting a rule | `restate` |
+| Question | `Question` |
+| Domain of a question | `Question.domainId` |
+| Questions of a domain | `questionsOf` |
+| Answering a question | `answerQuestion` |
+| Open question | `isOpen` |
+| Open questions | `openQuestions` |
+
+## Prototypes — [prototypes.md](domain/prototypes.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Prototype | `Prototype` |
+| Where a prototype is tried | `Prototype.location` |
+| Prototypes of a feature | `prototypesOf` |
+| State of a prototype | `PrototypeState` |
+| Being tried | `being_tried` |
+| Validated | `validated` |
+| Validating a prototype | `validate` |
+| Mock-up | — |
+| Demonstration | — |
+
+## Stories — [stories.md](domain/stories.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Feature | `Feature` |
+| Stories of a feature | `storiesOf` |
+| A feature that describes nothing | `describesNothing` |
+| State of a feature | `stateOf` |
+| Story | `Story` |
+| Reason | `Story.reason` |
+| Business value | `Story.value` |
+| Effort | `Story.effort` |
+| Size | `Size`, `sizes` |
+| What a size stands for | `pointsOf` |
+| State of a story | `StoryState` |
+| To do | `to_do` |
+| In progress | `in_progress` |
+| Done | `done` |
+| Starting a story | `start` |
+| Finishing a story | `finish` |
+| Stories in each state | `countByState` |
+
+## Roadmap — [roadmap.md](domain/roadmap.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Blocked by | `Story.blockedBy` |
+| Blocked | `isBlocked` |
+| What comes next | `nextStory` |
+
+## Versions — [versions.md](domain/versions.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Version | `Version` |
+| Gathering a version | `planVersion` |
+| Done stories no version carried yet | `releasableStories` |
+| The version that carried a story | `versionCarrying` |

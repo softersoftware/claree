@@ -7,7 +7,7 @@ A platform where domain experts and makers build an application together, step b
 With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses:
 
 1. **Workshop** — the domain experts and the maker meet. What was said, shown or recorded is kept as it came.
-2. **Domain** — the business is written from it: its terms, its rules, its open questions, in the domain experts' words.
+2. **Domains** — the business is written from it, one domain for each part with its own words: its glossary, its rules, its open questions, in the domain experts' words.
 3. **Prototype** — a prototype with mock-data is tested and refined with users.
 4. **Stories** — the validated prototype is cut into stories, each with its business value and development effort.
 5. **Roadmap** — the stories are prioritised and scheduled.
@@ -34,7 +34,7 @@ project/
 └── docs/
     ├── workshops/
     │   └── <date> <title>/     # what a workshop left behind: notes, recordings, slides
-    ├── domain/                 # one file per domain: terms, rules, questions
+    ├── domain/                 # one file per domain: glossary, rules, questions
     └── glossary.md             # each term ↔ its name in the code
 ```
 
@@ -44,7 +44,7 @@ Each step of the cycle has its place in the project:
 |---|---|
 | Scope | `README.md`: what the application is for |
 | 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
-| 2. Domain | `docs/domain/`: one file per domain, its terms, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
+| 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
 | 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
 | 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |

@@ -119,7 +119,7 @@ describe('the description', () => {
   })
 })
 
-describe('the lexicon', () => {
+describe('the glossary', () => {
   it('finds a concept whatever the case it was typed in', () => {
     const terms: readonly Term[] = [
       { name: 'Member', definition: 'Someone who has paid', domainId: 'D1' },

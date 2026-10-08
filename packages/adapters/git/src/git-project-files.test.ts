@@ -58,13 +58,13 @@ let repositories = 0
 
 projectFilesContract('projects read from their repository', async () => ({
   projectFiles: gitProjectFiles({ cache: aCache(), local: true }),
-  async keep(files) {
+  async repositoryWith(files) {
     const at = join(scratch, `repository-${++repositories}`)
     execFileSync('git', ['init', '--quiet', at])
     commit(at, files)
     return at
   },
-  async change(at, files) {
+  async changeRepository(at, files) {
     commit(at, files)
   },
   nowhere: join(scratch, 'nowhere'),
