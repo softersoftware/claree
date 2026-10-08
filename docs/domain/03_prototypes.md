@@ -1,9 +1,14 @@
 # Prototypes
 
-Making a prototype is a shared work: the domain experts and the people who will use the application try it, say what is smooth and what is not, and it changes while that is still cheap. Once it is right, it is refined into realistic mock-ups: a demonstration.
+Previous: the [domains](02_domains.md).
+
+Once a domain is clarified, a UX designer makes a prototype of it: with mock data, easy to change, without much effort on fine details, and with no outside dependency. The domain experts and the future users try it, say what is smooth and what is not, and it changes while that is still cheap.
+
+Next: once the prototype holds every feature of the next version, it is cut into [stories](04_stories.md).
 
 ## Glossary
 
+- **UX designer**: the person with the expertise to design the journeys of users through a business process.
 - **Prototype**: the application as the domain experts and the people who will use it can try it, before it is real.
 - **Where a prototype is tried**: where anyone can try it.
 - **Being tried**: a prototype not validated yet.
@@ -15,7 +20,7 @@ Making a prototype is a shared work: the domain experts and the people who will 
 
 **Rule.** Every prototype belongs to exactly one feature: it lets people try what that feature's stories ask for.
 
-**Rule.** A prototype applies the rules of the [domains](domains.md); it never holds one of its own. Trying it refines the rules, and the rules refine it: a rule found while trying a prototype is written in its domain before the prototype uses it.
+**Rule.** A prototype applies the rules of the domains; it never holds one of its own. Trying it refines the rules, and the rules refine it: a rule found while trying a prototype is written in its domain before the prototype uses it.
 
 **Rule.** A prototype depends on nothing outside itself: everything it shows is invented for it. It can be tried at any moment, by anyone, with no consequence.
 

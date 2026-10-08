@@ -41,20 +41,20 @@ A test in the domain package checks all three.
 | Recognised by a project | — |
 | Someone's projects | — |
 
-## Scope — [scope.md](domain/scope.md)
+## Scope — [00_scope.md](domain/00_scope.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Scope | `Project.scope` |
 
-## Workshops — [workshops.md](domain/workshops.md)
+## Workshops — [01_workshops.md](domain/01_workshops.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Workshop | `Workshop` |
 | Date of a workshop | `Workshop.date` |
 | Title of a workshop | `Workshop.title` |
-| Document | `WorkshopDocument` |
+| Workshop document | `WorkshopDocument` |
 | Kind of document | `DocumentKind` |
 | Slides / video / recording / notes / report / transcript | `slides` / `video` / `audio` / `notes` / `report` / `transcript` |
 | Where a document is | `WorkshopDocument.location` |
@@ -63,7 +63,7 @@ A test in the domain package checks all three.
 | Correcting a document | `correctDocument` |
 | Workshops by date | `workshopsByDate` |
 
-## Domains — [domains.md](domain/domains.md)
+## Domains — [02_domains.md](domain/02_domains.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -86,10 +86,11 @@ A test in the domain package checks all three.
 | Open question | `isOpen` |
 | Open questions | `openQuestions` |
 
-## Prototypes — [prototypes.md](domain/prototypes.md)
+## Prototypes — [03_prototypes.md](domain/03_prototypes.md)
 
 | Business term | Name in the code |
 | --- | --- |
+| UX designer | — |
 | Prototype | `Prototype` |
 | Where a prototype is tried | `Prototype.location` |
 | Prototypes of a feature | `prototypesOf` |
@@ -100,7 +101,7 @@ A test in the domain package checks all three.
 | Mock-up | — |
 | Demonstration | — |
 
-## Stories — [stories.md](domain/stories.md)
+## Stories — [04_stories.md](domain/04_stories.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -118,23 +119,29 @@ A test in the domain package checks all three.
 | To do | `to_do` |
 | In progress | `in_progress` |
 | Done | `done` |
-| Starting a story | `start` |
-| Finishing a story | `finish` |
 | Stories in each state | `countByState` |
 
-## Roadmap — [roadmap.md](domain/roadmap.md)
-
-| Business term | Name in the code |
-| --- | --- |
-| Blocked by | `Story.blockedBy` |
-| Blocked | `isBlocked` |
-| What comes next | `nextStory` |
-
-## Versions — [versions.md](domain/versions.md)
+## Roadmap — [05_roadmap.md](domain/05_roadmap.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Version | `Version` |
 | Gathering a version | `planVersion` |
+| Blocked by | `Story.blockedBy` |
+| Blocked | `isBlocked` |
+| What comes next | `nextStory` |
+
+## Implementation — [06_implementation.md](domain/06_implementation.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Starting a story | `start` |
+| Finishing a story | `finish` |
+
+## Deployment — [07_deployment.md](domain/07_deployment.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Deployment | — |
 | Done stories no version carried yet | `releasableStories` |
 | The version that carried a story | `versionCarrying` |

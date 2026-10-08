@@ -7,8 +7,8 @@ A project belongs to its project owner, from the first day and whatever happens 
 ## Glossary
 
 - **Project**: one application, carried by its project owner and built with its domain experts.
-- **Business**: what the application serves, described in the words of the people who know it. It is met in [workshops](workshops.md) and written as [domains](domains.md).
-- **Solution**: what the application does about the business: [prototypes](prototypes.md), [features and stories](stories.md), gathered into [versions](versions.md).
+- **Business**: what the application serves, described in the words of the people who know it. The domain experts explain it in [workshops](01_workshops.md), and it is written as [domains](02_domains.md).
+- **Solution**: what the application does about the business: [prototypes](03_prototypes.md), [features and stories](04_stories.md), gathered into versions and [deployed](07_deployment.md).
 - **Participant**: anyone taking part in a project.
 - **Domain expert**: knows how the business works and says what it needs. Never *customer* or *client*.
 - **Project owner**: carries the project, and owns its repository.
@@ -53,7 +53,7 @@ One person may hold several â€” the project owner is often a domain expert too â
 
 A project is never created by the platform. It already exists, in its repository, and it goes on existing if the platform stops. The platform **opens** it at its address. Anyone who may read the project can look at its repository without the platform.
 
-**Rule.** A project says what it is in its own repository, in one place: its README. Its name is the README's title, and its [scope](scope.md) is the first paragraph under that title. A project with no README, or whose README has no title, is named by its address; with no paragraph under the title, its scope is empty.
+**Rule.** A project says what it is in its own repository, in one place: its README. Its name is the README's title, and its [scope](00_scope.md) is the first paragraph under that title. A project with no README, or whose README has no title, is named by its address; with no paragraph under the title, its scope is empty.
 
 **Rule.** A public project is read without saying who you are. Its business, its solution and its versions are looked at by anyone, at no cost and with nothing asked. A private project is read only by the people it recognises.
 

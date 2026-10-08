@@ -6,22 +6,25 @@ This folder describes **what the platform does**, in the language of the people 
 - every term defined here maps to its name in the code in the [glossary](../glossary.md);
 - a business rule that is not written here does not exist.
 
-The cycle a project goes round, and where each of its steps lives, is described in the [README](../../README.md#what-is-application-co-creation). Each step with rules of its own is a domain of the platform, and has its file here.
+## The cycle
 
-## The documents
+With or without a supporting platform, a project goes round the same cycle for every new domain it addresses. Each step with rules of its own is a domain of the platform, and has its file here.
 
-- [Project and participants](project.md) — what belongs to no step: what a project is, who takes part, its language, and arriving at it; the rules of the whole project.
-- [Scope](scope.md) — what the application is for.
-- [Workshops](workshops.md) — the informal side of the business, as it came.
-- [Domains](domains.md) — the formal side, written from it: glossaries, rules, questions.
-- [Prototypes](prototypes.md) — prototypes, mock-ups, demonstrations.
-- [Stories](stories.md) — features, stories, their value and effort.
-- [Roadmap](roadmap.md) — what blocks a story, and what comes next.
-- [Versions](versions.md) — done stories, reaching real people.
+0. [Scope](00_scope.md) — what the application is for, written once.
+1. [Workshops](01_workshops.md) — the domain experts explain the business; what was said and shown is recorded as it came.
+2. [Domains](02_domains.md) — the business is written from it, one domain for each part with its own words: its glossary, its rules, its open questions.
+3. [Prototypes](03_prototypes.md) — a prototype with mock data is tried and refined with the domain experts and the future users.
+4. [Stories](04_stories.md) — the prototype is cut into features and stories, each with its business value and its effort.
+5. [Roadmap](05_roadmap.md) — the stories are grouped into versions and put in order.
+6. [Implementation](06_implementation.md) — each story is implemented, and tried before it reaches real people.
+7. [Deployment](07_deployment.md) — once all its stories are done, a version is put in front of real people.
+8. Feedback — real use brings feedback, which may call for new workshops.
+
+What belongs to no step — what a project is, who takes part, its language, arriving at it, and the rules of the whole project — is in [Project and participants](project.md).
 
 A step gets its file when something runnable needs its first rule.
 
-Each file has the same shape: a few sentences, its **glossary** — every term it defines, with one name and one definition — and its **rules**.
+Each file has the same shape: a few sentences, with the previous step, the next one and what it takes to move on; its **glossary** — every term it defines, with one name and one definition — and its **rules**.
 
 ## Writing conventions
 

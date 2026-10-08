@@ -1,6 +1,10 @@
 # Stories
 
-The solution is described as features, each told as stories — never as anything else: a solution that cannot be told as things people do is not understood yet.
+Previous: the [prototype](03_prototypes.md).
+
+The prototype is cut into a few features, each split into its smallest atomic functionalities: its stories. A story makes a visible change to the interface, is useful, and can be tested.
+
+Next: once each story has its value and its effort, the stories are put in order on the [roadmap](05_roadmap.md).
 
 ## Glossary
 
@@ -17,12 +21,12 @@ The solution is described as features, each told as stories — never as anythin
 
 ## Rules
 
-**Rule.** A feature with no story describes nothing. It is an intention until someone can say who wants what, and why.
-
 **Rule.** A feature is in progress as soon as one of its stories is, and done when all of them are.
 
 **Rule.** Every story belongs to exactly one feature.
 
-**Rule.** Stories use the words of the [domains' glossaries](domains.md). A story that introduces a new concept is not a story yet — the concept is defined first.
+**Rule.** Stories use the words of the [domains' glossaries](02_domains.md).
 
-**Rule.** Business value is set by the domain experts. Effort is stated by the maker, before the value is chosen.
+**Rule.** Business value is set by the domain experts.
+
+**Rule.** Effort is stated by the maker.

@@ -1,15 +1,19 @@
-# Versions
+# Deployment
 
-Done stories are put in front of real people together.
+Previous: the [implementation](06_implementation.md).
+
+When all the stories of a version are done, the version can be deployed: put in front of real people.
+
+Next: real use brings feedback, which may call for new [workshops](01_workshops.md).
 
 ## Glossary
 
-- **Version**: stories that are done, gathered so that they reach real people together.
+- **Deployment**: putting a version in front of real people.
 - **The version that carried a story**: the one it went out in.
 
 ## Rules
 
-**Rule.** Only a validated [demonstration](prototypes.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
+**Rule.** Only a validated [demonstration](03_prototypes.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
 
 **Rule.** A version contains only done stories. Work in progress waits for the next one.
 

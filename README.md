@@ -4,16 +4,7 @@ A platform where domain experts and makers build an application together, step b
 
 ## What is application co-creation
 
-With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses:
-
-1. **Workshop** — the domain experts and the maker meet. What was said, shown or recorded is kept as it came.
-2. **Domains** — the business is written from it, one domain for each part with its own words: its glossary, its rules, its open questions, in the domain experts' words.
-3. **Prototype** — a prototype with mock-data is tested and refined with users.
-4. **Stories** — the validated prototype is cut into stories, each with its business value and development effort.
-5. **Roadmap** — the stories are prioritised and scheduled.
-6. **Implementation** — each story is implemented and deployed in an integration environment.
-7. **Version** — done stories are gathered, deployed to production.
-8. **Feedback** — the users can give feedback, potentially generating new workshops.
+A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, stories, roadmap, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
 
 ## Why a supporting platform
 
@@ -49,7 +40,7 @@ Each step of the cycle has its place in the project:
 | 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
 | 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
 | 6. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
-| 7. Version | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
+| 7. Deployment | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
 | 8. Feedback | an issue, which may call for a new workshop |
 
 
