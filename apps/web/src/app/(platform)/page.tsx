@@ -2,7 +2,7 @@ import { nameAndScope } from '@claree/domain'
 import { en as t } from '@/i18n/en'
 import { productName } from '@/product'
 import { signedIn } from '@/session'
-import { Button, Card, Page, Section } from './ui'
+import { Button, Card, Page, Section } from '../ui'
 
 /** Arriving: signing in, then choosing one of your projects. */
 export default async function ArrivalPage({

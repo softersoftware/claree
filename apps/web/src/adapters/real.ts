@@ -17,4 +17,4 @@ export const adapters: Ports = {
 }
 
 /** Nobody: people sign in with GitHub, not by being chosen. */
-export const fictionalPeople: readonly { readonly id: string; readonly name: string }[] = []
+export const fictionalPeople: readonly { readonly login: string; readonly name: string }[] = []

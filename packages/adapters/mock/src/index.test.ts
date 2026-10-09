@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mockAdapters } from '.'
 
-const signedInAs = (person: string) => mockAdapters('/choose').signingIn.finish({ person })
+const signedInAs = (login: string) => mockAdapters('/choose').signingIn.finish({ login })
 
 describe('the mock adapters', () => {
   it('send a person to choose who they are, and back with the same state', () => {
@@ -12,24 +12,24 @@ describe('the mock adapters', () => {
   })
 
   it('sign in as someone with projects, and open only theirs', async () => {
-    const ana = await signedInAs('ana')
+    const ana = await signedInAs('ana-ruiz')
     expect(ana?.participant.name).toBe('Ana Ruiz')
     expect(await ana?.projects()).toEqual({
       found: 'some',
-      addresses: ['https://example.org/medito', 'https://example.org/allotments'],
+      addresses: ['https://github.com/medito-centre/medito', 'https://github.com/greenlane-gardens/allotments'],
     })
-    const opened = await ana?.projectFiles.open('https://example.org/medito')
+    const opened = await ana?.projectFiles.open('https://github.com/medito-centre/medito')
     expect(await opened?.read('README.md')).toContain('# Medito')
   })
 
   it('sign in as someone no project has let the platform in for', async () => {
-    const tom = await signedInAs('tom')
+    const tom = await signedInAs('tom-okafor')
     expect(await tom?.projects()).toEqual({ found: 'not let in' })
-    expect(await tom?.projectFiles.open('https://example.org/medito')).toBeUndefined()
+    expect(await tom?.projectFiles.open('https://github.com/medito-centre/medito')).toBeUndefined()
   })
 
   it('sign in as someone no project recognises', async () => {
-    expect(await (await signedInAs('lea'))?.projects()).toEqual({ found: 'none recognises them' })
+    expect(await (await signedInAs('lea-martin'))?.projects()).toEqual({ found: 'none recognises them' })
   })
 
   it('sign nobody in without a person they know', async () => {

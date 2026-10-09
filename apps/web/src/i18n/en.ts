@@ -21,8 +21,4 @@ export const en = {
     scope: 'Scope',
     repository: 'Repository',
   },
-  mock: {
-    title: 'Signing in',
-    who: 'Sign in as',
-  },
 }

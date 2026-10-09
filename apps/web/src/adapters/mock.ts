@@ -6,4 +6,4 @@ import type { Ports } from '@claree/domain'
 export const adapters: Ports = mockAdapters('/sign-in/mock')
 
 /** Who can be chosen at `/sign-in/mock`, where the real sign-in page would be. */
-export const fictionalPeople: readonly { readonly id: string; readonly name: string }[] = people
+export const fictionalPeople: readonly { readonly login: string; readonly name: string }[] = people

@@ -1,30 +1,56 @@
 import { notFound } from 'next/navigation'
 import { fictionalPeople } from '@/adapters'
-import { en as t } from '@/i18n/en'
-import { Card, Page, Section } from '../../ui'
+import { productName } from '@/product'
+import { GitHubPage, box, field, greenButton } from './github'
 
-/** Where the mock adapters sign people in: choosing one of a few invented people stands for signing in. */
-export default async function ChooseSomeone({ searchParams }: { searchParams: Promise<{ state?: string }> }) {
+/** Signing in on GitHub, as the mock adapters imitate it: any password, one of a few invented logins. */
+export default async function SignInOnGitHub({ searchParams }: { searchParams: Promise<{ state?: string }> }) {
   if (fictionalPeople.length === 0) notFound()
   const { state = '' } = await searchParams
   return (
-    <Page title={t.mock.title}>
-      <Section title={t.mock.who}>
-        <Card>
-          <ul className="space-y-2 text-sm">
-            {fictionalPeople.map(({ id, name }) => (
-              <li key={id}>
-                <a
-                  href={`/sign-in/callback?${new URLSearchParams({ person: id, state })}`}
-                  className="text-accent underline-offset-2 hover:underline"
-                >
-                  {name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Card>
-      </Section>
-    </Page>
+    <GitHubPage
+      title={
+        <>
+          Sign in to GitHub
+          <span className="block text-base text-[#59636e]">to continue to {productName}</span>
+        </>
+      }
+    >
+      <form action="/sign-in/mock/authorize" className={box}>
+        <input type="hidden" name="state" value={state} />
+        <label htmlFor="login" className="text-sm font-medium">
+          Username or email address
+        </label>
+        <input id="login" name="login" list="logins" required autoFocus autoComplete="off" className={field} />
+        <datalist id="logins">
+          {fictionalPeople.map(({ login }) => (
+            <option key={login} value={login} />
+          ))}
+        </datalist>
+        <label htmlFor="password" className="text-sm font-medium">
+          Password
+        </label>
+        <input id="password" type="password" defaultValue="mock" className={field} />
+        <button type="submit" className={greenButton}>
+          Sign in
+        </button>
+      </form>
+      <div className={`${box} mt-4 text-sm`}>
+        <p className="font-medium">Fictional accounts</p>
+        <ul className="mt-2 space-y-1">
+          {fictionalPeople.map(({ login, name }) => (
+            <li key={login}>
+              <a
+                href={`/sign-in/mock/authorize?${new URLSearchParams({ login, state })}`}
+                className="text-[#0969da] hover:underline"
+              >
+                {login}
+              </a>{' '}
+              <span className="text-[#59636e]">{name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </GitHubPage>
   )
 }

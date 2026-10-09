@@ -5,7 +5,7 @@ import type { FictionalPerson } from './people'
 /**
  * Signing in as one of a few invented people, with no outside service. The
  * person is chosen at `chooseAt`, which stands where the real sign-in page
- * would, and comes back to the callback as `person`.
+ * would, and comes back to the callback as `login`.
  */
 export const fictionalSigningIn = (
   people: readonly FictionalPerson[],
@@ -16,7 +16,7 @@ export const fictionalSigningIn = (
     return `${chooseAt}?${new URLSearchParams({ callback, state })}`
   },
   async finish(proof) {
-    const person = people.find(({ id }) => id === proof.person)
+    const person = people.find(({ login }) => login === proof.login)
     if (person === undefined) return undefined
     const theirs = person.projects.found === 'some' ? person.projects.addresses : []
     return {
