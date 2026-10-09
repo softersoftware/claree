@@ -30,7 +30,7 @@ The forces at play:
 
 4. **Every port has a mock adapter**, so Supersoft runs end-to-end with no external service — for demonstrations, prototyping and CI. Adding a port means adding its mock alongside. This is not a testing convenience; it is the same guarantee Supersoft makes to its users about their prototypes, applied to itself.
 
-5. **`docs/domain/` is the source of truth for business rules**, tool-free, with the [glossary](../glossary.md) mapping every term to its name in the code. Every new rule is documented there first, then implemented in the domain with its tests, then integrated in the application.
+5. **`docs/domain/` is the source of truth for business rules**, tool-free, with the [glossary](../glossary_bridge.md) mapping every term to its name in the code. Every new rule is documented there first, then implemented in the domain with its tests, then integrated in the application.
 
 6. **Container-based deployment as the exit guarantee**, so no hosting platform is load-bearing.
 

@@ -26,7 +26,7 @@ project/
     ├── workshops/
     │   └── <date> <title>/     # what a workshop left behind: notes, recordings, slides
     ├── domain/                 # one file per domain: glossary, rules, questions
-    └── glossary.md             # each term ↔ its name in the code
+    └── glossary_bridge.md      # each term ↔ its name in the code
 ```
 
 Each step of the cycle has its place in the project:
@@ -35,7 +35,7 @@ Each step of the cycle has its place in the project:
 |---|---|
 | Scope | `README.md`: what the application is for |
 | 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
-| 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
+| 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary_bridge.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
 | 4. Story mapping | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
 | 5. Version planning | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |

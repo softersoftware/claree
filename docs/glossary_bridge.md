@@ -1,4 +1,4 @@
-# Glossary of business terms
+# Glossary bridge
 
 The bridge between the business documentation ([`docs/domain/`](domain/README.md), tool-free) and the code. Each domain defines its terms in its own glossary; this file says which name each of them has in the code.
 

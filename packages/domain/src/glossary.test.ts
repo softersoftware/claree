@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest'
 
 const glossary =
   Object.values(
-    import.meta.glob('../../../docs/glossary.md', { query: '?raw', import: 'default', eager: true }),
+    import.meta.glob('../../../docs/glossary_bridge.md', { query: '?raw', import: 'default', eager: true }),
   )[0] ?? ''
 
 const domains = import.meta.glob(['../../../docs/domain/*.md', '!**/README.md'], {

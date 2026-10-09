@@ -10,7 +10,7 @@ CHANGELOG.md            # each version and the stories it carried
 docs/
 ├── workshops/          # what the domain experts said, as it came
 ├── domain/             # the business, one file per domain
-├── glossary.md         # each term and its name in the code
+├── glossary_bridge.md  # each term and its name in the code
 └── decisions/          # the choices behind the software
 ```
 
@@ -49,7 +49,7 @@ How they are written:
 - They are written in one language: the domain experts'.
 - Keep it short. A rule nobody can find is a rule nobody follows, and a rule earns its place when something runnable needs it.
 
-### `docs/glossary.md`
+### `docs/glossary_bridge.md`
 
 One table per domain, linking to its file: each term of its glossary, and its name in the code — "—" while the code does not name it. Every name the code gives a business concept has its row. It fixes which word is used, and forbids the synonyms.
 
@@ -62,6 +62,6 @@ A decision is not rewritten once accepted: a reversed decision gets a new file t
 ## A new concept or rule
 
 1. It is written in its domain first, with its terms in that domain's glossary.
-2. Each term gets its row in `docs/glossary.md`, before it gets a name anywhere else.
+2. Each term gets its row in `docs/glossary_bridge.md`, before it gets a name anywhere else.
 3. Then it is implemented, with its tests, when a story needs it, and its row gets its name in the code.
 4. Then the digital tool uses it.
