@@ -12,5 +12,3 @@ export const adapters: Ports = {
     },
   },
 }
-
-export const fictionalPeople: readonly { readonly login: string; readonly name: string }[] = []

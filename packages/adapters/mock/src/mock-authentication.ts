@@ -1,15 +1,20 @@
+import type { Server } from 'node:http'
 import type { Authentication } from '@claree/domain'
 import type { Account } from './accounts'
+import { serveGitHubPages } from './github-pages'
 import { type Files, inMemoryProjectFiles } from './in-memory-project-files'
 
-/** Signs in to one of `accounts`, chosen on `signInPage`, which sends back the account's `login`. */
+const servers = ((globalThis as { githubPages?: Map<number, Server> }).githubPages ??= new Map())
+
+/** Signs in to one of `accounts`, chosen on mock GitHub pages served on `port` from the first sign-in. */
 export const mockAuthentication = (
   accounts: readonly Account[],
   projects: Readonly<Record<string, Files>>,
-  signInPage: string,
+  { appName, port }: { readonly appName: string; readonly port: number },
 ): Authentication => ({
   start(callback, state) {
-    return `${signInPage}?${new URLSearchParams({ callback, state })}`
+    if (!servers.has(port)) servers.set(port, serveGitHubPages(accounts, appName, port))
+    return `http://localhost:${port}/login?${new URLSearchParams({ callback, state })}`
   },
   async finish(query) {
     const account = accounts.find(({ login }) => login === query.login)
