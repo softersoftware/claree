@@ -13,7 +13,7 @@ Read `README.md` for the full picture, and `CONTRIBUTING.md` for how its files a
 - **No part of a project may depend on the platform continuing to exist.** Treat any proposal that breaks this as wrong by default and say so, whatever it buys.
 - **No code ahead of what runs (YAGNI).** Write only the code a current feature of the application uses, and its tests. A rule written in `docs/domain/` does not call for code until a story needs it; code that nothing in `apps/web` reaches is deleted, not kept for later.
 - **Keep it short, and stay one step ahead of the prototype, never further.** A rule earns its place in `docs/domain/` when something runnable needs it. The first version of this repository specified a product nobody had seen; that is the mistake to avoid, and ADR [0004](docs/decisions/0004-the-prototype-is-a-web-application-held-in-memory.md) says why.
-- Language: code, comments, tests and docs in English. How the platform speaks — sober, plain, direct — is `docs/branding/tone.md`; every visible string answers to it.
+- Language: code, comments, tests and docs in English. How the platform speaks — sober, plain, direct — is `docs/branding/tone.md`; every visible string answers to it. Keep visible strings short and simple, the way a person would say it: "You need to be signed in to access your projects", not "A project opens only to someone signed in, with the GitHub account it knows them by".
 - This repository is public. The reference implementation and first project the platform serves is a private repository and must never be named here — not in `docs/`, not in `README.md`, not in commit messages. Refer to it as "an existing project" when its existence is load-bearing for an argument. Local, uncommitted notes may name it.
 
 ## Status
