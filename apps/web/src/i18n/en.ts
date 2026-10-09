@@ -21,4 +21,7 @@ export const en = {
     scope: 'Scope',
     repository: 'Repository',
   },
+  language: 'Language',
 }
+
+export type Strings = typeof en
