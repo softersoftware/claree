@@ -4,8 +4,8 @@ import { productName } from '@/product'
 import { signedIn } from '@/session'
 import { Button, Card, Page, Section } from '../ui'
 
-/** Arriving: signing in, then choosing one of your projects. */
-export default async function ArrivalPage({
+/** Home: the Projects page, once signed in; until then, signing in. */
+export default async function ProjectsPage({
   searchParams,
 }: {
   searchParams: Promise<{ unopened?: string; 'signed-in'?: string }>
@@ -27,17 +27,17 @@ export default async function ArrivalPage({
     )
 
   const theirs = await who.projects()
-  const refused = unopened && <p className="text-sm text-warn">{t.selection.unopened(unopened)}</p>
+  const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>
   if (theirs.found === 'not installed')
     return (
-      <Page title={t.overview.projects}>
+      <Page title={t.projects.title}>
         {refused}
         <Card>
-          <p className="text-sm">{t.selection.notInstalled(productName)}</p>
+          <p className="text-sm">{t.projects.notInstalled(productName)}</p>
           {theirs.installAt && (
             <p className="mt-3 text-sm">
               <a href={theirs.installAt} className="text-accent underline-offset-2 hover:underline">
-                {t.selection.install(productName)}
+                {t.projects.install(productName)}
               </a>
             </p>
           )}
@@ -46,10 +46,10 @@ export default async function ArrivalPage({
     )
   if (theirs.found === 'none readable')
     return (
-      <Page title={t.overview.projects}>
+      <Page title={t.projects.title}>
         {refused}
         <Card>
-          <p className="text-sm">{t.selection.noneReadable(productName)}</p>
+          <p className="text-sm">{t.projects.noneReadable(productName)}</p>
         </Card>
       </Page>
     )
@@ -61,9 +61,9 @@ export default async function ArrivalPage({
     }),
   )
   return (
-    <Page title={t.overview.projects}>
+    <Page title={t.projects.title}>
       {refused}
-      <Section title={t.selection.projects(projects.length)}>
+      <Section title={t.projects.count(projects.length)}>
         {projects.map(({ address, name, scope }) => (
           <a key={address} href={`/projects?${new URLSearchParams({ address })}`} className="block">
             <Card>

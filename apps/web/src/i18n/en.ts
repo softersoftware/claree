@@ -7,8 +7,9 @@ export const en = {
     failed: 'Signing in failed. Try again.',
     signOut: 'Sign out',
   },
-  selection: {
-    projects: (count: number) => `Projects — ${count}`,
+  projects: {
+    title: 'Projects',
+    count: (count: number) => `Projects — ${count}`,
     notInstalled: (product: string) =>
       `${product} is not installed on any of your GitHub organisations. An owner of the organisation can install it.`,
     install: (product: string) => `Install ${product}`,
@@ -17,7 +18,6 @@ export const en = {
     unopened: (address: string) => `“${address}” is not one of your projects.`,
   },
   overview: {
-    projects: 'Projects',
     scope: 'Scope',
     repository: 'Repository',
   },
