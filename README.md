@@ -55,14 +55,14 @@ This platform is built with its own method, so this repository follows the layou
 apps/web/            # the application
 packages/domain/     # the business rules, pure TypeScript, no dependencies
 packages/adapters/   # what the domain reaches outside itself, one package per outside service
-  mock/              # every port, with invented projects and no outside service
-  git/               # projects read from their repositories
+  mock/              # every port, with invented accounts and projects, and no outside service
+  github/            # signing in with GitHub, and projects read through its API
 ```
 
 ```bash
 pnpm install
 pnpm test                                                    # the domain and the adapters
-pnpm dev                                                     # projects read from their repositories
-pnpm dev:mock                                                # no outside service at all, invented projects
+pnpm dev                                                     # signing in with GitHub: apps/web/.env.example says what it needs
+pnpm dev:mock                                                # no outside service at all, invented accounts and projects
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production
 ```

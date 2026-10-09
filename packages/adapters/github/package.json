@@ -1,5 +1,5 @@
 {
-  "name": "@claree/git-adapters",
+  "name": "@claree/github-adapters",
   "version": "0.0.0",
   "private": true,
   "type": "module",

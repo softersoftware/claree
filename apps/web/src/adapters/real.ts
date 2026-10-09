@@ -1,14 +1,11 @@
 import 'server-only'
+import { githubAuthentication } from '@claree/github-adapters'
 import type { Ports } from '@claree/domain'
 
-/** Signing in with GitHub comes after the mock-up of story #29. */
 export const adapters: Ports = {
-  authentication: {
-    start() {
-      throw new Error('Signing in with GitHub is not built yet.')
-    },
-    async finish() {
-      return undefined
-    },
-  },
+  authentication: githubAuthentication({
+    clientId: process.env.GITHUB_APP_CLIENT_ID ?? '',
+    clientSecret: process.env.GITHUB_APP_CLIENT_SECRET ?? '',
+    appSlug: process.env.GITHUB_APP_SLUG ?? '',
+  }),
 }
