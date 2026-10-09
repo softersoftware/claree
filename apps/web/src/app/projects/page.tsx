@@ -1,45 +1,62 @@
 import { redirect } from 'next/navigation'
 import { nameAndScope } from '@claree/domain'
-import { adapters } from '@/adapters'
 import { en as t } from '@/i18n/en'
+import { productName } from '@/product'
+import { projectPage } from '@/project-address'
+import { currentUser } from '@/session'
 import { Card, Page, Section } from '../ui'
 
-/** A project, opened at its address and read as it is there now. Nothing here changes it. */
-export default async function ProjectPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ address?: string }>
-}) {
-  const address = (await searchParams).address?.trim() ?? ''
-  if (address === '') redirect('/')
-  const project = await adapters.projectFiles.open(address)
-  if (project === undefined) redirect(`/?unreadable=${encodeURIComponent(address)}`)
-  const { name, scope } = nameAndScope(project.address, await project.read('README.md'))
+export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ unopened?: string }> }) {
+  const user = await currentUser()
+  if (user === undefined) redirect('/')
+  const { unopened } = await searchParams
+  const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>
 
-  return (
-    <Page title={name}>
-      {scope !== '' && (
-        <Section title={t.overview.scope}>
-          <p className="text-sm">{scope}</p>
-        </Section>
-      )}
-      <Section title={t.overview.repository}>
+  const projects = await user.projects()
+  if (projects.found === 'not installed')
+    return (
+      <Page title={t.projects.title}>
+        {refused}
         <Card>
-          <p className="text-sm break-all">
-            {project.link ? (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent underline-offset-2 hover:underline"
-              >
-                {project.address}
+          <p className="text-sm">{t.projects.notInstalled(productName)}</p>
+          {projects.installAt && (
+            <p className="mt-3 text-sm">
+              <a href={projects.installAt} className="text-accent underline-offset-2 hover:underline">
+                {t.projects.install(productName)}
               </a>
-            ) : (
-              project.address
-            )}
-          </p>
+            </p>
+          )}
         </Card>
+      </Page>
+    )
+  if (projects.found === 'none readable')
+    return (
+      <Page title={t.projects.title}>
+        {refused}
+        <Card>
+          <p className="text-sm">{t.projects.noneReadable(productName)}</p>
+        </Card>
+      </Page>
+    )
+
+  const cards = await Promise.all(
+    projects.addresses.map(async (address) => {
+      const repository = await user.projectFiles.open(address)
+      return { address, ...nameAndScope(address, await repository?.read('README.md')) }
+    }),
+  )
+  return (
+    <Page title={t.projects.title}>
+      {refused}
+      <Section title={t.projects.count(cards.length)}>
+        {cards.map(({ address, name, scope }) => (
+          <a key={address} href={projectPage(address)} className="block">
+            <Card>
+              <p className="text-sm font-semibold">{name}</p>
+              {scope !== '' && <p className="mt-1 text-sm text-muted">{scope}</p>}
+            </Card>
+          </a>
+        ))}
       </Section>
     </Page>
   )

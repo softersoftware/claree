@@ -13,9 +13,9 @@ importers:
       '@claree/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@claree/git-adapters':
+      '@claree/github-adapters':
         specifier: workspace:*
-        version: link:../../packages/adapters/git
+        version: link:../../packages/adapters/github
       '@claree/mock-adapters':
         specifier: workspace:*
         version: link:../../packages/adapters/mock
@@ -51,7 +51,7 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  packages/adapters/git:
+  packages/adapters/github:
     dependencies:
       '@claree/domain':
         specifier: workspace:*
@@ -73,6 +73,9 @@ importers:
         specifier: workspace:*
         version: link:../../domain
     devDependencies:
+      '@types/node':
+        specifier: ^22.20.2
+        version: 22.20.2
       typescript:
         specifier: ^5.7.0
         version: 5.9.3

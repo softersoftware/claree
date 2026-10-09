@@ -1,30 +1,25 @@
+import { redirect } from 'next/navigation'
 import { en as t } from '@/i18n/en'
 import { productName } from '@/product'
-import { Button, Card, Input, Page, Section } from './ui'
+import { currentUser } from '@/session'
+import { Button, Card, Page } from './ui'
 
-/** Arriving: the address of a project, which asks nothing of anyone. */
-export default async function ArrivalPage({
+export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: Promise<{ unreadable?: string }>
+  searchParams: Promise<{ 'signed-in'?: string }>
 }) {
-  const { unreadable } = await searchParams
+  if (await currentUser()) redirect('/projects')
+  const failed = (await searchParams)['signed-in'] === 'no'
   return (
     <Page title={productName}>
-      <Section title={t.arrival.addProject}>
-        <Card>
-          <form action="/projects" className="flex flex-col gap-2 sm:flex-row">
-            <Input
-              name="address"
-              placeholder="https://github.com/octocat/Hello-World"
-              defaultValue={unreadable}
-              label={t.arrival.projectAddress}
-            />
-            <Button>{t.arrival.openIt}</Button>
-          </form>
-          {unreadable && <p className="mt-2 text-sm text-warn">{t.arrival.unreadable(unreadable)}</p>}
-        </Card>
-      </Section>
+      <Card>
+        <p className="text-sm">{t.signingIn.needed}</p>
+        <form action="/sign-in" method="post" className="mt-4">
+          <Button>{t.signingIn.signIn}</Button>
+        </form>
+        {failed && <p className="mt-2 text-sm text-warn">{t.signingIn.failed}</p>}
+      </Card>
     </Page>
   )
 }

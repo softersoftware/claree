@@ -2,7 +2,7 @@
  * A project's repository, read as it was when the project was opened. Paths
  * start at the root of the project; nothing outside it is read.
  */
-export interface Repository {
+export type Repository = {
   readonly address: string
   /** Where a person looks at the repository without the platform; nothing when a browser cannot open it. */
   readonly link?: string
@@ -14,7 +14,7 @@ export interface Repository {
  * Where the platform reads a project. It opens what already exists and never
  * writes there — one port, and a mock adapter for it.
  */
-export interface ProjectFiles {
+export type ProjectFiles = {
   /** Nothing when the address cannot be read: nothing is there, or it is private. */
   open(address: string): Promise<Repository | undefined>
 }

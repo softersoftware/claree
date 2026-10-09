@@ -1,11 +1,11 @@
 import 'server-only'
-import { gitProjectFiles } from '@claree/git-adapters'
+import { githubAuthentication } from '@claree/github-adapters'
 import type { Ports } from '@claree/domain'
 
-/**
- * The platform with its real adapters: projects read from their repositories,
- * and repositories on this machine only outside production.
- */
 export const adapters: Ports = {
-  projectFiles: gitProjectFiles({ local: process.env.NODE_ENV !== 'production' }),
+  authentication: githubAuthentication({
+    clientId: process.env.GITHUB_APP_CLIENT_ID ?? '',
+    clientSecret: process.env.GITHUB_APP_CLIENT_SECRET ?? '',
+    appSlug: process.env.GITHUB_APP_SLUG ?? '',
+  }),
 }
