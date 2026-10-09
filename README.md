@@ -4,16 +4,7 @@ A platform where domain experts and makers build an application together, step b
 
 ## What is application co-creation
 
-With or without a supporting platform, a typical project goes round the following cycle for every new domain it addresses:
-
-1. **Workshop** — the domain experts and the maker meet. What was said, shown or recorded is kept as it came.
-2. **Domain** — the business is written from it: its terms, its rules, its open questions, in the domain experts' words.
-3. **Prototype** — a prototype with mock-data is tested and refined with users.
-4. **Stories** — the validated prototype is cut into stories, each with its business value and development effort.
-5. **Roadmap** — the stories are prioritised and scheduled.
-6. **Implementation** — each story is implemented and deployed in an integration environment.
-7. **Version** — done stories are gathered, deployed to production.
-8. **Feedback** — the users can give feedback, potentially generating new workshops.
+A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, story mapping, version planning, story refinement, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
 
 ## Why a supporting platform
 
@@ -34,8 +25,8 @@ project/
 └── docs/
     ├── workshops/
     │   └── <date> <title>/     # what a workshop left behind: notes, recordings, slides
-    ├── domain/                 # one file per domain: terms, rules, questions
-    └── glossary.md             # each term ↔ its name in the code
+    ├── domain/                 # one file per domain: glossary, rules, questions
+    └── glossary_bridge.md      # each term ↔ its name in the code
 ```
 
 Each step of the cycle has its place in the project:
@@ -44,20 +35,21 @@ Each step of the cycle has its place in the project:
 |---|---|
 | Scope | `README.md`: what the application is for |
 | 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
-| 2. Domain | `docs/domain/`: one file per domain, its terms, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
+| 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary_bridge.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
-| 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
-| 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
-| 6. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
-| 7. Version | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
-| 8. Feedback | an issue, which may call for a new workshop |
+| 4. Story mapping | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
+| 5. Version planning | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
+| 6. Story refinement | the story's issue: its final interface, and its plan of implementation |
+| 7. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
+| 8. Deployment | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
+| 9. Feedback | an issue, which may call for a new workshop |
 
 
 The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).
 
 ## This repository
 
-This platform is built with its own method, so this repository follows the layout above, and its features and stories are its [issues](https://github.com/softersoftware/claree/issues). The code:
+This platform is built with its own method, so this repository follows the layout above, its features and stories are its [issues](https://github.com/softersoftware/claree/issues), and how its files are written is in [`CONTRIBUTING.md`](CONTRIBUTING.md), the same as in any project built with the method. Its domain experts are its makers, so it is written in English. The code:
 
 ```bash
 apps/web/            # the application

@@ -1,4 +1,4 @@
-import { type KeptFiles, type ProjectFiles, repositoryLink } from '@claree/domain'
+import { type Repository, type ProjectFiles, repositoryLink } from '@claree/domain'
 
 /** The files of one project, by their path from its root. */
 export type Files = Readonly<Record<string, string>>
@@ -12,13 +12,13 @@ export const inMemoryProjectFiles = (projects: Readonly<Record<string, Files>>):
     const files = projects[address]
     if (files === undefined) return undefined
     const kept = new Map(Object.entries(files))
-    const opened: KeptFiles = {
+    const repository: Repository = {
       address,
       link: repositoryLink(address),
       async read(path) {
         return kept.get(path)
       },
     }
-    return opened
+    return repository
   },
 })

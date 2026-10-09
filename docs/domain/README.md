@@ -1,49 +1,21 @@
-# The domain of the platform
+# The domains of the platform
 
-This folder describes **what the platform does**, in the language of the people it serves, with no reference to technical tooling. It is the source of truth for the vocabulary and the business rules:
+## The cycle
 
-- it is the **common language** between makers, domain experts and contributors;
-- every business term maps to its name in the code in the [glossary](../glossary.md);
-- a business rule that is not written here does not exist.
+With or without a supporting platform, a project goes round the same cycle for every new domain it addresses. Each step with rules of its own is a domain of the platform, and has its file here.
 
-## What the platform is
+1. [Workshops](step_1_workshops.md) — the domain experts explain the business; what was said and shown is recorded as it came.
+2. [Domains](step_2_domains.md) — the business is written from it, one domain for each part with its own words: its glossary, its rules, its open questions.
+3. [Prototypes](step_3_prototypes.md) — a prototype with mock data is tried and refined with the domain experts and the future users.
+4. [Story mapping](step_4_story_mapping.md) — the prototype is cut into features and stories, each with its business value and its effort.
+5. [Version planning](step_5_version_planning.md) — the story map is sliced into versions, and the stories are put in order.
+6. [Story refinement](step_6_refinement.md) — the prototype is polished into the final interface, and each story gets its plan of implementation.
+7. [Implementation](step_7_implementation.md) — each story is implemented, and tried before it reaches real people.
+8. [Deployment](step_8_deployment.md) — once all its stories are done, a version is put in front of real people.
+9. Feedback — real use brings feedback, which may call for new workshops.
 
-The platform is a **support for the conversation** between a maker and the domain experts about a web or mobile application. Its method is borrowed from domain-driven design: the business is described, in the domain experts' words, before it is built.
+Before the first step, the project owner says what the digital tool is for: its scope. That, and what belongs to no step — who takes part, the language, arriving at a project, and the rules of the whole project — is in [Project and participants](project.md).
 
-A project has three parts, and they grow together rather than in sequence:
+How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). The platform's domains are the steps of the cycle, so each file also says the previous step, the next one, what it takes to move on, and the risks of the step.
 
-- **The project** — who is taking part.
-- **The business** — what the application serves. Informal on one side: what was said, recorded and asked, kept as it came. Formal on the other: the lexicon and the official description of the business, which is the project's main source of truth.
-- **The solution** — what the application does about that business: features, broken into stories, gathered into versions and followed into real use.
-
-Everything it produces belongs to the project owner and stays readable without it.
-
-## How a project grows
-
-The aim is an application that fits the business precisely: easy to use, and easy to change. It is reached step by step, always in the same order:
-
-1. **Understand the business.** A short [scope](project.md#scope) says what the application is for; the business is then cut into its parts, and the features are drawn from them.
-2. **Describe it precisely.** Each part gets its [lexicon](business.md#the-formal-side) and its [rules](business.md#the-formal-side). The rules are the core of the application, true before any screen exists.
-3. **Prototype it with the people who will use it.** A [prototype](solution.md#prototypes) applies the rules, and trying it refines them. It becomes realistic mock-ups: a demonstration, connected to nothing.
-4. **Put it in front of real people.** Only once it is validated is it connected to the outside world and delivered as a [version](solution.md#versions).
-5. **Keep going, the same way.** Every new feature, and every new part of the business, goes through the same steps.
-
-These steps are a cycle, not a sequence of sections: they come round again for every feature. What they produce stays in three places, whatever step a project is at — the **business** ([workshops, and the domains written from them](business.md)), the **features** that answer it ([the solution](solution.md): stories and prototypes), and the **versions** that reach real people.
-
-## Writing conventions
-
-- No mention of a tool, a piece of software or a technique. The platform is a tool for making software, so the temptation is constant — resist it.
-- **These documents change only when the business changes** — never when the tooling changes. Nothing here says what is "already built", "in progress" or "planned".
-- Keep it short. A rule nobody can find is a rule nobody follows.
-
-## Language
-
-Unlike another project, whose domain documents are written in the language of its own domain experts, the platform's are written in English: its domain experts are its makers.
-
-## The documents
-
-- [Project and participants](project.md) — what a project is and who takes part.
-- [The business](business.md) — the informal material, and the formal description written from it.
-- [The solution](solution.md) — features, stories, prototypes, versions.
-
-When a new concept appears: define it here first, then add it to the [glossary](../glossary.md) **before** giving it a name anywhere else.
+The platform's domain experts are its makers, so these files are written in English.

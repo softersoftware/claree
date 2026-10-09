@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto'
 import { mkdir, readdir, rm, stat, utimes } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { type KeptFiles, type ProjectFiles, repositoryLink } from '@claree/domain'
+import { type Repository, type ProjectFiles, repositoryLink } from '@claree/domain'
 import { atMost } from './at-most'
 import { type Lookup, publicAddress, systemLookup } from './public-address'
 
@@ -207,7 +207,7 @@ export const gitProjectFiles = (options: GitProjectFilesOptions = {}): ProjectFi
       const { source, copy, commit } = opened
       await makeRoom(copy)
 
-      const kept: KeptFiles = {
+      const repository: Repository = {
         address,
         link: repositoryLink(address),
         async read(path) {
@@ -223,7 +223,7 @@ export const gitProjectFiles = (options: GitProjectFilesOptions = {}): ProjectFi
           }
         },
       }
-      return kept
+      return repository
     },
   }
 }

@@ -1,8 +1,8 @@
 /**
- * What is kept at a project's address, read as it was when the project was
- * opened. Paths start at the root of the project; nothing outside it is read.
+ * A project's repository, read as it was when the project was opened. Paths
+ * start at the root of the project; nothing outside it is read.
  */
-export interface KeptFiles {
+export interface Repository {
   readonly address: string
   /** Where a person looks at the repository without the platform; nothing when a browser cannot open it. */
   readonly link?: string
@@ -16,5 +16,5 @@ export interface KeptFiles {
  */
 export interface ProjectFiles {
   /** Nothing when the address cannot be read: nothing is there, or it is private. */
-  open(address: string): Promise<KeptFiles | undefined>
+  open(address: string): Promise<Repository | undefined>
 }

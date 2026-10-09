@@ -6,12 +6,12 @@ projectFilesContract('projects held in memory', async () => {
   let count = 0
   return {
     projectFiles: inMemoryProjectFiles(projects),
-    async keep(files) {
+    async repositoryWith(files) {
       const address = `https://example.org/project-${++count}`
       projects[address] = { ...files }
       return address
     },
-    async change(address, files) {
+    async changeRepository(address, files) {
       projects[address] = { ...files }
     },
     nowhere: 'https://example.org/nowhere',
