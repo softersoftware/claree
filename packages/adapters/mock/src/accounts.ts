@@ -1,15 +1,14 @@
-import type { TheirProjects } from '@claree/domain'
+import type { ProjectList } from '@claree/domain'
 
-/** Someone invented, and what the mock adapters find for them. */
-export interface FictionalPerson {
-  /** What they sign in with, as on GitHub. */
+export type Account = {
+  /** What the person signs in with, as on GitHub. */
   readonly login: string
   readonly name: string
-  readonly projects: TheirProjects
+  readonly projects: ProjectList
 }
 
-/** The people the mock adapters sign in, one for each thing signing in can find. */
-export const people: readonly FictionalPerson[] = [
+/** One account for each list of projects a user can have. */
+export const accounts: readonly Account[] = [
   {
     login: 'ana-ruiz',
     name: 'Ana Ruiz',

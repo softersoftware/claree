@@ -1,16 +1,13 @@
 import type { Ports } from '@claree/domain'
-import { fictionalSigningIn } from './fictional-signing-in'
-import { people } from './people'
+import { accounts } from './accounts'
+import { mockAuthentication } from './mock-authentication'
 import { projects } from './projects'
 
-export * from './fictional-signing-in'
+export * from './accounts'
 export * from './in-memory-project-files'
-export * from './people'
+export * from './mock-authentication'
 
-/**
- * Every port, served from memory with invented people and projects, and no
- * outside service. Signing in is choosing one of `people` at `chooseAt`.
- */
-export const mockAdapters = (chooseAt: string): Ports => ({
-  signingIn: fictionalSigningIn(people, projects, chooseAt),
+/** Every port, with invented accounts and projects in memory. Accounts are chosen on `signInPage`. */
+export const mockAdapters = (signInPage: string): Ports => ({
+  authentication: mockAuthentication(accounts, projects, signInPage),
 })

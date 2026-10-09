@@ -1,21 +1,21 @@
 import { redirect } from 'next/navigation'
 import { nameAndScope } from '@claree/domain'
 import { en as t } from '@/i18n/en'
-import { signedIn } from '@/session'
-import { Card, Page, Section } from '../../ui'
+import { projectAddress } from '@/project-address'
+import { currentUser } from '@/session'
+import { Card, Page, Section } from '../../../ui'
 
-/** One of the projects of the person signed in, read as it is now. Nothing here changes it. */
 export default async function ProjectPage({
-  searchParams,
+  params,
 }: {
-  searchParams: Promise<{ address?: string }>
+  params: Promise<{ owner: string; repository: string }>
 }) {
-  const who = await signedIn()
-  if (who === undefined) redirect('/')
-  const address = (await searchParams).address?.trim() ?? ''
-  if (address === '') redirect('/')
-  const project = await who.projectFiles.open(address)
-  if (project === undefined) redirect(`/?unopened=${encodeURIComponent(address)}`)
+  const user = await currentUser()
+  if (user === undefined) redirect('/')
+  const { owner, repository } = await params
+  const address = projectAddress(owner, repository)
+  const project = await user.projectFiles.open(address)
+  if (project === undefined) redirect(`/projects?${new URLSearchParams({ unopened: `${owner}/${repository}` })}`)
   const { name, scope } = nameAndScope(project.address, await project.read('README.md'))
 
   return (

@@ -1,12 +1,9 @@
 import 'server-only'
 import type { Ports } from '@claree/domain'
 
-/**
- * The platform with its real adapters. Signing in with GitHub comes after the
- * mock-up of story #29; until then, nobody signs in.
- */
+/** Signing in with GitHub comes after the mock-up of story #29. */
 export const adapters: Ports = {
-  signingIn: {
+  authentication: {
     start() {
       throw new Error('Signing in with GitHub is not built yet.')
     },
@@ -16,5 +13,4 @@ export const adapters: Ports = {
   },
 }
 
-/** Nobody: people sign in with GitHub, not by being chosen. */
 export const fictionalPeople: readonly { readonly login: string; readonly name: string }[] = []

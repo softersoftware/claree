@@ -6,7 +6,7 @@ import type { ProjectFiles } from './project-files'
 export type Files = Readonly<Record<string, string>>
 
 /** An adapter of `ProjectFiles`, and what it takes to make a repository where it reads them. */
-export interface ProjectFilesUnderTest {
+export type ProjectFilesUnderTest = {
   readonly projectFiles: ProjectFiles
   /** Makes a repository with these files, and gives its address. */
   repositoryWith(files: Files): Promise<string>

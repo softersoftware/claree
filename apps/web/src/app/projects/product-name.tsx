@@ -4,13 +4,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { productName } from '@/product'
 
-/** The platform's name, leading to the projects from anywhere but the projects themselves. */
+/** A link to the Projects page, except on it. */
 export function ProductName() {
   const className = 'text-sm font-semibold tracking-tight'
-  return usePathname() === '/' ? (
+  return usePathname() === '/projects' ? (
     <span className={className}>{productName}</span>
   ) : (
-    <Link href="/" className={className}>
+    <Link href="/projects" className={className}>
       {productName}
     </Link>
   )
