@@ -55,6 +55,7 @@ The bridge between the domains and the code: for each term the code names, the n
 
 - A term appears here only once the code names it, in the same change. A term the code does not name yet has no row: it is defined in its domain, and that is enough.
 - Every name here exists in the code, and every name the code gives a business concept has its row.
+- Each term links to a search of the project's domain files for it, and each name to a search of its code, so that anyone can see where both are used.
 - When the code is written in another language than the business, the bridge is where one is translated into the other. When both are in the same language, it fixes which word is used, and forbids the synonyms: most naming drift in a codebase is not a wrong word, it is three right ones for the same thing.
 
 ### `docs/decisions/`
