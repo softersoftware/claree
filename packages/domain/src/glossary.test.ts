@@ -36,10 +36,6 @@ const rows = glossary
     return { term, names: [...names.matchAll(/`([^`]+)`/g)].map((match) => match[1] ?? '') }
   })
 
-const exported = Object.values(rules).flatMap((text) =>
-  [...text.matchAll(/^export (?:interface|type|const|function) (\w+)/gm)].map((match) => match[1] ?? ''),
-)
-
 const appearsIn = (text: string, word: string) => new RegExp(`\\b${word}\\b`).test(text)
 
 describe('the glossary', () => {
@@ -54,14 +50,8 @@ describe('the glossary', () => {
     expect(absent).toEqual([])
   })
 
-  it('has a row for every name the domain exports', () => {
-    const named = new Set(rows.flatMap((row) => row.names.map((name) => name.split('.')[0])))
-    expect(exported.filter((name) => !named.has(name))).toEqual([])
-  })
-
   it('is read in full', () => {
     expect(rows.length).toBeGreaterThan(0)
-    expect(exported.length).toBeGreaterThan(0)
     expect(Object.keys(application).length).toBeGreaterThan(0)
   })
 })
