@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server'
+import { redirectTo } from '@/public-origin'
 import { forget } from '@/session'
 
-export async function POST(request: Request) {
+export async function POST() {
   await forget()
-  return NextResponse.redirect(new URL('/', request.url), 303)
+  return redirectTo('/')
 }

@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { adapters } from '@/adapters'
+import { publicOrigin } from '@/public-origin'
 import { randomId } from '@/session'
 
 /** `state` is known only to this browser, and checked when it comes back. */
@@ -13,6 +14,6 @@ export async function POST(request: Request) {
     path: '/sign-in',
     maxAge: 600,
   })
-  const callback = new URL('/sign-in/callback', request.url).href
-  return NextResponse.redirect(new URL(adapters.authentication.start(callback, state), request.url), 303)
+  const origin = publicOrigin(request)
+  return NextResponse.redirect(new URL(adapters.authentication.start(`${origin}/sign-in/callback`, state), origin), 303)
 }
