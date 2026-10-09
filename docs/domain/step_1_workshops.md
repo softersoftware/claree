@@ -4,7 +4,7 @@ Previous: the [scope](project.md) of the project.
 
 The domain experts explain each part of the business, each domain, in workshops. What was said and shown is recorded as it came, then transcribed. The aim is to capture the domain experts' natural language and their natural mental model of the business, even when it is not formalised yet and holds ambiguities and holes.
 
-Next: the [domains](02_domains.md) are written from the workshops.
+Next: the [domains](step_2_domains.md) are written from the workshops.
 
 ## Risks
 

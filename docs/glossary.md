@@ -38,7 +38,7 @@ A test in the domain package checks all three.
 | Private project | — |
 | Someone's projects | — |
 
-## Workshops — [01_workshops.md](domain/01_workshops.md)
+## Workshops — [step_1_workshops.md](domain/step_1_workshops.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -48,7 +48,7 @@ A test in the domain package checks all three.
 | Workshop document | — |
 | Text of a document | — |
 
-## Domains — [02_domains.md](domain/02_domains.md)
+## Domains — [step_2_domains.md](domain/step_2_domains.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -63,7 +63,7 @@ A test in the domain package checks all three.
 | Question | — |
 | Open question | — |
 
-## Prototypes — [03_prototypes.md](domain/03_prototypes.md)
+## Prototypes — [step_3_prototypes.md](domain/step_3_prototypes.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -75,7 +75,7 @@ A test in the domain package checks all three.
 | Mock-up | — |
 | Demonstration | — |
 
-## Story mapping — [04_story_mapping.md](domain/04_story_mapping.md)
+## Story mapping — [step_4_story_mapping.md](domain/step_4_story_mapping.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -91,14 +91,14 @@ A test in the domain package checks all three.
 | In progress | — |
 | Done | — |
 
-## Version planning — [05_version_planning.md](domain/05_version_planning.md)
+## Version planning — [step_5_version_planning.md](domain/step_5_version_planning.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Version | — |
 | Blocked by | — |
 
-## Story refinement — [06_refinement.md](domain/06_refinement.md)
+## Story refinement — [step_6_refinement.md](domain/step_6_refinement.md)
 
 | Business term | Name in the code |
 | --- | --- |
@@ -109,14 +109,14 @@ A test in the domain package checks all three.
 | Final interface | — |
 | Plan of implementation | — |
 
-## Implementation — [07_implementation.md](domain/07_implementation.md)
+## Implementation — [step_7_implementation.md](domain/step_7_implementation.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Starting a story | — |
 | Finishing a story | — |
 
-## Deployment — [08_deployment.md](domain/08_deployment.md)
+## Deployment — [step_8_deployment.md](domain/step_8_deployment.md)
 
 | Business term | Name in the code |
 | --- | --- |

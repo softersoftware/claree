@@ -1,10 +1,10 @@
 # Deployment
 
-Previous: the [implementation](07_implementation.md).
+Previous: the [implementation](step_7_implementation.md).
 
 When all the stories of a version are done, the version can be deployed: put in front of real people.
 
-Next: real use brings feedback, which may call for new [workshops](01_workshops.md).
+Next: real use brings feedback, which may call for new [workshops](step_1_workshops.md).
 
 ## Risks
 
@@ -17,7 +17,7 @@ Introducing bugs in front of real people. A version is fully tested before it is
 
 ## Rules
 
-**Rule.** Only a validated [demonstration](03_prototypes.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
+**Rule.** Only a validated [demonstration](step_3_prototypes.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
 
 **Rule.** A version contains only done stories. Work in progress waits for the next one.
 

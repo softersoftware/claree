@@ -8,9 +8,9 @@ A project belongs to its project owner, from the first day and whatever happens 
 
 - **Project**: one digital tool, carried by its project owner and built with its domain experts.
 - **Digital tool**: what a project builds to support business processes or personal activities.
-- **Scope**: a few sentences saying what the digital tool is for and what it is not. It is short, broad and deliberately vague, and it hardly changes over the life of the project; the precision lives in the [domains](02_domains.md).
-- **Business**: what the digital tool serves, described in the words of the people who know it. The domain experts explain it in [workshops](01_workshops.md), and it is written as [domains](02_domains.md).
-- **Solution**: what the digital tool does about the business: its [prototypes](03_prototypes.md), its [features and stories](04_story_mapping.md), its versions.
+- **Scope**: a few sentences saying what the digital tool is for and what it is not. It is short, broad and deliberately vague, and it hardly changes over the life of the project; the precision lives in the [domains](step_2_domains.md).
+- **Business**: what the digital tool serves, described in the words of the people who know it. The domain experts explain it in [workshops](step_1_workshops.md), and it is written as [domains](step_2_domains.md).
+- **Solution**: what the digital tool does about the business: its [prototypes](step_3_prototypes.md), its [features and stories](step_4_story_mapping.md), its versions.
 - **Participant**: anyone taking part in a project.
 - **Domain expert**: knows how the business works and says what it needs. Never *customer* or *client*.
 - **Project owner**: carries the project, and owns its repository.
@@ -27,7 +27,7 @@ A project belongs to its project owner, from the first day and whatever happens 
 
 - The **domain experts** take part in the workshops; their words are the ones the business is written in, and they confirm its rules and validate its prototypes.
 - The **project owner** owns the project's repository, and the project is theirs. When the domain experts hesitate or disagree, the project owner settles.
-- The **maker** helps the domain experts find what answers the need, builds and maintains it, and writes the business down. A maker can hold several roles: [UX designer](03_prototypes.md), [UI designer, architect, coder](06_refinement.md), business analyst, tester.
+- The **maker** helps the domain experts find what answers the need, builds and maintains it, and writes the business down. A maker can hold several roles: [UX designer](step_3_prototypes.md), [UI designer, architect, coder](step_6_refinement.md), business analyst, tester.
 
 One person may hold several — the project owner is often a domain expert too — and the roles say what someone brings to the project, never what they are allowed to touch.
 

@@ -1,10 +1,10 @@
 # Implementation
 
-Previous: the [story refinement](06_refinement.md).
+Previous: the [story refinement](step_6_refinement.md).
 
 The makers implement the refined stories in the planned order, following their plan of implementation. Each implemented story can be tried by the domain experts before it reaches real people.
 
-Next: when all the stories of a version are done, the version is [deployed](08_deployment.md).
+Next: when all the stories of a version are done, the version is [deployed](step_8_deployment.md).
 
 ## Risks
 

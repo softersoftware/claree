@@ -1,6 +1,6 @@
 # Domains
 
-Previous: the [workshops](01_workshops.md).
+Previous: the [workshops](step_1_workshops.md).
 
 The formal side of the business, written from the workshops. A business is rarely one thing: each part of it that has its own words is a domain, named as the people inside it would name it, and described in a few sentences they would recognise.
 
@@ -8,7 +8,7 @@ A domain holds three things, written by the maker and owned by the project owner
 
 The description of a domain is short. It describes the essential processes the digital tool will support, without naming any software.
 
-Next: once a domain is clarified, it is [prototyped](03_prototypes.md).
+Next: once a domain is clarified, it is [prototyped](step_3_prototypes.md).
 
 ## Risks
 

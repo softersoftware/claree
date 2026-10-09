@@ -1,10 +1,10 @@
 # Prototypes
 
-Previous: the [domains](02_domains.md).
+Previous: the [domains](step_2_domains.md).
 
 Once a domain is clarified, a UX designer makes a prototype of it: with mock data, easy to change, without much effort on fine details, and with no outside dependency. The domain experts and the future users try it, say what is smooth and what is not, and it changes while that is still cheap.
 
-Next: once the prototype holds every feature of the next version, it is cut into features and stories by [story mapping](04_story_mapping.md).
+Next: once the prototype holds every feature of the next version, it is cut into features and stories by [story mapping](step_4_story_mapping.md).
 
 ## Risks
 

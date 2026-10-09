@@ -1,12 +1,12 @@
 # Version planning
 
-Previous: [story mapping](04_story_mapping.md).
+Previous: [story mapping](step_4_story_mapping.md).
 
 The story map is sliced into versions, and the stories to do are put in order. They are grouped into coherent versions, each a set of stories that could be released together. Within a version, they are prioritised by several criteria: the ratio of value to effort, the availability of makers, the availability of what they depend on, the highest risk first.
 
 Versions are prioritised too, mainly by the ratio of their total value to their total effort. Makers implement the stories in the planned order when they can, above all in the order of the versions.
 
-Next: the stories are [refined](06_refinement.md), then implemented, in that order.
+Next: the stories are [refined](step_6_refinement.md), then implemented, in that order.
 
 ## Risks
 

@@ -1,10 +1,10 @@
 # Story refinement
 
-Previous: [version planning](05_version_planning.md).
+Previous: [version planning](step_5_version_planning.md).
 
 Before a story is implemented, it is refined. A UI designer polishes its part of the prototype into the final interface, and an architect or a coder adds to the story its plan of implementation.
 
-Next: once a story has its final interface and its plan, it is [implemented](07_implementation.md).
+Next: once a story has its final interface and its plan, it is [implemented](step_7_implementation.md).
 
 ## Risks
 
