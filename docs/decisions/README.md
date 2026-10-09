@@ -20,3 +20,4 @@ Format: **Status** (proposed / accepted / superseded by NNNN), **Context** (the 
 - [0010 — The platform acts through a GitHub App, in the name of the person signed in](0010-the-platform-acts-through-a-github-app.md)
 - [0011 — The product is not named in its own specification](0011-the-product-is-not-named-in-its-specification.md)
 - [0012 — Adapters are packaged by outside service, mocks included](0012-adapters-are-packaged-by-outside-service.md)
+- [0013 — Sketches and prototypes have their own branches](0013-sketches-and-prototypes-have-their-own-branches.md)
