@@ -48,7 +48,7 @@ The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).
 
 ## This repository
 
-This platform is built with its own method, so this repository follows the layout above, its features and stories are its [issues](https://github.com/softersoftware/claree/issues), and how its files are written is in [`CONTRIBUTING.md`](CONTRIBUTING.md). The code:
+This platform is built with its own method, so this repository follows the layout above, its features and stories are its [issues](https://github.com/softersoftware/claree/issues), and how its files are written is in [`CONTRIBUTING.md`](CONTRIBUTING.md), the same as in any project built with the method. Its domain experts are its makers, so it is written in English. The code:
 
 ```bash
 apps/web/            # the application

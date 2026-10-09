@@ -22,4 +22,6 @@ With or without a supporting platform, a project goes round the same cycle for e
 
 What belongs to no step — what a project is, who takes part, its language, arriving at it, and the rules of the whole project — is in [Project and participants](project.md).
 
-How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
+How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). The platform's domains are the steps of the cycle, so each file also says the previous step, the next one, and what it takes to move on.
+
+The platform's domain experts are its makers, so these files are written in English.
