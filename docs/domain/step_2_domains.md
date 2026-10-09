@@ -8,7 +8,7 @@ A domain holds three things, written by the maker and owned by the project owner
 
 The description of a domain is short. It describes the essential processes the digital tool will support, without naming any software.
 
-Next: once a domain is clarified, it is [prototyped](step_3_prototypes.md).
+Next: once the domains the next version needs are clarified, that version is [prototyped](step_3_prototypes.md).
 
 ## Risks
 
