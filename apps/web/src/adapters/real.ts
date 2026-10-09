@@ -1,11 +1,20 @@
 import 'server-only'
-import { gitProjectFiles } from '@claree/git-adapters'
 import type { Ports } from '@claree/domain'
 
 /**
- * The platform with its real adapters: projects read from their repositories,
- * and repositories on this machine only outside production.
+ * The platform with its real adapters. Signing in with GitHub comes after the
+ * mock-up of story #29; until then, nobody signs in.
  */
 export const adapters: Ports = {
-  projectFiles: gitProjectFiles({ local: process.env.NODE_ENV !== 'production' }),
+  signingIn: {
+    start() {
+      throw new Error('Signing in with GitHub is not built yet.')
+    },
+    async finish() {
+      return undefined
+    },
+  },
 }
+
+/** Nobody: people sign in with GitHub, not by being chosen. */
+export const fictionalPeople: readonly { readonly id: string; readonly name: string }[] = []

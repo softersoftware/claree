@@ -36,28 +36,3 @@ export function Button({ children }: { children: ReactNode }) {
     </button>
   )
 }
-
-export function Input({
-  name,
-  placeholder,
-  defaultValue,
-  label,
-}: {
-  name: string
-  placeholder: string
-  defaultValue?: string
-  /** What this field is, when no heading says it. */
-  label?: string
-}) {
-  return (
-    <input
-      type="text"
-      name={name}
-      aria-label={label ?? placeholder}
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      required
-      className="w-full rounded-md border border-rule bg-card px-3 py-1.5 text-sm outline-none placeholder:text-muted/60 focus:border-accent"
-    />
-  )
-}
