@@ -15,17 +15,15 @@ A test in the domain package checks all three.
 
 | Business term | Name in the code |
 | --- | --- |
-| Project | `Project` |
-| Business | `Business` |
+| Project | — |
+| Business | — |
 | Solution | — |
 | The platform | `productName` |
-| Participant | `Participant` |
-| Role of a participant | `Role` |
-| Domain expert | `domainExpert` |
-| Project owner | `projectOwner` |
-| Maker | `maker` |
-| Who may agree | `mayAgree` |
-| Language of a project | `Project.language` |
+| Participant | — |
+| Domain expert | — |
+| Project owner | — |
+| Maker | — |
+| Language of a project | — |
 | Language the platform speaks | — |
 | Repository | `Repository` |
 | Address of a project | `Repository.address` |
@@ -33,7 +31,7 @@ A test in the domain package checks all three.
 | Where the platform reads projects | `ProjectFiles` |
 | What the platform reaches outside itself | `Ports` |
 | README | `readme` |
-| Name of a project | `Project.name` |
+| Name of a project | — |
 | Reading the name and scope | `nameAndScope` |
 | Link to a repository | `Repository.link`, `repositoryLink` |
 | Public project | — |
@@ -45,59 +43,42 @@ A test in the domain package checks all three.
 
 | Business term | Name in the code |
 | --- | --- |
-| Scope | `Project.scope` |
+| Scope | — |
 
 ## Workshops — [01_workshops.md](domain/01_workshops.md)
 
 | Business term | Name in the code |
 | --- | --- |
-| Workshop | `Workshop` |
-| Date of a workshop | `Workshop.date` |
-| Title of a workshop | `Workshop.title` |
-| Workshop document | `WorkshopDocument` |
-| Kind of document | `DocumentKind` |
-| Slides / video / recording / notes / report / transcript | `slides` / `video` / `audio` / `notes` / `report` / `transcript` |
-| Where a document is | `WorkshopDocument.location` |
-| Text of a document | `WorkshopDocument.text` |
-| Adding a document | `addDocument` |
-| Correcting a document | `correctDocument` |
-| Workshops by date | `workshopsByDate` |
+| Workshop | — |
+| Date of a workshop | — |
+| Title of a workshop | — |
+| Workshop document | — |
+| Text of a document | — |
 
 ## Domains — [02_domains.md](domain/02_domains.md)
 
 | Business term | Name in the code |
 | --- | --- |
-| Domain | `Domain` |
-| Description of a domain | `Domain.description` |
-| Term | `Term` |
-| Glossary of a domain | `termsOf` |
-| Finding a term by its name | `termNamed` |
-| Rules of a domain | `rulesOf` |
-| Rule | `Rule` |
-| State of a rule | `RuleState` |
-| Proposed | `proposed` |
-| Agreed | `agreed` |
-| Agreeing | `agree` |
-| Rewriting a rule | `restate` |
-| Question | `Question` |
-| Domain of a question | `Question.domainId` |
-| Questions of a domain | `questionsOf` |
-| Answering a question | `answerQuestion` |
-| Open question | `isOpen` |
-| Open questions | `openQuestions` |
+| Domain | — |
+| Description of a domain | — |
+| Term | — |
+| Glossary of a domain | — |
+| Rules of a domain | — |
+| Rule | — |
+| Proposed | — |
+| Agreed | — |
+| Question | — |
+| Open question | — |
 
 ## Prototypes — [03_prototypes.md](domain/03_prototypes.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | UX designer | — |
-| Prototype | `Prototype` |
-| Where a prototype is tried | `Prototype.location` |
-| Prototypes of a feature | `prototypesOf` |
-| State of a prototype | `PrototypeState` |
-| Being tried | `being_tried` |
-| Validated | `validated` |
-| Validating a prototype | `validate` |
+| Prototype | — |
+| Where a prototype is tried | — |
+| Being tried | — |
+| Validated | — |
 | Mock-up | — |
 | Demonstration | — |
 
@@ -105,43 +86,34 @@ A test in the domain package checks all three.
 
 | Business term | Name in the code |
 | --- | --- |
-| Feature | `Feature` |
-| Stories of a feature | `storiesOf` |
-| A feature that describes nothing | `describesNothing` |
-| State of a feature | `stateOf` |
-| Story | `Story` |
-| Reason | `Story.reason` |
-| Business value | `Story.value` |
-| Effort | `Story.effort` |
-| Size | `Size`, `sizes` |
-| What a size stands for | `pointsOf` |
-| State of a story | `StoryState` |
-| To do | `to_do` |
-| In progress | `in_progress` |
-| Done | `done` |
-| Stories in each state | `countByState` |
+| Feature | — |
+| Story | — |
+| Reason | — |
+| Business value | — |
+| Effort | — |
+| Size | — |
+| What a size stands for | — |
+| To do | — |
+| In progress | — |
+| Done | — |
 
 ## Roadmap — [05_roadmap.md](domain/05_roadmap.md)
 
 | Business term | Name in the code |
 | --- | --- |
-| Version | `Version` |
-| Gathering a version | `planVersion` |
-| Blocked by | `Story.blockedBy` |
-| Blocked | `isBlocked` |
-| What comes next | `nextStory` |
+| Version | — |
+| Blocked by | — |
 
 ## Implementation — [06_implementation.md](domain/06_implementation.md)
 
 | Business term | Name in the code |
 | --- | --- |
-| Starting a story | `start` |
-| Finishing a story | `finish` |
+| Starting a story | — |
+| Finishing a story | — |
 
 ## Deployment — [07_deployment.md](domain/07_deployment.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Deployment | — |
-| Done stories no version carried yet | `releasableStories` |
-| The version that carried a story | `versionCarrying` |
+| The version that carried a story | — |

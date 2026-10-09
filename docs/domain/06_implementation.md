@@ -10,7 +10,3 @@ Next: when all the stories of a version are done, the version is [deployed](07_d
 
 - **Starting a story**: taking it from to do to in progress.
 - **Finishing a story**: taking it from in progress to done, once the domain expert could see it working.
-
-## Rules
-
-**Rule.** Only a story to do can be started, and only a story in progress can be finished.

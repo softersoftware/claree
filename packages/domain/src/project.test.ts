@@ -1,16 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mayAgree, nameAndScope, repositoryLink } from './project'
-import type { Participant } from './project'
-
-const participant = (role: Participant['role']): Participant => ({ name: 'Alex', role })
-
-describe('who settles what', () => {
-  it('leaves agreement to the domain expert', () => {
-    expect(mayAgree(participant('domainExpert'))).toBe(true)
-    expect(mayAgree(participant('projectOwner'))).toBe(false)
-    expect(mayAgree(participant('maker'))).toBe(false)
-  })
-})
+import { nameAndScope, repositoryLink } from './project'
 
 describe('name and scope', () => {
   const address = 'https://example.org/medito'

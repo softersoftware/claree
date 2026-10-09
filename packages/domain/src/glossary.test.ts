@@ -28,7 +28,11 @@ const application = import.meta.glob('../../../apps/web/src/**/*.{ts,tsx}', {
   eager: true,
 })
 
-const code = [...Object.values(rules), ...Object.values(application)].join('\n')
+/** The code without its comments, where a word proves nothing. */
+const code = [...Object.values(rules), ...Object.values(application)]
+  .join('\n')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^\s*\/\/.*$/gm, '')
 
 /** Every row of the glossary: a term, and its names in the code. */
 const rows = glossary
