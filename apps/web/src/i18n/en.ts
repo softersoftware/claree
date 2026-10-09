@@ -4,16 +4,16 @@ export const en = {
   signingIn: {
     signIn: 'Sign in with GitHub',
     needed: 'You need to be signed in to access your projects.',
-    failed: 'Nobody was signed in. Try again.',
+    failed: 'Signing in failed. Try again.',
     signOut: 'Sign out',
   },
   selection: {
     projects: (count: number) => `Projects — ${count}`,
     notInstalled: (product: string) =>
-      `${product} is not installed on any GitHub organisation you belong to. An owner of the organisation installs it, on the repositories it chooses.`,
+      `${product} is not installed on any of your GitHub organisations. An owner of the organisation can install it.`,
     install: (product: string) => `Install ${product}`,
     noneReadable: (product: string) =>
-      `${product} is installed, but on no repository you can read. Ask an owner of the organisation to give you access to the repository, or to add it to the installation.`,
+      `${product} is installed, but on no repository you can read. Ask an owner of the organisation for access.`,
     unopened: (address: string) => `“${address}” is not one of your projects.`,
   },
   overview: {
