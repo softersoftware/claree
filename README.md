@@ -4,7 +4,7 @@ A platform where domain experts and makers build an application together, step b
 
 ## What is application co-creation
 
-A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, stories, roadmap, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
+A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, stories, roadmap, story refinement, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
 
 ## Why a supporting platform
 
@@ -39,9 +39,10 @@ Each step of the cycle has its place in the project:
 | 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
 | 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
 | 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
-| 6. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
-| 7. Deployment | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
-| 8. Feedback | an issue, which may call for a new workshop |
+| 6. Story refinement | the story's issue: its final interface, and its plan of implementation |
+| 7. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
+| 8. Deployment | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
+| 9. Feedback | an issue, which may call for a new workshop |
 
 
 The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).

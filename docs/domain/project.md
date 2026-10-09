@@ -27,7 +27,7 @@ A project belongs to its project owner, from the first day and whatever happens 
 
 - The **domain experts** take part in the workshops; their words are the ones the business is written in, and they confirm its rules and validate its prototypes.
 - The **project owner** owns the project's repository, and the project is theirs. When the domain experts hesitate or disagree, the project owner settles.
-- The **maker** helps the domain experts find what answers the need, builds and maintains it, and writes the business down. A maker can hold several roles: [UX designer](03_prototypes.md), UI designer, business analyst, architect, coder, tester.
+- The **maker** helps the domain experts find what answers the need, builds and maintains it, and writes the business down. A maker can hold several roles: [UX designer](03_prototypes.md), [UI designer, architect, coder](06_refinement.md), business analyst, tester.
 
 One person may hold several — the project owner is often a domain expert too — and the roles say what someone brings to the project, never what they are allowed to touch.
 

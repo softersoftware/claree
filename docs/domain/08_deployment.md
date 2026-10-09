@@ -1,6 +1,6 @@
 # Deployment
 
-Previous: the [implementation](06_implementation.md).
+Previous: the [implementation](07_implementation.md).
 
 When all the stories of a version are done, the version can be deployed: put in front of real people.
 

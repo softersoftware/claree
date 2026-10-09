@@ -97,14 +97,25 @@ A test in the domain package checks all three.
 | Version | — |
 | Blocked by | — |
 
-## Implementation — [06_implementation.md](domain/06_implementation.md)
+## Story refinement — [06_refinement.md](domain/06_refinement.md)
+
+| Business term | Name in the code |
+| --- | --- |
+| Story refinement | — |
+| UI designer | — |
+| Architect | — |
+| Coder | — |
+| Final interface | — |
+| Plan of implementation | — |
+
+## Implementation — [07_implementation.md](domain/07_implementation.md)
 
 | Business term | Name in the code |
 | --- | --- |
 | Starting a story | — |
 | Finishing a story | — |
 
-## Deployment — [07_deployment.md](domain/07_deployment.md)
+## Deployment — [08_deployment.md](domain/08_deployment.md)
 
 | Business term | Name in the code |
 | --- | --- |

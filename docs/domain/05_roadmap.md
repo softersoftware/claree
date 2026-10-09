@@ -6,7 +6,7 @@ The stories to do are put in order. They are grouped into coherent versions, eac
 
 Versions are prioritised too, mainly by the ratio of their total value to their total effort. Makers implement the stories in the order of the roadmap when they can, above all in the order of the versions.
 
-Next: the stories are [implemented](06_implementation.md) in that order.
+Next: the stories are [refined](06_refinement.md), then implemented, in that order.
 
 ## Risks
 

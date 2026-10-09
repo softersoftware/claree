@@ -15,9 +15,10 @@ With or without a supporting platform, a project goes round the same cycle for e
 3. [Prototypes](03_prototypes.md) — a prototype with mock data is tried and refined with the domain experts and the future users.
 4. [Stories](04_stories.md) — the prototype is cut into features and stories, each with its business value and its effort.
 5. [Roadmap](05_roadmap.md) — the stories are grouped into versions and put in order.
-6. [Implementation](06_implementation.md) — each story is implemented, and tried before it reaches real people.
-7. [Deployment](07_deployment.md) — once all its stories are done, a version is put in front of real people.
-8. Feedback — real use brings feedback, which may call for new workshops.
+6. [Story refinement](06_refinement.md) — the prototype is polished into the final interface, and each story gets its plan of implementation.
+7. [Implementation](07_implementation.md) — each story is implemented, and tried before it reaches real people.
+8. [Deployment](08_deployment.md) — once all its stories are done, a version is put in front of real people.
+9. Feedback — real use brings feedback, which may call for new workshops.
 
 Before the first step, the project owner says what the digital tool is for: its scope. That, and what belongs to no step — who takes part, the language, arriving at a project, and the rules of the whole project — is in [Project and participants](project.md).
 
