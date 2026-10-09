@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { nameAndScope } from '@claree/domain'
-import { en as t } from '@/i18n/en'
+import { strings } from '@/language'
 import { projectAddress } from '@/project-address'
 import { currentUser } from '@/session'
 import { Card, Page, Section } from '../../../ui'
@@ -10,6 +10,7 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ owner: string; repository: string }>
 }) {
+  const t = await strings()
   const user = await currentUser()
   if (user === undefined) redirect('/')
   const { owner, repository } = await params
