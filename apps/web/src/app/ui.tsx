@@ -1,18 +1,8 @@
 import type { ReactNode } from 'react'
 
-export function Page({
-  title,
-  back,
-  children,
-}: {
-  title?: string
-  /** Where the person came from, above the title and outside what the page is about. */
-  back?: ReactNode
-  children: ReactNode
-}) {
+export function Page({ title, children }: { title?: string; children: ReactNode }) {
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
-      {back && <div className="mb-6 text-sm">{back}</div>}
       {title && <h1 className="text-2xl font-semibold tracking-tight break-words">{title}</h1>}
       <div className={`space-y-8 ${title ? 'mt-8' : ''}`}>{children}</div>
     </div>

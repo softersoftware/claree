@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { nameAndScope } from '@claree/domain'
 import { en as t } from '@/i18n/en'
@@ -20,14 +19,7 @@ export default async function ProjectPage({
   const { name, scope } = nameAndScope(project.address, await project.read('README.md'))
 
   return (
-    <Page
-      title={name}
-      back={
-        <Link href="/" className="text-muted underline-offset-2 hover:text-ink hover:underline">
-          ← {t.overview.projects}
-        </Link>
-      }
-    >
+    <Page title={name}>
       {scope !== '' && (
         <Section title={t.overview.scope}>
           <p className="text-sm">{scope}</p>
