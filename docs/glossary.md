@@ -16,6 +16,8 @@ A test in the domain package checks all three.
 | Business term | Name in the code |
 | --- | --- |
 | Project | — |
+| Digital tool | — |
+| Scope | — |
 | Business | — |
 | Solution | — |
 | The platform | `productName` |
@@ -23,27 +25,18 @@ A test in the domain package checks all three.
 | Domain expert | — |
 | Project owner | — |
 | Maker | — |
+| Business analyst | — |
 | Language of a project | — |
-| Language the platform speaks | — |
 | Repository | `Repository` |
 | Address of a project | `Repository.address` |
 | Opening a project | `ProjectFiles.open` |
 | Where the platform reads projects | `ProjectFiles` |
 | What the platform reaches outside itself | `Ports` |
-| README | `readme` |
-| Name of a project | — |
 | Reading the name and scope | `nameAndScope` |
 | Link to a repository | `Repository.link`, `repositoryLink` |
 | Public project | — |
 | Private project | — |
-| Recognised by a project | — |
 | Someone's projects | — |
-
-## Scope — [00_scope.md](domain/00_scope.md)
-
-| Business term | Name in the code |
-| --- | --- |
-| Scope | — |
 
 ## Workshops — [01_workshops.md](domain/01_workshops.md)
 

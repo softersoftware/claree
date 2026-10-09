@@ -1,6 +1,6 @@
 # Workshops
 
-Previous: the [scope](00_scope.md).
+Previous: the [scope](project.md) of the project.
 
 The domain experts explain each part of the business, each domain, in workshops. What was said and shown is recorded as it came, then transcribed. The aim is to capture the domain experts' natural language and their natural mental model of the business, even when it is not formalised yet and holds ambiguities and holes.
 

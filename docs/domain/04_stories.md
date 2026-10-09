@@ -8,7 +8,7 @@ Next: once each story has its value and its effort, the stories are put in order
 
 ## Glossary
 
-- **Feature**: one thing the application offers, named in a way the domain expert would use in a sentence: the video library, registering for an event.
+- **Feature**: one thing the digital tool offers, named in a way the domain expert would use in a sentence: the video library, registering for an event.
 - **Story**: one thing a person wants to do, and why: a person, an intention and a reason.
 - **Reason**: why the person wants it; every story has one. It is the part most often dropped and the part that matters most: it lets a maker propose something better than what was asked, and it lets everyone notice later when a story no longer serves anything.
 - **Business value**: what a story is worth to the business, as a size.

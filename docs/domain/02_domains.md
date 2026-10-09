@@ -6,13 +6,13 @@ The formal side of the business, written from the workshops. A business is rarel
 
 A domain holds three things, written by the maker and owned by the project owner: its glossary, its rules and its questions. The rules are the project's main source of truth. There is no ambiguous term in a domain: when the workshop documents use one word for two different things, the domain makes them distinct.
 
-The description of a domain is short. It describes the essential processes the application will support, without mentioning any digital tool.
+The description of a domain is short. It describes the essential processes the digital tool will support, without naming any software.
 
 Next: once a domain is clarified, it is [prototyped](03_prototypes.md).
 
 ## Glossary
 
-- **Domain**: one part of the business, with its own words.
+- **Domain**: a coherent part of the business, with its own words. In an organisation, a domain typically corresponds to a department or a team.
 - **Description of a domain**: what the domain is, in a few sentences, in business terms only.
 - **Term**: one concept of a domain, with one name and one definition, in the domain experts' own words. The same name is then used everywhere — in the rules, in the stories, on the screens and in the code.
 - **Glossary of a domain**: every term of that domain.
@@ -25,8 +25,8 @@ Next: once a domain is clarified, it is [prototyped](03_prototypes.md).
 
 ## Rules
 
-**Rule.** A domain is described in business terms only. What the application does about it is the solution, and it is written elsewhere.
+**Rule.** A domain is described in business terms only. What the digital tool does about it is the solution, and it is written elsewhere.
 
-**Rule.** The rules are used to build the core of the application: objects, relations, state transitions, which depend on no choice of user interface or outside system.
+**Rule.** The rules are used to build the core of the digital tool: objects, relations, state transitions, which depend on no choice of user interface or outside system.
 
 **Rule.** A rule is proposed when it is written, and agreed once a domain expert has confirmed it. Rewriting an agreed rule makes it proposed again.

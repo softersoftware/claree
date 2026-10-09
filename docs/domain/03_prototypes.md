@@ -9,12 +9,12 @@ Next: once the prototype holds every feature of the next version, it is cut into
 ## Glossary
 
 - **UX designer**: the person with the expertise to design the journeys of users through a business process.
-- **Prototype**: the application as the domain experts and the people who will use it can try it, before it is real.
+- **Prototype**: the digital tool as the domain experts and the people who will use it can try it, before it is real.
 - **Where a prototype is tried**: where anyone can try it.
 - **Being tried**: a prototype not validated yet.
 - **Validated**: a prototype a domain expert has validated. Like any agreement, validation is an act, by a domain expert, on a date.
-- **Mock-up**: a prototype refined until it looks like the real application.
-- **Demonstration**: the realistic mock-ups of a validated prototype, connected to nothing outside them: already a first version of the application.
+- **Mock-up**: a prototype refined until it looks like the real digital tool.
+- **Demonstration**: the realistic mock-ups of a validated prototype, connected to nothing outside them: already a first version of the digital tool.
 
 ## Rules
 

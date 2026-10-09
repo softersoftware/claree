@@ -18,7 +18,7 @@ Features and stories are not files: they are issues, where the conversation abou
 
 ### `README.md`
 
-Its title is the project's name. The first paragraph under it is the scope: a few sentences saying what the application is for and what it is not, short, broad and deliberately vague. It hardly changes over the life of the application. What follows is for whoever works on the project: how to run it, where things are.
+Its title is the project's name. The first paragraph under it is the scope: a few sentences saying what the digital tool is for and what it is not, short, broad and deliberately vague. It hardly changes over the life of the digital tool. What follows is for whoever works on the project: how to run it, where things are.
 
 ### `CHANGELOG.md`
 
@@ -37,7 +37,7 @@ One file per domain: one part of the business with its own words, named as the p
 
 Each file has the same shape:
 
-- **A description**: a few sentences on what the domain is and the essential processes the application supports, in business terms only.
+- **A description**: a few sentences on what the domain is and the essential processes the digital tool supports, in business terms only.
 - **Glossary**: every term of the domain, `- **Term**: definition`, one name and one definition each, in the domain experts' own words. A word used for two things in the workshops becomes two terms here.
 - **Rules**: what is true of the domain, one rule per paragraph, each a sentence a domain expert can confirm or deny.
 - **Questions**, when there are any: what the project knows it does not know about the domain, until it is answered.
@@ -64,4 +64,4 @@ A decision is not rewritten once accepted: a reversed decision gets a new file t
 1. It is written in its domain first, with its terms in that domain's glossary.
 2. Each term gets its row in `docs/glossary.md`, before it gets a name anywhere else.
 3. Then it is implemented, with its tests, when a story needs it, and its row gets its name in the code.
-4. Then the application uses it.
+4. Then the digital tool uses it.
