@@ -10,7 +10,7 @@ A project belongs to its project owner, from the first day and whatever happens 
 - **Digital tool**: what a project builds to support business processes or personal activities.
 - **Scope**: a few sentences saying what the digital tool is for and what it is not. It is short, broad and deliberately vague, and it hardly changes over the life of the project; the precision lives in the [domains](02_domains.md).
 - **Business**: what the digital tool serves, described in the words of the people who know it. The domain experts explain it in [workshops](01_workshops.md), and it is written as [domains](02_domains.md).
-- **Solution**: what the digital tool does about the business: its [prototypes](03_prototypes.md), its [features and stories](04_stories.md), its versions.
+- **Solution**: what the digital tool does about the business: its [prototypes](03_prototypes.md), its [features and stories](04_story_mapping.md), its versions.
 - **Participant**: anyone taking part in a project.
 - **Domain expert**: knows how the business works and says what it needs. Never *customer* or *client*.
 - **Project owner**: carries the project, and owns its repository.

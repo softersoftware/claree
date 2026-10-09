@@ -75,10 +75,11 @@ A test in the domain package checks all three.
 | Mock-up | — |
 | Demonstration | — |
 
-## Stories — [04_stories.md](domain/04_stories.md)
+## Story mapping — [04_story_mapping.md](domain/04_story_mapping.md)
 
 | Business term | Name in the code |
 | --- | --- |
+| Story map | — |
 | Feature | — |
 | Story | — |
 | Reason | — |
@@ -90,7 +91,7 @@ A test in the domain package checks all three.
 | In progress | — |
 | Done | — |
 
-## Roadmap — [05_roadmap.md](domain/05_roadmap.md)
+## Version planning — [05_version_planning.md](domain/05_version_planning.md)
 
 | Business term | Name in the code |
 | --- | --- |

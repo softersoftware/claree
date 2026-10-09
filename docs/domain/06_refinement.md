@@ -1,6 +1,6 @@
 # Story refinement
 
-Previous: the [roadmap](05_roadmap.md).
+Previous: [version planning](05_version_planning.md).
 
 Before a story is implemented, it is refined. A UI designer polishes its part of the prototype into the final interface, and an architect or a coder adds to the story its plan of implementation.
 

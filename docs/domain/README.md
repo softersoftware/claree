@@ -13,8 +13,8 @@ With or without a supporting platform, a project goes round the same cycle for e
 1. [Workshops](01_workshops.md) — the domain experts explain the business; what was said and shown is recorded as it came.
 2. [Domains](02_domains.md) — the business is written from it, one domain for each part with its own words: its glossary, its rules, its open questions.
 3. [Prototypes](03_prototypes.md) — a prototype with mock data is tried and refined with the domain experts and the future users.
-4. [Stories](04_stories.md) — the prototype is cut into features and stories, each with its business value and its effort.
-5. [Roadmap](05_roadmap.md) — the stories are grouped into versions and put in order.
+4. [Story mapping](04_story_mapping.md) — the prototype is cut into features and stories, each with its business value and its effort.
+5. [Version planning](05_version_planning.md) — the story map is sliced into versions, and the stories are put in order.
 6. [Story refinement](06_refinement.md) — the prototype is polished into the final interface, and each story gets its plan of implementation.
 7. [Implementation](07_implementation.md) — each story is implemented, and tried before it reaches real people.
 8. [Deployment](08_deployment.md) — once all its stories are done, a version is put in front of real people.

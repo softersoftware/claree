@@ -4,7 +4,7 @@ A platform where domain experts and makers build an application together, step b
 
 ## What is application co-creation
 
-A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, stories, roadmap, story refinement, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
+A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, story mapping, version planning, story refinement, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
 
 ## Why a supporting platform
 
@@ -37,8 +37,8 @@ Each step of the cycle has its place in the project:
 | 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came |
 | 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<number>` branch, built like the application, with mock data |
-| 4. Stories | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
-| 5. Roadmap | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
+| 4. Story mapping | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
+| 5. Version planning | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a milestone gathers the next version |
 | 6. Story refinement | the story's issue: its final interface, and its plan of implementation |
 | 7. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
 | 8. Deployment | the milestone, cut as a git tag and a section of `CHANGELOG.md` |
