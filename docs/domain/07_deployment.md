@@ -8,7 +8,7 @@ Next: real use brings feedback, which may call for new [workshops](01_workshops.
 
 ## Risks
 
-Deploying with no way for real people to give feedback, so that the next workshops start from guesses.
+Introducing bugs in front of real people. A version is fully tested before it is deployed, and makers stay available to step in when it is.
 
 ## Glossary
 
