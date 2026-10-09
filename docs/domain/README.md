@@ -3,7 +3,6 @@
 This folder describes **what the platform does**, in the language of the people it serves, with no reference to technical tooling. It is the source of truth for the vocabulary and the business rules:
 
 - it is the **common language** between makers, domain experts and contributors;
-- every term defined here maps to its name in the code in the [glossary](../glossary_bridge.md);
 - a business rule that is not written here does not exist.
 
 ## The cycle
