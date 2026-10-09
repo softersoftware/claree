@@ -3,7 +3,7 @@ export const en = {
   description: 'Specifying and planning an application, with the domain experts in the conversation.',
   signingIn: {
     signIn: 'Sign in with GitHub',
-    needed: 'A project opens only to someone signed in, with the GitHub account it knows them by.',
+    needed: 'You need to be signed in to access your projects.',
     failed: 'Nobody was signed in. Try again.',
     signOut: 'Sign out',
   },
