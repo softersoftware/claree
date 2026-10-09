@@ -1,6 +1,6 @@
 # 0010 — The platform acts through a GitHub App, in the name of the person signed in
 
-**Status**: accepted (2026-10)
+**Status**: accepted (2026-10); point 8 superseded by [0014](0014-every-project-opens-signed-in-through-the-github-api.md)
 
 ## Context
 
