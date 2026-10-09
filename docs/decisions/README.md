@@ -22,3 +22,4 @@ Format: **Status** (proposed / accepted / superseded by NNNN), **Context** (the 
 - [0012 — Adapters are packaged by outside service, mocks included](0012-adapters-are-packaged-by-outside-service.md)
 - [0013 — Sketches and prototypes have their own branches](0013-sketches-and-prototypes-have-their-own-branches.md)
 - [0014 — Every project opens signed in, through GitHub's API](0014-every-project-opens-signed-in-through-the-github-api.md)
+- [0015 — The mock of an outside service serves its pages](0015-the-mock-of-an-outside-service-serves-its-pages.md)
