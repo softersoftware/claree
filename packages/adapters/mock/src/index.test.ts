@@ -22,14 +22,14 @@ describe('the mock adapters', () => {
     expect(await opened?.read('README.md')).toContain('# Medito')
   })
 
-  it('sign in as someone no project has let the platform in for', async () => {
+  it('sign in as someone whose organisations have not installed the platform', async () => {
     const tom = await signedInAs('tom-okafor')
-    expect(await tom?.projects()).toEqual({ found: 'not let in' })
+    expect(await tom?.projects()).toEqual({ found: 'not installed' })
     expect(await tom?.projectFiles.open('https://github.com/medito-centre/medito')).toBeUndefined()
   })
 
-  it('sign in as someone no project recognises', async () => {
-    expect(await (await signedInAs('lea-martin'))?.projects()).toEqual({ found: 'none recognises them' })
+  it('sign in as someone who can read no repository where it is installed', async () => {
+    expect(await (await signedInAs('lea-martin'))?.projects()).toEqual({ found: 'none readable' })
   })
 
   it('sign nobody in without a person they know', async () => {

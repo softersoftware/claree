@@ -5,13 +5,13 @@ export interface Participant {
   readonly name: string
 }
 
-/** Someone's projects, by address; or, when there are none, why. */
+/** The projects someone signed in can open, by address; or, when there are none, why. */
 export type TheirProjects =
   | { readonly found: 'some'; readonly addresses: readonly string[] }
-  /** No project they belong to has let the platform in; `installAt` is where an owner does. */
-  | { readonly found: 'not let in'; readonly installAt?: string }
-  /** Projects have let the platform in, and none of them recognises this participant. */
-  | { readonly found: 'none recognises them' }
+  /** The platform is installed on no organisation they belong to; `installAt` is where an owner installs it. */
+  | { readonly found: 'not installed'; readonly installAt?: string }
+  /** The platform is installed, but on no repository they can read. */
+  | { readonly found: 'none readable' }
 
 /** A participant signed in: who they are, and what the platform opens in their name. */
 export interface SignedIn {

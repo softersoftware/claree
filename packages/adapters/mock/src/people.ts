@@ -18,6 +18,6 @@ export const people: readonly FictionalPerson[] = [
       addresses: ['https://github.com/medito-centre/medito', 'https://github.com/greenlane-gardens/allotments'],
     },
   },
-  { login: 'tom-okafor', name: 'Tom Okafor', projects: { found: 'not let in' } },
-  { login: 'lea-martin', name: 'Léa Martin', projects: { found: 'none recognises them' } },
+  { login: 'tom-okafor', name: 'Tom Okafor', projects: { found: 'not installed' } },
+  { login: 'lea-martin', name: 'Léa Martin', projects: { found: 'none readable' } },
 ]
