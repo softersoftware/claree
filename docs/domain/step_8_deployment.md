@@ -17,7 +17,7 @@ Introducing bugs in front of real people. A version is fully tested before it is
 
 ## Rules
 
-**Rule.** Only a validated [demonstration](step_3_prototypes.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
+**Rule.** Only a validated [demonstration](step_6_refinement.md) is connected to the outside world — where information is kept, how messages are sent — to become a version real people use.
 
 **Rule.** A version contains only done stories. Work in progress waits for the next one.
 
