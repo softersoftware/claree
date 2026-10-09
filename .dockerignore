@@ -5,6 +5,7 @@
 .idea
 .claude
 CLAUDE.local.md
-docs
+docs/*
+!docs/workshops
 .env
 .env.*

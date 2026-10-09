@@ -1,4 +1,6 @@
+import type { Arrivals } from './arrivals'
 import type { ProjectFiles } from './project-files'
+import type { ProjectStore } from './project-store'
 
 /**
  * Every port of the platform. The mock adapters serve all of them, and so does
@@ -7,4 +9,6 @@ import type { ProjectFiles } from './project-files'
  */
 export interface Ports {
   readonly projectFiles: ProjectFiles
+  readonly projectStore: ProjectStore
+  readonly arrivals: Arrivals
 }

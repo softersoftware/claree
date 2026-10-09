@@ -1,5 +1,5 @@
-# The platform as one self-contained image: it runs on any container host, with
-# nothing outside it but the repositories it reads (ADR 0007).
+# The prototype as one self-contained image: it runs on any container host,
+# with nothing outside it (ADR 0007).
 FROM node:22-alpine AS base
 RUN corepack enable pnpm
 
@@ -12,16 +12,17 @@ COPY packages/adapters/mock/package.json packages/adapters/mock/
 COPY apps/web/package.json apps/web/
 RUN pnpm install --frozen-lockfile
 COPY . .
-# Built without CLAREE_ADAPTERS: the real adapters, and no mock in the image (ADR 0012).
+# A prototype is built with the mock adapters only (ADR 0006).
 RUN pnpm --filter @claree/web build
+# public/ links to the workshop documents in docs/; the image carries the files themselves.
+RUN cp -rL apps/web/public /public
 
 FROM node:22-alpine AS run
-# Projects are read from their repositories, into a cache on the temporary disk.
-RUN apk add --no-cache git
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=build /repo/apps/web/.next/standalone ./
 COPY --from=build /repo/apps/web/.next/static ./apps/web/.next/static
+COPY --from=build /public ./apps/web/public
 USER node
 EXPOSE 3000
 ENV PORT=3000 HOSTNAME=0.0.0.0

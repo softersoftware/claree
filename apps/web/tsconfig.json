@@ -24,7 +24,7 @@
     ],
     "paths": {
       "@/adapters": [
-        "./src/adapters/real.ts"
+        "./src/adapters/mock.ts"
       ],
       "@/*": [
         "./src/*"
