@@ -19,9 +19,7 @@ A project belongs to its project owner, from the first day and whatever happens 
 - **Language of a project**: the language its domain experts speak.
 - **Repository**: a project's files and their history.
 - **Address of a project**: where its repository is.
-- **Public project**: read without saying who you are.
-- **Private project**: read only by the people it recognises.
-- **Someone's projects**: the ones they added.
+- **Signed in**: a participant who has said who they are, with the account the projects already know them by.
 
 ## Participants
 
@@ -55,8 +53,4 @@ A project is never created by the platform. It already exists, in its repository
 
 **Rule.** A project says what it is in its own repository, in one place: its README. Its name is the README's title, and its scope is the first paragraph under that title. A project with no README, or whose README has no title, is named by its address; with no paragraph under the title, its scope is empty.
 
-**Rule.** A public project is read without saying who you are. Its business, its solution and its versions are looked at by anyone, at no cost and with nothing asked. A private project is read only by the people it recognises.
-
 **Rule.** Changing anything means saying who you are, and being someone the project already recognises. The platform grants nothing of its own: it can only act where the person could already act without it.
-
-**Rule.** Someone's projects are the ones they have **added**, each at its address. Adding grants nothing: a project is added only if it can already be opened. What someone added is theirs alone to see — they remove it whenever they like, and the project loses nothing by it.
