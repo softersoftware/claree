@@ -54,5 +54,3 @@ A project is never created by the platform. It already exists, in its repository
 **Rule.** A project says what it is in its own repository, in one place: its README. Its name is the README's title, and its scope is the first paragraph under that title. A project with no README, or whose README has no title, is named by its address; with no paragraph under the title, its scope is empty.
 
 **Rule.** Changing anything means saying who you are, and being someone the project already recognises. The platform grants nothing of its own: it can only act where the person could already act without it.
-
-**Rule.** Someone's projects are found, never added: they are every project that recognises them and has let the platform in. When there are none, the platform says why — no project they belong to has let it in, or none that has recognises them — and what would change it.
