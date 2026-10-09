@@ -21,6 +21,6 @@ With or without a supporting platform, a project goes round the same cycle for e
 
 Before the first step, the project owner says what the digital tool is for: its scope. That, and what belongs to no step — who takes part, the language, arriving at a project, and the rules of the whole project — is in [Project and participants](project.md).
 
-How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). The platform's domains are the steps of the cycle, so each file also says the previous step, the next one, and what it takes to move on.
+How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). The platform's domains are the steps of the cycle, so each file also says the previous step, the next one, what it takes to move on, and the risks of the step.
 
 The platform's domain experts are its makers, so these files are written in English.

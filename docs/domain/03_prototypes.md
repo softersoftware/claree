@@ -6,6 +6,10 @@ Once a domain is clarified, a UX designer makes a prototype of it: with mock dat
 
 Next: once the prototype holds every feature of the next version, it is cut into [stories](04_stories.md).
 
+## Risks
+
+Spending too much time on details, which makes the prototype costly to change, when changing it is its whole purpose.
+
 ## Glossary
 
 - **UX designer**: the person with the expertise to design the journeys of users through a business process.

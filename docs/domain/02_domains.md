@@ -10,6 +10,10 @@ The description of a domain is short. It describes the essential processes the d
 
 Next: once a domain is clarified, it is [prototyped](03_prototypes.md).
 
+## Risks
+
+Overspecifying. A domain needs just enough to make a prototype: what the prototype does not need yet is not written yet.
+
 ## Glossary
 
 - **Domain**: a coherent part of the business, with its own words. In an organisation, a domain typically corresponds to a department or a team.

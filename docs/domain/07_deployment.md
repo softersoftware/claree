@@ -6,6 +6,10 @@ When all the stories of a version are done, the version can be deployed: put in 
 
 Next: real use brings feedback, which may call for new [workshops](01_workshops.md).
 
+## Risks
+
+Deploying with no way for real people to give feedback, so that the next workshops start from guesses.
+
 ## Glossary
 
 - **Deployment**: putting a version in front of real people.

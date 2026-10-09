@@ -6,6 +6,10 @@ The prototype is cut into a few features, each split into its smallest atomic fu
 
 Next: once each story has its value and its effort, the stories are put in order on the [roadmap](05_roadmap.md).
 
+## Risks
+
+Underestimating the effort, and losing touch with the business: a story that no longer says who wants what, and why, in the words of the domains.
+
 ## Glossary
 
 - **Feature**: one thing the digital tool offers, named in a way the domain expert would use in a sentence: the video library, registering for an event.

@@ -6,6 +6,10 @@ The domain experts explain each part of the business, each domain, in workshops.
 
 Next: the [domains](02_domains.md) are written from the workshops.
 
+## Risks
+
+The domain experts talk about the interface they want, not about the business they do. A workshop asks what they do, and why; the screens come later, from the prototype.
+
 ## Glossary
 
 - **Workshop**: one working session with the domain experts, and the documents produced in it.
