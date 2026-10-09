@@ -51,7 +51,11 @@ How they are written:
 
 ### `docs/glossary_bridge.md`
 
-One table per domain, linking to its file: each term of its glossary, and its name in the code — "—" while the code does not name it. Every name the code gives a business concept has its row. It fixes which word is used, and forbids the synonyms.
+The bridge between the domains and the code: for each term the code names, the name it has there. One table per domain, linking to its file, with two columns: the business term, and its name in the code.
+
+- A term appears here only once the code names it, in the same change. A term the code does not name yet has no row: it is defined in its domain, and that is enough.
+- Every name here exists in the code, and every name the code gives a business concept has its row.
+- When the code is written in another language than the business, the bridge is where one is translated into the other. When both are in the same language, it fixes which word is used, and forbids the synonyms: most naming drift in a codebase is not a wrong word, it is three right ones for the same thing.
 
 ### `docs/decisions/`
 
@@ -62,6 +66,6 @@ A decision is not rewritten once accepted: a reversed decision gets a new file t
 ## A new concept or rule
 
 1. It is written in its domain first, with its terms in that domain's glossary.
-2. Each term gets its row in `docs/glossary_bridge.md`, before it gets a name anywhere else.
-3. Then it is implemented, with its tests, when a story needs it, and its row gets its name in the code.
+2. Then it is implemented, with its tests, when a story needs it, using the names of the domain's glossary.
+3. In the same change, each term the code now names gets its row in `docs/glossary_bridge.md`.
 4. Then the digital tool uses it.
