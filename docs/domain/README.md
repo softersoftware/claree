@@ -1,10 +1,5 @@
 # The domains of the platform
 
-This folder describes **what the platform does**, in the language of the people it serves, with no reference to technical tooling. It is the source of truth for the vocabulary and the business rules:
-
-- it is the **common language** between makers, domain experts and contributors;
-- a business rule that is not written here does not exist.
-
 ## The cycle
 
 With or without a supporting platform, a project goes round the same cycle for every new domain it addresses. Each step with rules of its own is a domain of the platform, and has its file here.

@@ -33,6 +33,8 @@ One folder per workshop, named by its date and its title: `20260916 general pres
 
 ### `docs/domain/`
 
+The business, in the language of the people the digital tool serves, with no reference to technical tooling. It is the source of truth for the vocabulary and the business rules: the common language between makers, domain experts and contributors. A business rule that is not written there does not exist.
+
 One file per domain: one part of the business with its own words, named as the people inside it would name it. A `README.md` lists the domains, and says in what order to read them when they follow one another; the files can then be numbered in that order.
 
 Each file has the same shape:
