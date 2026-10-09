@@ -20,8 +20,6 @@ A project belongs to its project owner, from the first day and whatever happens 
 - **Repository**: a project's files and their history.
 - **Address of a project**: where its repository is.
 - **Signed in**: a participant who has said who they are, with the account the projects already know them by.
-- **Letting the platform in**: what an owner of projects does so that the platform may open them. Until then, it opens none of them, for anyone.
-- **Someone's projects**: the ones that recognise them, and have let the platform in.
 
 ## Participants
 
@@ -54,8 +52,6 @@ One person may hold several â€” the project owner is often a domain expert too â
 A project is never created by the platform. It already exists, in its repository, and it goes on existing if the platform stops. The platform **opens** it at its address. Anyone who may read the project can look at its repository without the platform.
 
 **Rule.** A project says what it is in its own repository, in one place: its README. Its name is the README's title, and its scope is the first paragraph under that title. A project with no README, or whose README has no title, is named by its address; with no paragraph under the title, its scope is empty.
-
-**Rule.** A project is opened only by a participant signed in, and only if it is one of their projects. The platform opens nothing for someone who has not said who they are, even a project anyone could read without it.
 
 **Rule.** Changing anything means saying who you are, and being someone the project already recognises. The platform grants nothing of its own: it can only act where the person could already act without it.
 
