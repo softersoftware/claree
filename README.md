@@ -68,4 +68,4 @@ pnpm dev:mock                                                # no outside servic
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production
 ```
 
-Every push to a `sketches/*` or `prototypes/*` branch publishes them all, built with the mocks, on the repository's GitHub Pages, each under its branch's path.
+Every push to a `sketches/*`, `prototypes/*` or `stories/*` branch publishes them all, built with the mocks, on the repository's GitHub Pages, each under its branch's path.

@@ -1,6 +1,6 @@
 # 0016 — The platform is a single-page application, and its prototypes are static pages
 
-**Status**: accepted (2026-10); supersedes the stack [0004](0004-the-prototype-is-a-web-application-held-in-memory.md) chose, the consequence of [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) that a prototype needs a server, point 5 of [0007](0007-production-runs-on-koyeb-from-its-own-dockerfile.md) and its open question, and point 2 of [0015](0015-the-mock-of-an-outside-service-serves-its-pages.md)
+**Status**: accepted (2026-10), point 7 amended to publish stories (2026-10); supersedes the stack [0004](0004-the-prototype-is-a-web-application-held-in-memory.md) chose, the consequence of [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) that a prototype needs a server, point 5 of [0007](0007-production-runs-on-koyeb-from-its-own-dockerfile.md) and its open question, the consequence of [0013](0013-sketches-and-prototypes-have-their-own-branches.md) that a mock-up can be tried only from its branch, and point 2 of [0015](0015-the-mock-of-an-outside-service-serves-its-pages.md)
 
 ## Context
 
@@ -32,7 +32,7 @@ A server is still needed in production. [0010](0010-the-platform-acts-through-a-
 
 6. **The pages of GitHub that the mock imitates are static HTML files of `@claree/mock-adapters`**, served beside the application in development and in prototypes. Point 2 of 0015 is replaced: there is no second server. The rest of 0015 holds: the pages are in the mock package, never in the application.
 
-7. **Sketches and prototypes are published on this repository's GitHub Pages**, one site for all of them. A workflow builds every `sketches/*` and `prototypes/*` branch with `CLAREE_ADAPTERS=mock` on every push to one of them, each under its branch's path (`/prototypes/0.2/`), and publishes the whole. Their router keeps the page in the address's fragment (`#/projects`), because GitHub Pages cannot send every address to the same page; production keeps plain addresses. The router is chosen with the adapters, when the application is built.
+7. **Sketches, prototypes and stories are published on this repository's GitHub Pages**, one site for all of them. A workflow builds every `sketches/*`, `prototypes/*` and `stories/*` branch with `CLAREE_ADAPTERS=mock` on every push to one of them, and whenever a branch is deleted, each under its branch's path (`/prototypes/0.2/`), and publishes the whole. A story is published so that its mock-up can be tried before it is built, as 0013 makes it on the story's branch (amended 2026-10). Their router keeps the page in the address's fragment (`#/projects`), because GitHub Pages cannot send every address to the same page; production keeps plain addresses. The router is chosen with the adapters, when the application is built.
 
 8. **The sketches made before this decision are not published.** They stay as they were shown, built with Next.js and tried locally, as 0013 asks.
 
@@ -60,7 +60,9 @@ A server is still needed in production. [0010](0010-the-platform-acts-through-a-
 
 **Harder.** The application is rewritten. It has three pages and four routes today, and will never be cheaper to rewrite.
 
-**Harder.** A prototype whose branch is deleted disappears from the site at the next publication. Sketches are never deleted, so they stay.
+**Harder.** A prototype whose branch is deleted disappears from the site at the next publication. Sketches are never deleted, so they stay. A story disappears once it is merged and its branch deleted: it is then the application itself.
+
+**Harder.** Every push to one of these branches builds them all again. Cheap while a few are open; building only the branch that changed is left for when it is not.
 
 ## Notes
 
