@@ -1,6 +1,6 @@
 # 0013 — Sketches and prototypes have their own branches
 
-**Status**: accepted (2026-10); supersedes how [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) names a prototype's branch and keeps it up to date; a mock-up tried only from its branch superseded by [0016](0016-the-platform-is-a-single-page-application.md)
+**Status**: accepted (2026-10), point 1 amended: a sketch may be rebased or deleted (2026-10); supersedes how [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) names a prototype's branch and keeps it up to date; a mock-up tried only from its branch superseded by [0016](0016-the-platform-is-a-single-page-application.md)
 
 ## Context
 
@@ -16,7 +16,7 @@ The domains now know three, which do not live the same way:
 
 ## Decision
 
-1. **A sketch lives on `sketches/<number>`**, numbered in the order they are made. It is never merged, never rebased, never updated: it stays as it was shown.
+1. **A sketch lives on `sketches/<number>`**, numbered in the order they are made. It is never merged, and what it shows never changes: it stays as it was shown. It may be rebased on `main`, to build with the tooling of the day, as long as its screens stay the same. Its branch may be deleted when nothing calls for it any more, for instance when another sketch shows the same (amended 2026-10).
 
 2. **A prototype lives on `prototypes/<version>`**, named after the version it prototypes, as its milestone is named. It is rebased on `main` whenever `main` changes, so that it is always the next version on top of the current one. It is never merged as a whole: once validated, story branches take its screens, as 0006 says.
 
@@ -28,7 +28,7 @@ The domains now know three, which do not live the same way:
 
 ## Consequences
 
-**Easier.** A branch's prefix says how it ages: a sketch is left alone, a prototype follows `main`, and a story's branch holds its mock-up for as long as the story lasts.
+**Easier.** A branch's prefix says how it ages: a sketch shows what it showed, a prototype follows `main`, and a story's branch holds its mock-up for as long as the story lasts.
 
 **Easier.** A rebased prototype reads as the next version and nothing else: its own commits, on top of `main`, without the merges 0006 left in it.
 
@@ -39,3 +39,5 @@ The domains now know three, which do not live the same way:
 ## Notes
 
 A pull request's title starts with the kind of its branch, as 0006 says: `sketch 001: …`, `prototype <version>: …`.
+
+The amendment of point 1 (2026-10) records what was done: `sketches/002` is `sketches/001` rebased, showing the same, and `sketches/001` was deleted. "Never updated", in the domains, is about what a sketch shows, as for every workshop document; rebasing and deleting its branch are not.
