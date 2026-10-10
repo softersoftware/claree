@@ -1,4 +1,4 @@
-import { createHashRouter } from 'react-router';
+import { createHashHistory } from '@tanstack/react-router';
 import { mockAdapters } from '@claree/mock-adapters';
 import { apiServer, storedCookies, storedKey } from '@claree/server';
 
@@ -13,4 +13,15 @@ const app = apiServer(ports, { key: storedKey(localStorage, prefix), cookies: st
 export const server: typeof fetch = async (input, init) => app.fetch(new Request(input, init));
 
 /** A static site serves one page for the application, so its address stays after the `#`. */
-export const createRouter = createHashRouter;
+/**
+ * GitHub sends its answer back before the `#`, where the router does not look: it is moved after it, as the
+ * callback's search, before the router starts.
+ */
+if (window.location.search !== '') {
+  const [route = '/', search = ''] = window.location.hash.slice(1).split('?');
+  const answer = new URLSearchParams(search);
+  for (const [name, value] of new URLSearchParams(window.location.search)) answer.set(name, value);
+  window.history.replaceState(window.history.state, '', `${window.location.pathname}#${route}?${answer}`);
+}
+
+export const history = createHashHistory();

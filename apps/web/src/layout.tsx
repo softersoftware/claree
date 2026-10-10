@@ -1,19 +1,24 @@
-import { Link, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router';
+import { createRootRoute, Link, Outlet, redirect, useLocation, useRouter } from '@tanstack/react-router';
 import { api } from '@/api';
 import { languages, type Language, useLanguage } from '@/language';
 import { productName } from '@/product';
 import { Card, Page } from '@/ui';
 
-/** The person signed in, or nobody. */
-export const userLoader = async () => {
+/** The person signed in, or nobody: asked again on every navigation, since signing in or out changes it. */
+const currentUser = async () => {
   const response = await api.user.$get();
   return response.ok ? response.json() : null;
+};
+
+/** For the pages that need someone signed in: everyone else is sent to sign in. */
+export const signedIn = ({ context }: { context: { user: { name: string } | null } }) => {
+  if (context.user === null) throw redirect({ to: '/' });
 };
 
 /** A link to the Projects page, except where it would lead nowhere new. */
 function ProductName() {
   const className = 'text-sm font-semibold tracking-tight';
-  return ['/', '/projects'].includes(useLocation().pathname) ? (
+  return ['/', '/projects'].includes(useLocation({ select: (location) => location.pathname })) ? (
     <span className={className}>{productName}</span>
   ) : (
     <Link to="/projects" className={className}>
@@ -48,12 +53,12 @@ function LanguageSelector() {
 }
 
 function Header() {
-  const user = useLoaderData<typeof userLoader>();
+  const { user } = rootRoute.useRouteContext();
   const { strings: t } = useLanguage();
-  const navigate = useNavigate();
+  const router = useRouter();
   const signOut = async () => {
     await api['sign-out'].$post();
-    await navigate('/');
+    await router.navigate({ to: '/' });
   };
   return (
     <header className="border-b border-rule bg-card">
@@ -75,7 +80,7 @@ function Header() {
   );
 }
 
-export function Layout() {
+function Layout() {
   return (
     <div className="flex min-h-full flex-col">
       <Header />
@@ -86,7 +91,7 @@ export function Layout() {
   );
 }
 
-export function Failed() {
+function Failed() {
   const { strings: t } = useLanguage();
   return (
     <Page>
@@ -96,3 +101,10 @@ export function Failed() {
     </Page>
   );
 }
+
+export const rootRoute = createRootRoute({
+  beforeLoad: async () => ({ user: await currentUser() }),
+  component: Layout,
+  errorComponent: Failed,
+  notFoundComponent: Failed,
+});

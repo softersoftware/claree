@@ -1,19 +1,12 @@
-import { type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router';
+import { createRoute, redirect } from '@tanstack/react-router';
 import { api } from '@/api';
 import { useLanguage } from '@/language';
+import { rootRoute, signedIn } from '@/layout';
 import { Card, Page, Section } from '@/ui';
 
-export const projectLoader = async ({ params }: LoaderFunctionArgs) => {
-  const { owner = '', repository = '' } = params;
-  const response = await api.projects[':owner'][':repository'].$get({ param: { owner, repository } });
-  if (response.status === 401) return redirect('/');
-  if (!response.ok) return redirect(`/projects?${new URLSearchParams({ unopened: `${owner}/${repository}` })}`);
-  return response.json();
-};
-
-export function Project() {
+function Project() {
   const { strings: t } = useLanguage();
-  const { name, scope, address, link } = useLoaderData<typeof projectLoader>();
+  const { name, scope, address, link } = projectRoute.useLoaderData();
   return (
     <Page title={name}>
       {scope !== '' && (
@@ -42,3 +35,16 @@ export function Project() {
     </Page>
   );
 }
+
+export const projectRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'projects/$owner/$repository',
+  beforeLoad: signedIn,
+  loader: async ({ params: { owner, repository } }) => {
+    const response = await api.projects[':owner'][':repository'].$get({ param: { owner, repository } });
+    if (response.status === 401) throw redirect({ to: '/' });
+    if (!response.ok) throw redirect({ to: '/projects', search: { unopened: `${owner}/${repository}` } });
+    return response.json();
+  },
+  component: Project,
+});
