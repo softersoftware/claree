@@ -27,7 +27,7 @@ describe('name and scope', () => {
     });
   });
 
-  it('keeps the title as written, without the closing hashes', () => {
+  it('takes the title as written, without the closing hashes', () => {
     expect(nameAndScope(address, '# Clarée #\n').name).toBe('Clarée');
   });
 });

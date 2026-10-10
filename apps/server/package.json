@@ -17,7 +17,8 @@
     "@claree/domain": "workspace:*",
     "@claree/github-adapters": "workspace:*",
     "@hono/node-server": "^2.1.4",
-    "hono": "^4.13.13"
+    "hono": "^4.13.13",
+    "jose": "^6.2.12"
   },
   "devDependencies": {
     "@claree/mock-adapters": "workspace:*",

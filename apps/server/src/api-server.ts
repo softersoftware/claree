@@ -1,11 +1,13 @@
 import { type Context, Hono } from 'hono';
 import { validator } from 'hono/validator';
-import { nameAndScope, type Ports } from '@claree/domain';
+import { nameAndScope, type Ports, type Session } from '@claree/domain';
+import { type Cookies, httpCookies, randomId } from './cookies';
 import { projectAddress } from './project-address';
-import { type Cookies, httpCookies, inMemorySessions, randomId, type Sessions } from './sessions';
+import { sealing, sessionLifetime } from './sealing';
 
 export type ApiServerOptions = {
-  readonly sessions?: Sessions;
+  /** The key the session's cookie is encrypted with (ADR 0017). */
+  readonly key: Uint8Array;
   readonly cookies?: Cookies;
   /** Cookies sent over HTTPS only: in production, behind a proxy that speaks HTTPS for the server. */
   readonly secure?: boolean;
@@ -20,20 +22,29 @@ const isQuery = (body: unknown): body is Record<string, string> =>
  */
 export const apiServer = (
   { authentication }: Ports,
-  { sessions = inMemorySessions(), cookies = httpCookies, secure = false }: ApiServerOptions = {},
+  { key, cookies = httpCookies, secure = false }: ApiServerOptions,
 ) => {
-  const session = { httpOnly: true, sameSite: 'Lax', secure, path: '/' } as const;
-  const signingIn = { ...session, path: '/api/sign-in' };
+  const cookie = { httpOnly: true, sameSite: 'Lax', secure, path: '/' } as const;
+  const signingIn = { ...cookie, path: '/api/sign-in' };
+  const { seal, open } = sealing(key);
 
-  const currentUser = async (c: Context) => {
-    const id = cookies.get(c, 'session');
-    return id === undefined ? undefined : sessions.user(id);
-  };
+  const setSessionCookie = async (c: Context, session: Session) =>
+    cookies.set(c, 'session', await seal(session.credentials()), { ...cookie, maxAge: sessionLifetime });
 
-  return new Hono()
+  return new Hono<{ Variables: { session: Session | undefined } }>()
     .basePath('/api')
+    .use(async (c, next) => {
+      const sealed = cookies.get(c, 'session');
+      const credentials = sealed === undefined ? undefined : await open(sealed);
+      const session = credentials === undefined ? undefined : await authentication.resume(credentials);
+      c.set('session', session);
+      await next();
+      // GitHub renewed the token while answering: the old one no longer works, and the cookie holds the new one.
+      if (session !== undefined && c.get('session') === session && session.credentials() !== credentials)
+        await setSessionCookie(c, session);
+    })
     .get('/user', async (c) => {
-      const user = await currentUser(c);
+      const user = c.get('session')?.user;
       return user === undefined ? c.json({}, 401) : c.json({ name: user.name }, 200);
     })
     .post(
@@ -57,20 +68,22 @@ export const apiServer = (
         const query = c.req.valid('json');
         const state = cookies.get(c, 'sign-in-state');
         cookies.delete(c, 'sign-in-state', signingIn);
-        const user = state !== undefined && query.state === state ? await authentication.finish(query) : undefined;
-        if (user === undefined) return c.json({}, 401);
-        cookies.set(c, 'session', await sessions.remember(user, query), session);
-        return c.json({ name: user.name }, 200);
+        const session = state !== undefined && query.state === state ? await authentication.finish(query) : undefined;
+        if (session === undefined) return c.json({}, 401);
+        await setSessionCookie(c, session);
+        c.set('session', session);
+        return c.json({ name: session.user.name }, 200);
       },
     )
     .post('/sign-out', async (c) => {
-      const id = cookies.get(c, 'session');
-      if (id !== undefined) await sessions.forget(id);
-      cookies.delete(c, 'session', session);
+      const session = c.get('session');
+      if (session !== undefined) await authentication.revoke(session.credentials());
+      cookies.delete(c, 'session', cookie);
+      c.set('session', undefined);
       return c.body(null, 204);
     })
     .get('/projects', async (c) => {
-      const user = await currentUser(c);
+      const user = c.get('session')?.user;
       if (user === undefined) return c.json({}, 401);
       const projects = await user.projects();
       if (projects.found !== 'some') return c.json(projects, 200);
@@ -83,7 +96,7 @@ export const apiServer = (
       return c.json({ found: 'some' as const, projects: cards }, 200);
     })
     .get('/projects/:owner/:repository', async (c) => {
-      const user = await currentUser(c);
+      const user = c.get('session')?.user;
       if (user === undefined) return c.json({}, 401);
       const { owner, repository } = c.req.param();
       const project = await user.projectFiles.open(projectAddress(owner, repository));

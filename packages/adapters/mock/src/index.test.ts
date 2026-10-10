@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { mockAdapters, mockSignInFiles } from '.';
 
 const adapters = mockAdapters({ signInPagesAt: 'http://platform/github/' });
-const signIn = (login: string) => adapters.authentication.finish({ login });
+const signIn = async (login: string) => (await adapters.authentication.finish({ login }))?.user;
 
 describe('the mock adapters', () => {
   it('send a person to the mock GitHub sign-in page, with the callback and the state', () => {

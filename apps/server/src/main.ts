@@ -3,6 +3,7 @@ import { serveStatic } from '@hono/node-server/serve-static';
 import { Hono } from 'hono';
 import { githubAuthentication } from '@claree/github-adapters';
 import { apiServer } from './api-server';
+import { keyFrom } from './sealing';
 
 /** The application's files, built: served at every address but the server's own. */
 const web = process.env.CLAREE_WEB ?? '../web/dist';
@@ -18,7 +19,7 @@ const app = new Hono()
           appSlug: process.env.GITHUB_APP_SLUG ?? '',
         }),
       },
-      { secure: process.env.NODE_ENV === 'production' },
+      { key: keyFrom(process.env.CLAREE_SESSION_KEY ?? ''), secure: process.env.NODE_ENV === 'production' },
     ),
   )
   .use('*', serveStatic({ root: web }))

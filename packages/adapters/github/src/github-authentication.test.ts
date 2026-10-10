@@ -36,7 +36,7 @@ authenticationContract('GitHub', async () => {
 
 projectFilesContract('GitHub', async () => {
   const github = withAccounts();
-  const user = await githubAuthentication(options(github)).finish({ code: github.codeFor('ana-ruiz') });
+  const user = (await githubAuthentication(options(github)).finish({ code: github.codeFor('ana-ruiz') }))?.user;
   if (user === undefined) throw new Error('nobody signed in');
   let count = 0;
   return {
@@ -64,14 +64,14 @@ describe('signing in with GitHub', () => {
 
   it('names the user by their login when they have no name', async () => {
     const github = withAccounts();
-    expect((await githubAuthentication(options(github)).finish({ code: github.codeFor('tom-okafor') }))?.name).toBe(
-      'tom-okafor',
-    );
+    expect(
+      (await githubAuthentication(options(github)).finish({ code: github.codeFor('tom-okafor') }))?.user.name,
+    ).toBe('tom-okafor');
   });
 
   it('links to where the platform is installed when it is installed nowhere', async () => {
     const github = withAccounts();
-    const tom = await githubAuthentication(options(github)).finish({ code: github.codeFor('tom-okafor') });
+    const tom = (await githubAuthentication(options(github)).finish({ code: github.codeFor('tom-okafor') }))?.user;
     expect(await tom?.projects()).toEqual({
       found: 'not installed',
       installAt: 'https://github.com/apps/platform/installations/new',
@@ -87,7 +87,7 @@ describe('signing in with GitHub', () => {
 
   it('renews an expired token once, and reads again', async () => {
     const github = withAccounts();
-    const ana = await githubAuthentication(options(github)).finish({ code: github.codeFor('ana-ruiz') });
+    const ana = (await githubAuthentication(options(github)).finish({ code: github.codeFor('ana-ruiz') }))?.user;
     github.expireTokens();
     const opened = await ana?.projectFiles.open('https://github.com/medito-centre/medito');
     expect(await opened?.read('README.md')).toBe('# Medito');
@@ -98,12 +98,36 @@ describe('signing in with GitHub', () => {
     let now = 0;
     const calls: string[] = [];
     const watched: typeof fetch = async (input, init) => (calls.push(String(input)), github.fetch(input, init));
-    const ana = await githubAuthentication({ ...options(github), fetch: watched, now: () => now }).finish({
-      code: github.codeFor('ana-ruiz'),
-    });
+    const ana = (
+      await githubAuthentication({ ...options(github), fetch: watched, now: () => now }).finish({
+        code: github.codeFor('ana-ruiz'),
+      })
+    )?.user;
     now = 28800 * 1000 - 30_000;
     calls.length = 0;
     expect((await ana?.projects())?.found).toBe('some');
     expect(calls[0]).toBe('https://github.com/login/oauth/access_token');
+  });
+  it('uses the token GitHub renewed, and nothing works with the one before', async () => {
+    const github = withAccounts();
+    const authentication = githubAuthentication(options(github));
+    const session = await authentication.finish({ code: github.codeFor('ana-ruiz') });
+    const before = session?.credentials() ?? '';
+    github.expireTokens();
+    await session?.user.projectFiles.open('https://github.com/medito-centre/medito');
+    expect(session?.credentials()).not.toBe(before);
+    const renewed = await authentication.resume(session?.credentials() ?? '');
+    expect(await renewed?.user.projectFiles.open('https://github.com/medito-centre/medito')).toBeDefined();
+    const stale = await authentication.resume(before);
+    expect(await stale?.user.projectFiles.open('https://github.com/medito-centre/medito')).toBeUndefined();
+  });
+
+  it('revokes the token when the person signs out', async () => {
+    const github = withAccounts();
+    const authentication = githubAuthentication(options(github));
+    const credentials = (await authentication.finish({ code: github.codeFor('ana-ruiz') }))?.credentials() ?? '';
+    await authentication.revoke(credentials);
+    const resumed = await authentication.resume(credentials);
+    expect(await resumed?.user.projectFiles.open('https://github.com/medito-centre/medito')).toBeUndefined();
   });
 });
