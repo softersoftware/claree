@@ -34,7 +34,7 @@ Each step of the cycle has its place in the project:
 | Step | Where it lives |
 |---|---|
 | Scope | `README.md`: what the application is for |
-| 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came; a sketch of the whole scope on a `sketches/<number>` branch, never updated |
+| 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came; a sketch of the whole scope on a `sketches/<number>` branch, whose screens never change |
 | 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary_bridge.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<version>` branch, built like the application, with mock data, rebased on `main` |
 | 4. Story mapping | issues: a feature is an issue labelled `feature`, its stories are its sub-issues, with `value:` and `effort:` labels |
