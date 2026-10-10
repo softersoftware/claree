@@ -1,3 +1,3 @@
 export * from './in-browser'
-export * from './platform'
+export * from './api-server'
 export type { Cookies, Sessions } from './sessions'

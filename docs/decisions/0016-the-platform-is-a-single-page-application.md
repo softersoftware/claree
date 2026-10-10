@@ -62,7 +62,7 @@ A server is still needed in production. [0010](0010-the-platform-acts-through-a-
 
 **Harder.** A prototype whose branch is deleted disappears from the site at the next publication. Sketches are never deleted, so they stay. A story disappears once it is merged and its branch deleted: it is then the application itself.
 
-**Harder.** Every push to one of these branches builds them all again. Cheap while a few are open; building only the branch that changed is left for when it is not.
+**Easier.** A publication builds again only the branches whose commit changed since the last one; the others come from the workflow's cache, and are built again only when it has lost them.
 
 ## Notes
 

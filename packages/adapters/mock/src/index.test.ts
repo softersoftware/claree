@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mockAdapters, mockSignInPages } from '.'
+import { mockAdapters, mockSignInFiles } from '.'
 
 const adapters = mockAdapters({ signInPagesAt: 'http://platform/github/' })
 const signIn = (login: string) => adapters.authentication.finish({ login })
@@ -13,7 +13,7 @@ describe('the mock adapters', () => {
   })
 
   it('imitate the sign-in page, with every account, and the authorization page that leads back', () => {
-    const pages = mockSignInPages('Platform')
+    const pages = mockSignInFiles('Platform')
     expect(pages['login.html']).toContain('Sign in to GitHub')
     expect(pages['login.html']).toContain('data-login="ana-ruiz"')
     expect(pages['authorize.html']).toContain('Authorize Platform')
@@ -21,7 +21,7 @@ describe('the mock adapters', () => {
   })
 
   it('go nowhere without a callback a browser can go back to', () => {
-    for (const page of Object.values(mockSignInPages('Platform'))) expect(page).toContain("'Not found'")
+    for (const page of Object.values(mockSignInFiles('Platform'))) expect(page).toContain("'Not found'")
   })
 
   it('sign in to an account with projects, and open only those', async () => {

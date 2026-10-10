@@ -1,13 +1,13 @@
 import { createHashRouter } from 'react-router'
 import { mockAdapters } from '@claree/mock-adapters'
-import { platform, storedCookies, storedSessions } from '@claree/server'
+import { apiServer, storedCookies, storedSessions } from '@claree/server'
 
 const ports = mockAdapters({ signInPagesAt: new URL(`${import.meta.env.BASE_URL}github/`, window.location.href).href })
 
 /** Sketches and prototypes share one site, and so one storage: each keeps its own under its path. */
 const prefix = import.meta.env.BASE_URL
 
-const app = platform(ports, {
+const app = apiServer(ports, {
   cookies: storedCookies(localStorage, prefix),
   sessions: storedSessions(ports.authentication, localStorage, prefix),
 })

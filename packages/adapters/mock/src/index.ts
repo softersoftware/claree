@@ -12,4 +12,4 @@ export const mockAdapters = ({ signInPagesAt }: { signInPagesAt: string }): Port
 })
 
 /** The mock GitHub pages, as files by name, to serve at the address given to `mockAdapters`. */
-export const mockSignInPages = (appName: string) => githubSignInPages(accounts, appName)
+export const mockSignInFiles = (appName: string) => githubSignInPages(accounts, appName)

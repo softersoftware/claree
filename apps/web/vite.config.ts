@@ -2,7 +2,7 @@ import path from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
-import { mockSignInPages } from '@claree/mock-adapters'
+import { mockSignInFiles } from '@claree/mock-adapters'
 import { productName } from './src/product'
 
 /**
@@ -13,8 +13,8 @@ import { productName } from './src/product'
 const mock = process.env.CLAREE_ADAPTERS === 'mock'
 
 /** GitHub's sign-in pages as the mock imitates them, served beside the application (ADR 0016). */
-const signInPages = (): Plugin => {
-  const pages = mockSignInPages(productName)
+const mockSignInPages = (): Plugin => {
+  const pages = mockSignInFiles(productName)
   return {
     name: 'sign-in-pages',
     configureServer(server) {
@@ -35,7 +35,7 @@ const signInPages = (): Plugin => {
 export default defineConfig({
   /** Where the application is served from: a sketch or a prototype, under its branch's path. */
   base: process.env.CLAREE_BASE ?? '/',
-  plugins: [react(), tailwindcss(), ...(mock ? [signInPages()] : [])],
+  plugins: [react(), tailwindcss(), ...(mock ? [mockSignInPages()] : [])],
   resolve: {
     alias: [
       { find: /^@\/adapters$/, replacement: path.join(import.meta.dirname, `src/adapters/${mock ? 'mock' : 'real'}.ts`) },

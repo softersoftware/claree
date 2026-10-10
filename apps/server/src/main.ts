@@ -2,7 +2,7 @@ import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { Hono } from 'hono'
 import { githubAuthentication } from '@claree/github-adapters'
-import { platform } from './platform'
+import { apiServer } from './api-server'
 
 /** The application's files, built: served at every address but the server's own. */
 const web = process.env.CLAREE_WEB ?? '../web/dist'
@@ -10,7 +10,7 @@ const web = process.env.CLAREE_WEB ?? '../web/dist'
 const app = new Hono()
   .route(
     '/',
-    platform(
+    apiServer(
       {
         authentication: githubAuthentication({
           clientId: process.env.GITHUB_APP_CLIENT_ID ?? '',

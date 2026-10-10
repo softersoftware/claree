@@ -32,26 +32,50 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
-      - name: Build every sketch, prototype and story
+      # What the last run built, each branch with the commit it was built from.
+      - uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/built
+          key: built-${{ github.run_id }}
+          restore-keys: built-
+      - name: Build every sketch, prototype and story that changed
         env:
           REPOSITORY: ${{ github.event.repository.name }}
         run: |
+          built="$RUNNER_TEMP/built"
+          next="$RUNNER_TEMP/next"
           site="$RUNNER_TEMP/site"
-          mkdir -p "$site"
+          mkdir -p "$built" "$next" "$site"
           echo '<!doctype html><meta charset="utf-8"><title>Sketches, prototypes and stories</title><ul>' > "$site/index.html"
           for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/sketches refs/remotes/origin/prototypes refs/remotes/origin/stories); do
             branch="${ref#origin/}"
             # The sketches made before ADR 0016 have no application to build as static files.
             git cat-file -e "$ref:apps/web/vite.config.ts" 2>/dev/null || continue
-            tree="$RUNNER_TEMP/trees/$branch"
-            mkdir -p "$(dirname "$tree")"
-            git worktree add --detach "$tree" "$ref"
-            (cd "$tree" && pnpm install --frozen-lockfile && CLAREE_ADAPTERS=mock CLAREE_BASE="/$REPOSITORY/$branch/" pnpm --filter @claree/web build)
+            commit="$(git rev-parse "$ref")"
+            mkdir -p "$(dirname "$next/$branch")"
+            if [ "$(cat "$built/$branch/.commit" 2>/dev/null)" = "$commit" ]; then
+              echo "$branch: unchanged since $commit"
+              mv "$built/$branch" "$next/$branch"
+            else
+              tree="$RUNNER_TEMP/trees/$branch"
+              mkdir -p "$(dirname "$tree")"
+              git worktree add --detach "$tree" "$ref"
+              (cd "$tree" && pnpm install --frozen-lockfile && CLAREE_ADAPTERS=mock CLAREE_BASE="/$REPOSITORY/$branch/" pnpm --filter @claree/web build)
+              cp -r "$tree/apps/web/dist" "$next/$branch"
+              echo "$commit" > "$next/$branch/.commit"
+            fi
             mkdir -p "$site/$branch"
-            cp -r "$tree/apps/web/dist/." "$site/$branch/"
+            cp -r "$next/$branch/." "$site/$branch/"
+            rm "$site/$branch/.commit"
             echo "<li><a href=\"$branch/\">$branch</a></li>" >> "$site/index.html"
           done
           echo '</ul>' >> "$site/index.html"
+          # Deleted branches are left behind, and leave the cache too.
+          rm -rf "$built" && mv "$next" "$built"
+      - uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/built
+          key: built-${{ github.run_id }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ runner.temp }}/site

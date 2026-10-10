@@ -4,7 +4,7 @@ import { nameAndScope, type Ports } from '@claree/domain'
 import { projectAddress } from './project-address'
 import { type Cookies, httpCookies, inMemorySessions, randomId, type Sessions } from './sessions'
 
-export type PlatformOptions = {
+export type ApiServerOptions = {
   readonly sessions?: Sessions
   readonly cookies?: Cookies
   /** Cookies sent over HTTPS only: in production, behind a proxy that speaks HTTPS for the server. */
@@ -18,9 +18,9 @@ const isQuery = (body: unknown): body is Record<string, string> =>
  * The platform's server: what the application asks of it, as one function from
  * a `Request` to a `Response`, in Node as in a browser (ADR 0016).
  */
-export const platform = (
+export const apiServer = (
   { authentication }: Ports,
-  { sessions = inMemorySessions(), cookies = httpCookies, secure = false }: PlatformOptions = {},
+  { sessions = inMemorySessions(), cookies = httpCookies, secure = false }: ApiServerOptions = {},
 ) => {
   const session = { httpOnly: true, sameSite: 'Lax', secure, path: '/' } as const
   const signingIn = { ...session, path: '/api/sign-in' }
@@ -94,4 +94,4 @@ export const platform = (
 }
 
 /** The server's routes and answers, as types for the application's client. */
-export type Platform = ReturnType<typeof platform>
+export type ApiServer = ReturnType<typeof apiServer>

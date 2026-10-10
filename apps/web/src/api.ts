@@ -1,5 +1,5 @@
 import { hc } from 'hono/client'
-import type { Platform } from '@claree/server'
+import type { ApiServer } from '@claree/server'
 import { server } from '@/adapters'
 
-export const { api } = hc<Platform>(window.location.origin, { fetch: server })
+export const { api } = hc<ApiServer>(window.location.origin, { fetch: server })

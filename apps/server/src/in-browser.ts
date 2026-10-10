@@ -3,7 +3,11 @@ import type { Cookies, Sessions } from './sessions'
 import { randomId } from './sessions'
 
 /** The part of the browser's `localStorage` the server uses. */
-export type BrowserStorage = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>
+export type BrowserStorage = {
+  getItem(key: string): string | null
+  setItem(key: string, value: string): void
+  removeItem(key: string): void
+}
 
 /**
  * Cookies, when the server runs in the browser (ADR 0016): a browser drops
