@@ -1,11 +1,15 @@
 import type { Ports } from '@claree/domain'
 import { accounts } from './accounts'
+import { githubSignInPages } from './github-pages'
 import { mockAuthentication } from './mock-authentication'
 import { projects } from './projects'
 
 export * from './in-memory-project-files'
 
-/** Every port, with invented accounts and projects in memory. GitHub's pages are imitated on `githubPort`. */
-export const mockAdapters = ({ appName, githubPort = 3001 }: { appName: string; githubPort?: number }): Ports => ({
-  authentication: mockAuthentication(accounts, projects, { appName, port: githubPort }),
+/** Every port, with invented accounts and projects in memory. GitHub's pages are imitated at `signInPagesAt`. */
+export const mockAdapters = ({ signInPagesAt }: { signInPagesAt: string }): Ports => ({
+  authentication: mockAuthentication(accounts, projects, signInPagesAt),
 })
+
+/** The mock GitHub pages, as files by name, to serve at the address given to `mockAdapters`. */
+export const mockSignInFiles = (appName: string) => githubSignInPages(accounts, appName)

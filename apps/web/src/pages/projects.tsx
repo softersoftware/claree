@@ -1,19 +1,21 @@
-import { redirect } from 'next/navigation'
-import { nameAndScope } from '@claree/domain'
-import { strings } from '@/language'
+import { Link, type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router'
+import { api } from '@/api'
+import { useLanguage } from '@/language'
 import { productName } from '@/product'
 import { projectPage } from '@/project-address'
-import { currentUser } from '@/session'
-import { Card, Page, Section } from '../ui'
+import { Card, Page, Section } from '@/ui'
 
-export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ unopened?: string }> }) {
-  const t = await strings()
-  const user = await currentUser()
-  if (user === undefined) redirect('/')
-  const { unopened } = await searchParams
+export const projectsLoader = async ({ request }: LoaderFunctionArgs) => {
+  const response = await api.projects.$get()
+  if (!response.ok) return redirect('/')
+  return { projects: await response.json(), unopened: new URL(request.url).searchParams.get('unopened') }
+}
+
+export function Projects() {
+  const { strings: t } = useLanguage()
+  const { projects, unopened } = useLoaderData<typeof projectsLoader>()
   const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>
 
-  const projects = await user.projects()
   if (projects.found === 'not installed')
     return (
       <Page title={t.projects.title}>
@@ -40,23 +42,17 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       </Page>
     )
 
-  const cards = await Promise.all(
-    projects.addresses.map(async (address) => {
-      const repository = await user.projectFiles.open(address)
-      return { address, ...nameAndScope(address, await repository?.read('README.md')) }
-    }),
-  )
   return (
     <Page title={t.projects.title}>
       {refused}
-      <Section title={t.projects.count(cards.length)}>
-        {cards.map(({ address, name, scope }) => (
-          <a key={address} href={projectPage(address)} className="block">
+      <Section title={t.projects.count(projects.projects.length)}>
+        {projects.projects.map(({ address, name, scope }) => (
+          <Link key={address} to={projectPage(address)} className="block">
             <Card>
               <p className="text-sm font-semibold">{name}</p>
               {scope !== '' && <p className="mt-1 text-sm text-muted">{scope}</p>}
             </Card>
-          </a>
+          </Link>
         ))}
       </Section>
     </Page>

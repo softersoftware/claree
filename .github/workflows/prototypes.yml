@@ -1,0 +1,83 @@
+# Every sketch, prototype and story, built with the mocks and published together on
+# this repository's GitHub Pages, each under its branch's path (ADR 0016).
+name: Sketches, prototypes and stories
+
+on:
+  push:
+    branches: ['sketches/**', 'prototypes/**', 'stories/**']
+  # A story's branch is deleted once it is merged: it leaves the site.
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      # What the last run built, each branch with the commit it was built from.
+      - uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/built
+          key: built-${{ github.run_id }}
+          restore-keys: built-
+      - name: Build every sketch, prototype and story that changed
+        env:
+          REPOSITORY: ${{ github.event.repository.name }}
+        run: |
+          built="$RUNNER_TEMP/built"
+          next="$RUNNER_TEMP/next"
+          site="$RUNNER_TEMP/site"
+          mkdir -p "$built" "$next" "$site"
+          echo '<!doctype html><meta charset="utf-8"><title>Sketches, prototypes and stories</title><ul>' > "$site/index.html"
+          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/sketches refs/remotes/origin/prototypes refs/remotes/origin/stories); do
+            branch="${ref#origin/}"
+            # The sketches made before ADR 0016 have no application to build as static files.
+            git cat-file -e "$ref:apps/web/vite.config.ts" 2>/dev/null || continue
+            commit="$(git rev-parse "$ref")"
+            mkdir -p "$(dirname "$next/$branch")"
+            if [ "$(cat "$built/$branch/.commit" 2>/dev/null)" = "$commit" ]; then
+              echo "$branch: unchanged since $commit"
+              mv "$built/$branch" "$next/$branch"
+            else
+              tree="$RUNNER_TEMP/trees/$branch"
+              mkdir -p "$(dirname "$tree")"
+              git worktree add --detach "$tree" "$ref"
+              (cd "$tree" && pnpm install --frozen-lockfile && CLAREE_ADAPTERS=mock CLAREE_BASE="/$REPOSITORY/$branch/" pnpm --filter @claree/web build)
+              cp -r "$tree/apps/web/dist" "$next/$branch"
+              echo "$commit" > "$next/$branch/.commit"
+            fi
+            mkdir -p "$site/$branch"
+            cp -r "$next/$branch/." "$site/$branch/"
+            rm "$site/$branch/.commit"
+            echo "<li><a href=\"$branch/\">$branch</a></li>" >> "$site/index.html"
+          done
+          echo '</ul>' >> "$site/index.html"
+          # Deleted branches are left behind, and leave the cache too.
+          rm -rf "$built" && mv "$next" "$built"
+      - uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/built
+          key: built-${{ github.run_id }}
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/site
+      - id: deployment
+        uses: actions/deploy-pages@v4

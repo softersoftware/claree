@@ -1,26 +1,27 @@
 import { describe, expect, it } from 'vitest'
-import { mockAdapters } from '.'
+import { mockAdapters, mockSignInFiles } from '.'
 
-const adapters = mockAdapters({ appName: 'Platform', githubPort: 3901 })
+const adapters = mockAdapters({ signInPagesAt: 'http://platform/github/' })
 const signIn = (login: string) => adapters.authentication.finish({ login })
 
 describe('the mock adapters', () => {
-  it('send a person to the mock GitHub sign-in page, which leads back to the callback', async () => {
+  it('send a person to the mock GitHub sign-in page, with the callback and the state', () => {
     const start = new URL(adapters.authentication.start('http://platform/callback', 's1'))
-    expect(start.origin).toBe('http://localhost:3901')
-    const signInPage = await (await fetch(start)).text()
-    expect(signInPage).toContain('Sign in to GitHub')
-    expect(signInPage).toContain('ana-ruiz')
-    const authorize = await (
-      await fetch(`http://localhost:3901/authorize?login=ana-ruiz&callback=http://platform/callback&state=s1`)
-    ).text()
-    expect(authorize).toContain('Authorize Platform')
-    expect(authorize).toContain('action="http://platform/callback"')
-    expect(authorize).toContain('name="state" value="s1"')
+    expect(start.origin + start.pathname).toBe('http://platform/github/login.html')
+    expect(start.searchParams.get('callback')).toBe('http://platform/callback')
+    expect(start.searchParams.get('state')).toBe('s1')
   })
 
-  it('serve nothing without a callback to go back to', async () => {
-    expect((await fetch('http://localhost:3901/login?callback=javascript:alert(1)')).status).toBe(404)
+  it('imitate the sign-in page, with every account, and the authorization page that leads back', () => {
+    const pages = mockSignInFiles('Platform')
+    expect(pages['login.html']).toContain('Sign in to GitHub')
+    expect(pages['login.html']).toContain('data-login="ana-ruiz"')
+    expect(pages['authorize.html']).toContain('Authorize Platform')
+    expect(pages['authorize.html']).toContain("access_denied")
+  })
+
+  it('go nowhere without a callback a browser can go back to', () => {
+    for (const page of Object.values(mockSignInFiles('Platform'))) expect(page).toContain("'Not found'")
   })
 
   it('sign in to an account with projects, and open only those', async () => {

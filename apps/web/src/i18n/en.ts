@@ -22,6 +22,7 @@ export const en = {
     repository: 'Repository',
   },
   language: 'Language',
+  failed: 'Something went wrong. Try again.',
 }
 
 export type Strings = typeof en

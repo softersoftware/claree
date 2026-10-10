@@ -3,27 +3,29 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "dev:mock": "CLAREE_ADAPTERS=mock next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite --configLoader runner",
+    "dev:mock": "CLAREE_ADAPTERS=mock vite --configLoader runner",
+    "build": "tsc --noEmit && vite build --configLoader runner",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@claree/domain": "workspace:*",
-    "@claree/github-adapters": "workspace:*",
     "@claree/mock-adapters": "workspace:*",
-    "next": "16.2.10",
+    "@claree/server": "workspace:*",
+    "hono": "^4.13.13",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "server-only": "^0.0.1"
+    "react-router": "^8.4.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "typescript": "^5",
+    "vite": "^8.3.4"
+  },
+  "type": "module"
 }

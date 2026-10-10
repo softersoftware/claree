@@ -1,6 +1,6 @@
 # 0013 — Sketches and prototypes have their own branches
 
-**Status**: accepted (2026-10); supersedes how [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) names a prototype's branch and keeps it up to date
+**Status**: accepted (2026-10); supersedes how [0006](0006-main-is-production-stories-and-prototypes-are-branches.md) names a prototype's branch and keeps it up to date; a mock-up tried only from its branch superseded by [0016](0016-the-platform-is-a-single-page-application.md)
 
 ## Context
 
