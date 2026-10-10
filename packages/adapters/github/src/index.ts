@@ -1,2 +1,2 @@
-export type { GitHubOptions } from './github-api'
-export * from './github-authentication'
+export type { GitHubOptions } from './github-api';
+export * from './github-authentication';

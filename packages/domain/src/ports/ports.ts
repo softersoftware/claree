@@ -1,5 +1,5 @@
-import type { Authentication } from './authentication'
+import type { Authentication } from './authentication';
 
 export type Ports = {
-  readonly authentication: Authentication
-}
+  readonly authentication: Authentication;
+};

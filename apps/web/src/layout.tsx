@@ -1,29 +1,29 @@
-import { Link, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router'
-import { api } from '@/api'
-import { languages, type Language, useLanguage } from '@/language'
-import { productName } from '@/product'
-import { Card, Page } from '@/ui'
+import { Link, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router';
+import { api } from '@/api';
+import { languages, type Language, useLanguage } from '@/language';
+import { productName } from '@/product';
+import { Card, Page } from '@/ui';
 
 /** The person signed in, or nobody. */
 export const userLoader = async () => {
-  const response = await api.user.$get()
-  return response.ok ? response.json() : null
-}
+  const response = await api.user.$get();
+  return response.ok ? response.json() : null;
+};
 
 /** A link to the Projects page, except where it would lead nowhere new. */
 function ProductName() {
-  const className = 'text-sm font-semibold tracking-tight'
+  const className = 'text-sm font-semibold tracking-tight';
   return ['/', '/projects'].includes(useLocation().pathname) ? (
     <span className={className}>{productName}</span>
   ) : (
     <Link to="/projects" className={className}>
       {productName}
     </Link>
-  )
+  );
 }
 
 function LanguageSelector() {
-  const { language: current, strings: t, choose } = useLanguage()
+  const { language: current, strings: t, choose } = useLanguage();
   return (
     <div role="group" aria-label={t.language} className="flex items-center gap-2 text-sm">
       {Object.entries(languages).map(([language, name]) =>
@@ -44,17 +44,17 @@ function LanguageSelector() {
         ),
       )}
     </div>
-  )
+  );
 }
 
 function Header() {
-  const user = useLoaderData<typeof userLoader>()
-  const { strings: t } = useLanguage()
-  const navigate = useNavigate()
+  const user = useLoaderData<typeof userLoader>();
+  const { strings: t } = useLanguage();
+  const navigate = useNavigate();
   const signOut = async () => {
-    await api['sign-out'].$post()
-    await navigate('/')
-  }
+    await api['sign-out'].$post();
+    await navigate('/');
+  };
   return (
     <header className="border-b border-rule bg-card">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-4">
@@ -72,7 +72,7 @@ function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
 export function Layout() {
@@ -83,16 +83,16 @@ export function Layout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
 export function Failed() {
-  const { strings: t } = useLanguage()
+  const { strings: t } = useLanguage();
   return (
     <Page>
       <Card>
         <p className="text-sm text-warn">{t.failed}</p>
       </Card>
     </Page>
-  )
+  );
 }

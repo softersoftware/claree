@@ -1,6 +1,6 @@
-import type { Strings } from './en'
+import type { Strings } from './en';
 
-const nbsp = ' '
+const nbsp = ' ';
 
 export const fr: Strings = {
   description: 'Spécifier et planifier une application, avec les experts métier dans la conversation.',
@@ -26,4 +26,4 @@ export const fr: Strings = {
   },
   language: 'Langue',
   failed: 'Une erreur s’est produite. Réessayez.',
-}
+};

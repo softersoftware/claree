@@ -1,12 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { RouterProvider } from 'react-router/dom'
-import './styles.css'
-import { LanguageProvider } from './language'
-import { productName } from './product'
-import { router } from './routes'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider } from 'react-router/dom';
+import './styles.css';
+import { LanguageProvider } from './language';
+import { productName } from './product';
+import { router } from './routes';
 
-document.title = productName
+document.title = productName;
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
@@ -14,4 +14,4 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       <RouterProvider router={router} />
     </LanguageProvider>
   </StrictMode>,
-)
+);

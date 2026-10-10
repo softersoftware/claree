@@ -3,12 +3,12 @@
  * start at the root of the project; nothing outside it is read.
  */
 export type Repository = {
-  readonly address: string
+  readonly address: string;
   /** Where a person looks at the repository without the platform; nothing when a browser cannot open it. */
-  readonly link?: string
+  readonly link?: string;
   /** The text of the file at this path, or nothing when there is none. */
-  read(path: string): Promise<string | undefined>
-}
+  read(path: string): Promise<string | undefined>;
+};
 
 /**
  * Where the platform reads a project. It opens what already exists and never
@@ -16,5 +16,5 @@ export type Repository = {
  */
 export type ProjectFiles = {
   /** Nothing when the address cannot be read: nothing is there, or it is private. */
-  open(address: string): Promise<Repository | undefined>
-}
+  open(address: string): Promise<Repository | undefined>;
+};

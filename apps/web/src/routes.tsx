@@ -1,8 +1,8 @@
-import { createRouter } from '@/adapters'
-import { Failed, Layout, userLoader } from '@/layout'
-import { Project, projectLoader } from '@/pages/project'
-import { Projects, projectsLoader } from '@/pages/projects'
-import { callbackLoader, SignIn, signInLoader } from '@/pages/sign-in'
+import { createRouter } from '@/adapters';
+import { Failed, Layout, userLoader } from '@/layout';
+import { Project, projectLoader } from '@/pages/project';
+import { Projects, projectsLoader } from '@/pages/projects';
+import { callbackLoader, SignIn, signInLoader } from '@/pages/sign-in';
 
 export const router = createRouter([
   {
@@ -20,4 +20,4 @@ export const router = createRouter([
       { path: 'projects/:owner/:repository', element: <Project />, loader: projectLoader },
     ],
   },
-])
+]);
