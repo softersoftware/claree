@@ -15,6 +15,7 @@ Read `README.md` for the full picture, and `CONTRIBUTING.md` for how its files a
 - **Keep it short, and stay one step ahead of the prototype, never further.** A rule earns its place in `docs/domain/` when something runnable needs it. The first version of this repository specified a product nobody had seen; that is the mistake to avoid, and ADR [0004](docs/decisions/0004-the-prototype-is-a-web-application-held-in-memory.md) says why.
 - Language: code, comments, tests and docs in English. How the platform speaks — sober, plain, direct — is `docs/branding/tone.md`; every visible string answers to it. Keep visible strings short and simple, the way a person would say it: "You need to be signed in to access your projects", not "A project opens only to someone signed in, with the GitHub account it knows them by".
 - Code conventions:
+  - Formatting is Prettier's (`pnpm format`): semicolons, single quotes, 120 columns. Markdown is formatted by hand.
   - Types are nouns (`User`, `ProjectList`, `Authentication`), never adjectives or participles (`SignedIn`). Use `type`, not `interface`, unless a declaration must merge (`ImportMeta`).
   - A variable is named after what it holds (`user`, `projects`), never from someone's point of view (`who`, `theirs`).
   - The person signed in is the `User`. A `Participant` is someone taking part in a project.

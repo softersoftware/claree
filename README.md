@@ -63,6 +63,7 @@ packages/adapters/   # what the domain reaches outside itself, one package per o
 ```bash
 pnpm install
 pnpm test                                                    # the domain and the adapters
+pnpm format                                                  # Prettier, on everything but Markdown
 pnpm dev                                                     # signing in with GitHub: apps/server/.env.example says what it needs
 pnpm dev:mock                                                # no outside service at all, invented accounts and projects
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production

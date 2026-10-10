@@ -1,4 +1,4 @@
-import type { Files } from './in-memory-project-files'
+import type { Files } from './in-memory-project-files';
 
 /** The projects the mock adapters serve, invented, by address. */
 export const projects: Readonly<Record<string, Files>> = {
@@ -8,4 +8,4 @@ export const projects: Readonly<Record<string, Files>> = {
   'https://github.com/greenlane-gardens/allotments': {
     'README.md': '# Allotments\n\nSharing plots, tools and harvests between the gardeners of one site.\n',
   },
-}
+};

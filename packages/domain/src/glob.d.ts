@@ -3,5 +3,5 @@ interface ImportMeta {
   glob(
     patterns: string | readonly string[],
     options: { readonly query: '?raw'; readonly import: 'default'; readonly eager: true },
-  ): Record<string, string>
+  ): Record<string, string>;
 }

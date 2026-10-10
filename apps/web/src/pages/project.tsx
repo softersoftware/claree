@@ -1,19 +1,19 @@
-import { type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router'
-import { api } from '@/api'
-import { useLanguage } from '@/language'
-import { Card, Page, Section } from '@/ui'
+import { type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router';
+import { api } from '@/api';
+import { useLanguage } from '@/language';
+import { Card, Page, Section } from '@/ui';
 
 export const projectLoader = async ({ params }: LoaderFunctionArgs) => {
-  const { owner = '', repository = '' } = params
-  const response = await api.projects[':owner'][':repository'].$get({ param: { owner, repository } })
-  if (response.status === 401) return redirect('/')
-  if (!response.ok) return redirect(`/projects?${new URLSearchParams({ unopened: `${owner}/${repository}` })}`)
-  return response.json()
-}
+  const { owner = '', repository = '' } = params;
+  const response = await api.projects[':owner'][':repository'].$get({ param: { owner, repository } });
+  if (response.status === 401) return redirect('/');
+  if (!response.ok) return redirect(`/projects?${new URLSearchParams({ unopened: `${owner}/${repository}` })}`);
+  return response.json();
+};
 
 export function Project() {
-  const { strings: t } = useLanguage()
-  const { name, scope, address, link } = useLoaderData<typeof projectLoader>()
+  const { strings: t } = useLanguage();
+  const { name, scope, address, link } = useLoaderData<typeof projectLoader>();
   return (
     <Page title={name}>
       {scope !== '' && (
@@ -40,5 +40,5 @@ export function Project() {
         </Card>
       </Section>
     </Page>
-  )
+  );
 }

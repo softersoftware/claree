@@ -23,6 +23,6 @@ export const en = {
   },
   language: 'Language',
   failed: 'Something went wrong. Try again.',
-}
+};
 
-export type Strings = typeof en
+export type Strings = typeof en;

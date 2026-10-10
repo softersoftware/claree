@@ -1,20 +1,20 @@
-import { Link, type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router'
-import { api } from '@/api'
-import { useLanguage } from '@/language'
-import { productName } from '@/product'
-import { projectPage } from '@/project-address'
-import { Card, Page, Section } from '@/ui'
+import { Link, type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router';
+import { api } from '@/api';
+import { useLanguage } from '@/language';
+import { productName } from '@/product';
+import { projectPage } from '@/project-address';
+import { Card, Page, Section } from '@/ui';
 
 export const projectsLoader = async ({ request }: LoaderFunctionArgs) => {
-  const response = await api.projects.$get()
-  if (!response.ok) return redirect('/')
-  return { projects: await response.json(), unopened: new URL(request.url).searchParams.get('unopened') }
-}
+  const response = await api.projects.$get();
+  if (!response.ok) return redirect('/');
+  return { projects: await response.json(), unopened: new URL(request.url).searchParams.get('unopened') };
+};
 
 export function Projects() {
-  const { strings: t } = useLanguage()
-  const { projects, unopened } = useLoaderData<typeof projectsLoader>()
-  const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>
+  const { strings: t } = useLanguage();
+  const { projects, unopened } = useLoaderData<typeof projectsLoader>();
+  const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>;
 
   if (projects.found === 'not installed')
     return (
@@ -31,7 +31,7 @@ export function Projects() {
           )}
         </Card>
       </Page>
-    )
+    );
   if (projects.found === 'none readable')
     return (
       <Page title={t.projects.title}>
@@ -40,7 +40,7 @@ export function Projects() {
           <p className="text-sm">{t.projects.noneReadable(productName)}</p>
         </Card>
       </Page>
-    )
+    );
 
   return (
     <Page title={t.projects.title}>
@@ -56,5 +56,5 @@ export function Projects() {
         ))}
       </Section>
     </Page>
-  )
+  );
 }
