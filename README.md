@@ -52,7 +52,8 @@ The choices behind this are in [`docs/decisions/`](docs/decisions/README.md).
 This platform is built with its own method, so this repository follows the layout above, its features and stories are its [issues](https://github.com/softersoftware/claree/issues), and how its files are written is in [`CONTRIBUTING.md`](CONTRIBUTING.md), the same as in any project built with the method. Its domain experts are its makers, so it is written in English. The code:
 
 ```bash
-apps/web/            # the application
+apps/web/            # the application, in the browser
+apps/server/         # its server: the API, and the application's files in production
 packages/domain/     # the business rules, pure TypeScript, no dependencies
 packages/adapters/   # what the domain reaches outside itself, one package per outside service
   mock/              # every port, with invented accounts and projects, and no outside service
@@ -62,7 +63,9 @@ packages/adapters/   # what the domain reaches outside itself, one package per o
 ```bash
 pnpm install
 pnpm test                                                    # the domain and the adapters
-pnpm dev                                                     # signing in with GitHub: apps/web/.env.example says what it needs
+pnpm dev                                                     # signing in with GitHub: apps/server/.env.example says what it needs
 pnpm dev:mock                                                # no outside service at all, invented accounts and projects
 docker build -t claree . && docker run -p 3000:3000 claree   # as in production
 ```
+
+Every push to a `sketches/*` or `prototypes/*` branch publishes them all, built with the mocks, on the repository's GitHub Pages, each under its branch's path.

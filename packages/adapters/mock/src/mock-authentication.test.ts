@@ -6,7 +6,7 @@ import { projects } from './projects'
 const logins = { 'with projects': 'ana-ruiz', 'not installed': 'tom-okafor', 'none readable': 'lea-martin' } as const
 
 authenticationContract('the mock', async () => ({
-  authentication: mockAuthentication(accounts, projects, { appName: 'Platform', port: 3902 }),
+  authentication: mockAuthentication(accounts, projects, 'http://platform/github/'),
   async signedIn(account, state) {
     return { login: logins[account], state }
   },

@@ -1,11 +1,6 @@
-import 'server-only'
-import { githubAuthentication } from '@claree/github-adapters'
-import type { Ports } from '@claree/domain'
+import { createBrowserRouter } from 'react-router'
 
-export const adapters: Ports = {
-  authentication: githubAuthentication({
-    clientId: process.env.GITHUB_APP_CLIENT_ID ?? '',
-    clientSecret: process.env.GITHUB_APP_CLIENT_SECRET ?? '',
-    appSlug: process.env.GITHUB_APP_SLUG ?? '',
-  }),
-}
+/** The server the application is served from (ADR 0016). */
+export const server: typeof fetch = (input, init) => fetch(input, init)
+
+export const createRouter = createBrowserRouter

@@ -1,0 +1,57 @@
+# Every sketch and prototype, built with the mocks and published together on
+# this repository's GitHub Pages, each under its branch's path (ADR 0016).
+name: Sketches and prototypes
+
+on:
+  push:
+    branches: ['sketches/**', 'prototypes/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Build every sketch and prototype
+        env:
+          REPOSITORY: ${{ github.event.repository.name }}
+        run: |
+          site="$RUNNER_TEMP/site"
+          mkdir -p "$site"
+          echo '<!doctype html><meta charset="utf-8"><title>Sketches and prototypes</title><ul>' > "$site/index.html"
+          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/sketches refs/remotes/origin/prototypes); do
+            branch="${ref#origin/}"
+            # The sketches made before ADR 0016 have no application to build as static files.
+            git cat-file -e "$ref:apps/web/vite.config.ts" 2>/dev/null || continue
+            tree="$RUNNER_TEMP/trees/$branch"
+            mkdir -p "$(dirname "$tree")"
+            git worktree add --detach "$tree" "$ref"
+            (cd "$tree" && pnpm install --frozen-lockfile && CLAREE_ADAPTERS=mock CLAREE_BASE="/$REPOSITORY/$branch/" pnpm --filter @claree/web build)
+            mkdir -p "$site/$branch"
+            cp -r "$tree/apps/web/dist/." "$site/$branch/"
+            echo "<li><a href=\"$branch/\">$branch</a></li>" >> "$site/index.html"
+          done
+          echo '</ul>' >> "$site/index.html"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/site
+      - id: deployment
+        uses: actions/deploy-pages@v4

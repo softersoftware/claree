@@ -25,4 +25,5 @@ export const fr: Strings = {
     repository: 'Dépôt',
   },
   language: 'Langue',
+  failed: 'Une erreur s’est produite. Réessayez.',
 }

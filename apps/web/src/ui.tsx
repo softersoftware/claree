@@ -26,10 +26,11 @@ export function Card({ children }: { children: ReactNode }) {
   )
 }
 
-export function Button({ children }: { children: ReactNode }) {
+export function Button({ children, onClick }: { children: ReactNode; onClick(): void }) {
   return (
     <button
-      type="submit"
+      type="button"
+      onClick={onClick}
       className="rounded-md border border-rule px-3 py-1.5 text-sm text-ink hover:bg-paper"
     >
       {children}
