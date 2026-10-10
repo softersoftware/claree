@@ -22,7 +22,7 @@ export const authenticationContract = (name: string, setUp: () => Promise<Authen
 
     it('signs in to an account with projects, and opens them', async () => {
       const { authentication, signedIn } = await setUp();
-      const user = await authentication.finish(await signedIn('with projects', 's1'));
+      const user = (await authentication.finish(await signedIn('with projects', 's1')))?.user;
       expect(user?.name).not.toBe('');
       const projects = await user?.projects();
       expect(projects?.found).toBe('some');
@@ -33,23 +33,38 @@ export const authenticationContract = (name: string, setUp: () => Promise<Authen
 
     it('says when the platform is installed on none of the organisations of the account', async () => {
       const { authentication, signedIn } = await setUp();
-      const user = await authentication.finish(await signedIn('not installed', 's1'));
+      const user = (await authentication.finish(await signedIn('not installed', 's1')))?.user;
       expect((await user?.projects())?.found).toBe('not installed');
     });
 
     it('says when the account can read no repository where the platform is installed', async () => {
       const { authentication, signedIn } = await setUp();
-      const user = await authentication.finish(await signedIn('none readable', 's1'));
+      const user = (await authentication.finish(await signedIn('none readable', 's1')))?.user;
       expect((await user?.projects())?.found).toBe('none readable');
     });
 
     it('opens no project of another account', async () => {
       const { authentication, signedIn } = await setUp();
-      const owner = await authentication.finish(await signedIn('with projects', 's1'));
+      const owner = (await authentication.finish(await signedIn('with projects', 's1')))?.user;
       const projects = await owner?.projects();
-      const other = await authentication.finish(await signedIn('none readable', 's2'));
+      const other = (await authentication.finish(await signedIn('none readable', 's2')))?.user;
       if (projects?.found !== 'some') throw new Error('the account with projects has none');
       for (const address of projects.addresses) expect(await other?.projectFiles.open(address)).toBeUndefined();
+    });
+
+    it("signs the same user in again from their session's credentials", async () => {
+      const { authentication, signedIn } = await setUp();
+      const session = await authentication.finish(await signedIn('with projects', 's1'));
+      const resumed = await authentication.resume(session?.credentials() ?? '');
+      expect(resumed?.user.name).toBe(session?.user.name);
+      expect(await resumed?.user.projects()).toEqual(await session?.user.projects());
+      expect(resumed?.credentials()).toBe(session?.credentials());
+    });
+
+    it('signs nobody in again from credentials it did not give', async () => {
+      const { authentication } = await setUp();
+      expect(await authentication.resume('')).toBeUndefined();
+      expect(await authentication.resume('{"login":"forged"}')).toBeUndefined();
     });
 
     it('signs nobody in when the person refuses, or comes back with nothing', async () => {

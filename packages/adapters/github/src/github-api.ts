@@ -8,9 +8,9 @@ export type GitHubOptions = {
 };
 
 export const web = 'https://github.com';
-const api = 'https://api.github.com';
+export const api = 'https://api.github.com';
 
-type Token = { access: string; expiresAt?: number; refresh?: string };
+export type Token = { access: string; expiresAt?: number; refresh?: string };
 
 /** Exchanges a code, or a refresh token, for a user token; nothing when GitHub refuses. */
 export const tokenFor = async (
@@ -63,12 +63,14 @@ export const apiAs = (options: GitHubOptions, first: Token) => {
       },
     });
 
-  return async (path: string, accept = 'application/vnd.github+json'): Promise<Response> => {
+  const call = async (path: string, accept = 'application/vnd.github+json'): Promise<Response> => {
     if (token.expiresAt !== undefined && now() >= token.expiresAt - 60_000) await renew();
     const response = await get(path, accept);
     if (response.status === 401 && (await renew())) return get(path, accept);
     return response;
   };
+  /** The token in use, renewed or not. */
+  return Object.assign(call, { token: () => token });
 };
 
 export type Api = ReturnType<typeof apiAs>;

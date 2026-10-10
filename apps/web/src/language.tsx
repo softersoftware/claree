@@ -8,7 +8,7 @@ export type Language = keyof typeof languages;
 
 const isLanguage = (value: unknown): value is Language => value === 'en' || value === 'fr';
 
-/** The language chosen, kept in this browser; until one is chosen, French if the browser asks for it first. */
+/** The language chosen, stored in this browser; until one is chosen, French if the browser asks for it first. */
 const chosenLanguage = (): Language => {
   try {
     const chosen = localStorage.getItem('language');
@@ -17,7 +17,7 @@ const chosenLanguage = (): Language => {
   return navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en';
 };
 
-const keep = (language: Language) => {
+const store = (language: Language) => {
   try {
     localStorage.setItem('language', language);
   } catch {}
@@ -35,7 +35,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.querySelector('meta[name=description]')?.setAttribute('content', strings.description);
   }, [language, strings]);
   const choose = (chosen: Language) => {
-    keep(chosen);
+    store(chosen);
     setLanguage(chosen);
   };
   return <LanguageContext value={{ language, strings, choose }}>{children}</LanguageContext>;

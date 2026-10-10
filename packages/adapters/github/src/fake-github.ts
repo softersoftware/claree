@@ -34,6 +34,12 @@ export const fakeGitHub = () => {
       return login === undefined ? json({ error: 'bad_verification_code' }) : json(issue(login));
     }
 
+    if (init?.method === 'DELETE' && url.href === 'https://api.github.com/applications/client/token') {
+      if (new Headers(init.headers).get('authorization') !== `Basic ${btoa('client:secret')}`) return json({}, 401);
+      tokens.delete((JSON.parse(String(init.body)) as { access_token: string }).access_token);
+      return new Response(null, { status: 204 });
+    }
+
     const token = tokens.get(new Headers(init?.headers).get('authorization')?.replace('Bearer ', '') ?? '');
     if (url.host !== 'api.github.com' || token === undefined || token.expired) return json({}, 401);
     const account = accounts.get(token.login);

@@ -11,12 +11,12 @@ export const inMemoryProjectFiles = (projects: Readonly<Record<string, Files>>):
   async open(address) {
     const files = projects[address];
     if (files === undefined) return undefined;
-    const kept = new Map(Object.entries(files));
+    const snapshot = new Map(Object.entries(files));
     const repository: Repository = {
       address,
       link: repositoryLink(address),
       async read(path) {
-        return kept.get(path);
+        return snapshot.get(path);
       },
     };
     return repository;

@@ -1,6 +1,4 @@
-import type { Authentication, User } from '@claree/domain';
-import type { Cookies, Sessions } from './sessions';
-import { randomId } from './sessions';
+import type { Cookies } from './cookies';
 
 /** The part of the browser's `localStorage` the server uses. */
 export type BrowserStorage = {
@@ -12,7 +10,7 @@ export type BrowserStorage = {
 /**
  * Cookies, when the server runs in the browser (ADR 0016): a browser drops
  * `Cookie` and `Set-Cookie` from the requests and responses a page makes, so
- * they are kept in storage instead, under `prefix`.
+ * they are stored in `storage` instead, under `prefix`.
  */
 export const storedCookies = (storage: BrowserStorage, prefix: string): Cookies => ({
   get: (_, name) => storage.getItem(`${prefix}cookie:${name}`) ?? undefined,
@@ -21,31 +19,13 @@ export const storedCookies = (storage: BrowserStorage, prefix: string): Cookies 
 });
 
 /**
- * Sessions, when the server runs in the browser: what a user signed in with is
- * kept in storage, and signs them in again after the page is reloaded. Only
- * an authentication that accepts the same query twice can be kept this way.
+ * The key a session's cookie is encrypted with, when the server runs in the
+ * browser (ADR 0017): made on first use, and stored beside the cookies.
  */
-export const storedSessions = (authentication: Authentication, storage: BrowserStorage, prefix: string): Sessions => {
-  const users = new Map<string, User>();
-  const key = (id: string) => `${prefix}session:${id}`;
-  return {
-    async user(id) {
-      const known = users.get(id);
-      if (known !== undefined) return known;
-      const query = storage.getItem(key(id));
-      const user = query === null ? undefined : await authentication.finish(JSON.parse(query));
-      if (user !== undefined) users.set(id, user);
-      return user;
-    },
-    async remember(user, query) {
-      const id = randomId();
-      users.set(id, user);
-      storage.setItem(key(id), JSON.stringify(query));
-      return id;
-    },
-    async forget(id) {
-      users.delete(id);
-      storage.removeItem(key(id));
-    },
-  };
+export const storedKey = (storage: BrowserStorage, prefix: string): Uint8Array => {
+  const stored = storage.getItem(`${prefix}key`);
+  if (stored !== null) return Uint8Array.from(atob(stored), (character) => character.charCodeAt(0));
+  const key = crypto.getRandomValues(new Uint8Array(32));
+  storage.setItem(`${prefix}key`, btoa(String.fromCharCode(...key)));
+  return key;
 };
