@@ -32,6 +32,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          # Its own cache of pnpm's store fails a run that builds nothing, such as a branch deleted.
+          package-manager-cache: false
       # What the last run built, each branch with the commit it was built from.
       - uses: actions/cache/restore@v4
         with:
