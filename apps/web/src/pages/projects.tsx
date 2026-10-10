@@ -1,19 +1,15 @@
-import { Link, type LoaderFunctionArgs, redirect, useLoaderData } from 'react-router';
+import { createRoute, Link, redirect } from '@tanstack/react-router';
 import { api } from '@/api';
 import { useLanguage } from '@/language';
+import { rootRoute, signedIn } from '@/layout';
 import { productName } from '@/product';
-import { projectPage } from '@/project-address';
+import { projectParams } from '@/project-address';
 import { Card, Page, Section } from '@/ui';
 
-export const projectsLoader = async ({ request }: LoaderFunctionArgs) => {
-  const response = await api.projects.$get();
-  if (!response.ok) return redirect('/');
-  return { projects: await response.json(), unopened: new URL(request.url).searchParams.get('unopened') };
-};
-
-export function Projects() {
+function Projects() {
   const { strings: t } = useLanguage();
-  const { projects, unopened } = useLoaderData<typeof projectsLoader>();
+  const projects = projectsRoute.useLoaderData();
+  const { unopened } = projectsRoute.useSearch();
   const refused = unopened && <p className="text-sm text-warn">{t.projects.unopened(unopened)}</p>;
 
   if (projects.found === 'not installed')
@@ -47,7 +43,7 @@ export function Projects() {
       {refused}
       <Section title={t.projects.count(projects.projects.length)}>
         {projects.projects.map(({ address, name, scope }) => (
-          <Link key={address} to={projectPage(address)} className="block">
+          <Link key={address} to="/projects/$owner/$repository" params={projectParams(address)} className="block">
             <Card>
               <p className="text-sm font-semibold">{name}</p>
               {scope !== '' && <p className="mt-1 text-sm text-muted">{scope}</p>}
@@ -58,3 +54,18 @@ export function Projects() {
     </Page>
   );
 }
+
+export const projectsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'projects',
+  /** `unopened`: the project someone tried to open, and could not. */
+  validateSearch: (search: Record<string, unknown>): { unopened?: string } =>
+    typeof search.unopened === 'string' ? { unopened: search.unopened } : {},
+  beforeLoad: signedIn,
+  loader: async () => {
+    const response = await api.projects.$get();
+    if (!response.ok) throw redirect({ to: '/' });
+    return response.json();
+  },
+  component: Projects,
+});
