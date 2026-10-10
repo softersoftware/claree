@@ -64,8 +64,11 @@ A server is still needed in production. [0010](0010-the-platform-acts-through-a-
 
 ## Notes
 
+Hono is chosen for the server because it is built on `Request`, `Response` and `fetch`, not on Node's own objects: the whole server is one function, `app.fetch`, which runs in Node and in a browser alike, where Express runs in Node only. It has no dependency of its own and weighs a few kilobytes, which matters in a server shipped inside every prototype. It brings what the server would otherwise write by hand: routing, cookies, and, through `@hono/node-server`, the Node entry point and the application's static files. Its typed client, `hc`, gives the screens the server's routes and answers as types, which narrows the contract between the two programs.
+
 Weighed and set aside:
 
 - **Next.js with `output: 'export'`**: static files, but with every request-time feature switched off, and failures that show in `next build` and not in `next dev`. It keeps the framework's conventions without what they are for.
 - **Hosting each prototype as a server**, on Koyeb beside production, or as previews per branch on Vercel: prototypes stay built like today's application, but every prototype needs a running server and its mock pages put online, and Vercel's free plan excludes commercial use.
 - **The mock server behind a service worker**, catching the application's requests: a service worker cannot set cookies, so the session would need a second mechanism anyway. Calling the server as a function is simpler.
+- **Plain functions from `Request` to `Response`, with no framework**: possible for a handful of routes, but the routing, the cookies, the Node entry point and the static files would all be written and tested here.
