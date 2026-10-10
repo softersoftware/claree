@@ -4,18 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "vite --configLoader runner",
-    "dev:mock": "CLAREE_ADAPTERS=mock vite --configLoader runner",
+    "dev:mock": "vite --configLoader runner",
     "build": "tsc --noEmit && vite build --configLoader runner",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@claree/domain": "workspace:*",
     "@claree/mock-adapters": "workspace:*",
-    "@claree/server": "workspace:*",
     "@tanstack/react-router": "^1.170.42",
-    "hono": "^4.13.13",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

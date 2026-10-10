@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { nameAndScope, repositoryLink } from './project';
+import { mayAgree, nameAndScope, repositoryLink } from './project';
 
 describe('name and scope', () => {
   const address = 'https://example.org/medito';
@@ -47,5 +47,12 @@ describe('the link to a repository', () => {
     expect(repositoryLink('ssh://git@example.org/medito.git')).toBeUndefined();
     expect(repositoryLink('javascript://%0Aalert(1)')).toBeUndefined();
     expect(repositoryLink(' https://example.org/medito')).toBeUndefined();
+  });
+});
+
+describe('agreement', () => {
+  it('is given by the customer only', () => {
+    expect(mayAgree({ name: 'Ana', role: 'customer' })).toBe(true);
+    expect(mayAgree({ name: 'Tom', role: 'maker' })).toBe(false);
   });
 });

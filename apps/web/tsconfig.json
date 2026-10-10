@@ -6,7 +6,6 @@
     "jsx": "react-jsx",
     "types": ["vite/client", "node"],
     "paths": {
-      "@/adapters": ["./src/adapters/real.ts"],
       "@/*": ["./src/*"]
     }
   },
