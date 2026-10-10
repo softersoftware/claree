@@ -25,3 +25,4 @@ Format: **Status** (proposed / accepted / superseded by NNNN), **Context** (the 
 - [0015 — The mock of an outside service serves its pages](0015-the-mock-of-an-outside-service-serves-its-pages.md)
 - [0016 — The platform is a single-page application, and its prototypes are static pages](0016-the-platform-is-a-single-page-application.md)
 - [0017 — Sessions are kept in an encrypted cookie, not on the server](0017-sessions-are-kept-in-an-encrypted-cookie.md)
+- [0018 — The application's routes are TanStack Router's](0018-routes-are-tanstack-routers.md)
