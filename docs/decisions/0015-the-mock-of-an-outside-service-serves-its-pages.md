@@ -1,6 +1,6 @@
 # 0015 — The mock of an outside service serves its pages
 
-**Status**: accepted (2026-10); completes [0012](0012-adapters-are-packaged-by-outside-service.md)
+**Status**: accepted (2026-10); completes [0012](0012-adapters-are-packaged-by-outside-service.md); point 2 superseded by [0016](0016-the-platform-is-a-single-page-application.md)
 
 ## Context
 

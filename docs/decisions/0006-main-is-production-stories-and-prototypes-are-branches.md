@@ -1,6 +1,6 @@
 # 0006 — `main` is production; stories and prototypes are branches
 
-**Status**: accepted (2026-09); how a story's branch is named superseded by [0008](0008-the-business-is-in-files-the-solution-in-github-issues.md); how a prototype's branch is named and kept up to date superseded by [0013](0013-sketches-and-prototypes-have-their-own-branches.md)
+**Status**: accepted (2026-09); how a story's branch is named superseded by [0008](0008-the-business-is-in-files-the-solution-in-github-issues.md); how a prototype's branch is named and kept up to date superseded by [0013](0013-sketches-and-prototypes-have-their-own-branches.md); a prototype needing a server superseded by [0016](0016-the-platform-is-a-single-page-application.md)
 
 ## Context
 

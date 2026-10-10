@@ -1,6 +1,6 @@
 # 0007 — Supersoft's production runs on Koyeb, from its own Dockerfile
 
-**Status**: accepted (2026-09)
+**Status**: accepted (2026-09); point 5 and its open question superseded by [0016](0016-the-platform-is-a-single-page-application.md)
 
 ## Context
 
