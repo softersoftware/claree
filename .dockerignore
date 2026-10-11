@@ -6,5 +6,6 @@
 .claude
 CLAUDE.local.md
 docs
+!docs/branding
 .env
 .env.*

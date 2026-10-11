@@ -2,6 +2,7 @@ import { createRoute, redirect, useRouter } from '@tanstack/react-router';
 import { api } from '@/api';
 import { useLanguage } from '@/language';
 import { rootRoute } from '@/layout';
+import { Logo } from '@/logo';
 import { Button, Card, Page } from '@/ui';
 
 function SignIn() {
@@ -14,6 +15,10 @@ function SignIn() {
   };
   return (
     <Page>
+      <div className="space-y-3 pt-6">
+        <Logo large />
+        <p className="font-serif text-xl text-muted">{t.description}</p>
+      </div>
       <Card>
         <p className="text-sm">{t.signingIn.needed}</p>
         <div className="mt-4">

@@ -3,7 +3,7 @@ import type { Strings } from './en';
 const nbsp = ' ';
 
 export const fr: Strings = {
-  description: 'Spécifier et planifier une application, avec les experts métier dans la conversation.',
+  description: 'Construire des outils numériques avec celles et ceux qui en ont besoin.',
   signingIn: {
     signIn: 'Se connecter avec GitHub',
     needed: 'Vous devez être connecté pour accéder à vos projets.',
