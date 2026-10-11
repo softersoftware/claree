@@ -2,7 +2,7 @@
 
 How Clarée presents itself. What a branding holds, when it is chosen and who agrees to it is in [the branding domain](../domain/branding.md).
 
-Direction chosen: slate, the second of three [branding prototypes](https://softersoftware.github.io/claree/branding/002/). Not agreed yet.
+Agreed by the project owner on 2026-10-11: slate, the second of three [branding prototypes](https://softersoftware.github.io/claree/branding/002/), refined.
 
 - **Personality**: clear, attentive, sober. Made for the domain experts first, charities above all; never an app generator ([workshop](../workshops/20261011%20branding/notes.md)).
 - **Name**: Clarée.
