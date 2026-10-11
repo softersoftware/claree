@@ -37,7 +37,7 @@ Each step of the cycle, and what is outside it, has its place in the project:
 | Step | Where it lives |
 |---|---|
 | Scope | `README.md`: what the application is for |
-| Branding | `docs/branding/`: name, tone, colours, typography, logo; a branding prototype on a `branding/<number>` branch, whose screens never change |
+| Branding | `docs/branding/`: name, tone, colours, typography, logo; a branding prototype for each direction, on a `branding/<number>` branch, whose screens never change |
 | 1. Workshop | `docs/workshops/<date> <title>/`: notes, recordings, slides, as they came; a sketch of the whole scope on a `sketches/<number>` branch, whose screens never change |
 | 2. Domains | `docs/domain/`: one file per domain, its glossary, rules and questions; `docs/glossary_bridge.md`: each term ↔ its name in the code |
 | 3. Prototype | a `prototypes/<version>` branch, built like the application, with mock data, rebased on `main` |
