@@ -1,10 +1,10 @@
-# Every sketch, prototype and story, built with the mocks and published together on
+# Every sketch, branding prototype, prototype and story, built with the mocks and published together on
 # this repository's GitHub Pages, each under its branch's path (ADR 0016).
-name: Sketches, prototypes and stories
+name: Sketches, branding, prototypes and stories
 
 on:
   push:
-    branches: ['sketches/**', 'prototypes/**', 'stories/**']
+    branches: ['sketches/**', 'branding/**', 'prototypes/**', 'stories/**']
   # A story's branch is deleted once it is merged: it leaves the site.
   delete:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
           path: ${{ runner.temp }}/built
           key: built-${{ github.run_id }}
           restore-keys: built-
-      - name: Build every sketch, prototype and story that changed
+      - name: Build every sketch, branding prototype, prototype and story that changed
         env:
           REPOSITORY: ${{ github.event.repository.name }}
         run: |
@@ -48,8 +48,8 @@ jobs:
           next="$RUNNER_TEMP/next"
           site="$RUNNER_TEMP/site"
           mkdir -p "$built" "$next" "$site"
-          echo '<!doctype html><meta charset="utf-8"><title>Sketches, prototypes and stories</title><ul>' > "$site/index.html"
-          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/sketches refs/remotes/origin/prototypes refs/remotes/origin/stories); do
+          echo '<!doctype html><meta charset="utf-8"><title>Sketches, branding, prototypes and stories</title><ul>' > "$site/index.html"
+          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/sketches refs/remotes/origin/branding refs/remotes/origin/prototypes refs/remotes/origin/stories); do
             branch="${ref#origin/}"
             # The sketches made before ADR 0016 have no application to build as static files.
             git cat-file -e "$ref:apps/web/vite.config.ts" 2>/dev/null || continue
