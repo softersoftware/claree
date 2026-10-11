@@ -1,24 +1,24 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/source-serif-4';
-@import '@fontsource-variable/source-sans-3';
+@import '@fontsource-variable/literata';
+@import '@fontsource-variable/public-sans';
 
 /*
- * Branding direction 001, ink on paper: off-white paper, near-black ink, one
- * quiet green. What is read is set in a serif, like a well-made report; the
- * interface around it is a sans-serif, small and plain.
+ * Branding direction 003, ochre: neutral greys, one muted ochre. Still sober,
+ * but closer to attentive than official; Literata for what is read, Public
+ * Sans for the interface; rounder corners.
  */
 @theme {
-  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --color-paper: #fbfaf7;
+  --font-sans: 'Public Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Literata Variable', ui-serif, Georgia, serif;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --color-paper: #f6f6f4;
   --color-card: #ffffff;
-  --color-ink: #1c1c1a;
-  --color-muted: #66655f;
-  --color-rule: #e3e0d8;
-  --color-accent: #2f5d50;
-  --color-accent-soft: #e9f0ed;
-  --color-warn: #8a5a12;
-  --color-warn-soft: #fbf1de;
+  --color-ink: #23211f;
+  --color-muted: #66625d;
+  --color-rule: #e4e1dc;
+  --color-accent: #94531f;
+  --color-accent-soft: #f5ebe1;
+  --color-warn: #8f3b1b;
+  --color-warn-soft: #fbe9e2;
 }
