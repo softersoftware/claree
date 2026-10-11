@@ -1,24 +1,26 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/source-serif-4';
-@import '@fontsource-variable/source-sans-3';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-serif/400.css';
+@import '@fontsource/ibm-plex-serif/600.css';
 
 /*
- * Branding direction 001, ink on paper: off-white paper, near-black ink, one
- * quiet green. What is read is set in a serif, like a well-made report; the
- * interface around it is a sans-serif, small and plain.
+ * Branding direction 002, slate: cool greys, one deep blue. Crisp and a little
+ * institutional; IBM Plex Serif for what is read, IBM Plex Sans for the
+ * interface; nearly square corners.
  */
 @theme {
-  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --color-paper: #fbfaf7;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'IBM Plex Serif', ui-serif, Georgia, serif;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --color-paper: #f4f6f8;
   --color-card: #ffffff;
-  --color-ink: #1c1c1a;
-  --color-muted: #66655f;
-  --color-rule: #e3e0d8;
-  --color-accent: #2f5d50;
-  --color-accent-soft: #e9f0ed;
-  --color-warn: #8a5a12;
-  --color-warn-soft: #fbf1de;
+  --color-ink: #141a23;
+  --color-muted: #586272;
+  --color-rule: #dbe0e7;
+  --color-accent: #1f3a68;
+  --color-accent-soft: #e6ecf5;
+  --color-warn: #8a4b0f;
+  --color-warn-soft: #fbefe2;
 }
