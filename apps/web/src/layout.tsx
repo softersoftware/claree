@@ -63,7 +63,7 @@ function Header() {
   };
   return (
     <header className="border-t-4 border-b border-t-accent border-b-rule bg-card">
-      <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-4">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
         <ProductName />
         <div className="flex items-center gap-6">
           <LanguageSelector />

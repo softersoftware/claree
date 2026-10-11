@@ -4,6 +4,8 @@ import { useLanguage } from '@/language';
 import { rootRoute, signedIn } from '@/layout';
 import { productName } from '@/product';
 import { projectParams } from '@/project-address';
+import { currentStep } from '@/sketch/business';
+import { stored } from '@/sketch/store';
 import { Card, Page, Section } from '@/ui';
 
 function Projects() {
@@ -47,6 +49,7 @@ function Projects() {
             <Card>
               <p className="font-serif text-lg font-semibold">{name}</p>
               {scope !== '' && <p className="mt-1 font-serif text-muted">{scope}</p>}
+              <p className="mt-2 text-xs text-muted">{t.projects.step(t.steps[currentStep(stored(address))])}</p>
             </Card>
           </Link>
         ))}

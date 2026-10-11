@@ -46,3 +46,6 @@ export const useLanguage = () => {
   if (current === undefined) throw new Error('useLanguage is used outside LanguageProvider.');
   return current;
 };
+
+/** What the platform says in a language, whatever the one chosen: a project's own sentences are in its language. */
+export const stringsIn = (language: Language) => (language === 'fr' ? fr : en);
