@@ -27,3 +27,5 @@ Spending too much time on details, which makes the prototype costly to change, w
 **Rule.** A prototype applies the rules of the domains; it never holds one of its own. Trying it refines the rules, and the rules refine it: a rule found while trying a prototype is written in its domain before the prototype uses it.
 
 **Rule.** A prototype depends on nothing outside itself: everything it shows is invented for it. It can be tried at any moment, by anyone, with no consequence.
+
+**Rule.** A prototype may ignore the [branding](branding.md): it tries the business and the journeys, not the look.

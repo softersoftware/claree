@@ -14,8 +14,13 @@ With or without a supporting platform, a project goes round the same cycle for e
 8. [Deployment](step_8_deployment.md) — once all its stories are done, a version is put in front of real people.
 9. Feedback — real use brings feedback, which may call for new workshops.
 
-Before the first step, the project owner says what the digital tool is for: its scope. That, and what belongs to no step — who takes part, the language, arriving at a project, and the rules of the whole project — is in [Project and participants](project.md).
+## Outside the cycle
 
-How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). The platform's domains are the steps of the cycle, so each file also says the previous step, the next one, what it takes to move on, and the risks of the step.
+Some of the business belongs to no step. Its domains are not numbered, and the cycle does not go round them again for each new domain.
+
+- [Project and participants](project.md) — before the first step, the project owner says what the digital tool is for: its scope. Who takes part, the language, arriving at a project, and the rules of the whole project.
+- [Branding](branding.md) — once the scope is clear enough, how the digital tool presents itself: its name, its tone, its look.
+
+How these files are written is in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). A domain that is a step also says the previous step, the next one, what it takes to move on, and the risks of the step. A domain outside the cycle says when it happens instead.
 
 The platform's domain experts are its makers, so these files are written in English.
