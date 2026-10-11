@@ -9,6 +9,7 @@ README.md               # the scope
 CHANGELOG.md            # each version and the stories it carried
 docs/
 ├── workshops/          # what the domain experts said, as it came
+├── branding/           # how the digital tool presents itself
 ├── domain/             # the business, one file per domain
 ├── glossary_bridge.md  # each term and its name in the code
 └── decisions/          # the choices behind the software
@@ -30,6 +31,12 @@ One folder per workshop, named by its date and its title: `20260916 general pres
 
 - A workshop is what was said on one day. Its documents are never rewritten to say what was understood later: that is a later workshop, or it is written in a domain.
 - A document can be added after the day — a report or a transcript often comes later — and it is always about that day.
+
+### `docs/branding/`
+
+The digital tool's branding, once its project owner has agreed to it: its name, its tone, its colours, its typography, its logo, what [a branding](docs/domain/branding.md) holds. Each part is kept as it is best read: the tone in words, the colours as values, the logo as files.
+
+Every visible string answers to the tone, and every final interface to the rest.
 
 ### `docs/domain/`
 

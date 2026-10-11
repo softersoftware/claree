@@ -25,6 +25,8 @@ Drifting from what was validated: a final interface that changes what the domain
 
 **Rule.** Every mock-up belongs to exactly one story, and starts from that story's part of the prototype.
 
+**Rule.** A mock-up applies the [branding](branding.md).
+
 **Rule.** A mock-up changes how the prototype looks, not what it does. What it does differently is a change to the prototype, tried again first.
 
 **Rule.** A mock-up, and a demonstration, depend on nothing outside themselves. They can be shown at any moment, by anyone, with no consequence.
