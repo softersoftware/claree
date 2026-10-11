@@ -1,16 +1,22 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/source-serif-4';
+@import '@fontsource-variable/source-sans-3';
 
 /*
- * The platform's own surface: paper, ink, one green. It is a place to have a
- * conversation about an application, so it stays quiet and reads like a
- * document rather than a dashboard.
+ * Branding direction 001, ink on paper: off-white paper, near-black ink, one
+ * quiet green. What is read is set in a serif, like a well-made report; the
+ * interface around it is a sans-serif, small and plain.
  */
 @theme {
+  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+  --radius-md: 3px;
+  --radius-lg: 4px;
   --color-paper: #fbfaf7;
   --color-card: #ffffff;
   --color-ink: #1c1c1a;
-  --color-muted: #6d6c66;
-  --color-rule: #e5e3dc;
+  --color-muted: #66655f;
+  --color-rule: #e3e0d8;
   --color-accent: #2f5d50;
   --color-accent-soft: #e9f0ed;
   --color-warn: #8a5a12;

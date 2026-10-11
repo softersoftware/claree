@@ -12,6 +12,8 @@
     "@claree/domain": "workspace:*",
     "@claree/mock-adapters": "workspace:*",
     "@claree/server": "workspace:*",
+    "@fontsource-variable/source-sans-3": "^5.3.1",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
     "@tanstack/react-router": "^1.170.42",
     "hono": "^4.13.13",
     "react": "19.2.4",
