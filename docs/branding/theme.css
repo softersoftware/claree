@@ -1,0 +1,20 @@
+/*
+ * The platform's colours, typefaces and shapes, as values. Every screen takes
+ * them from here; what each one is for is in README.md beside this file.
+ */
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'IBM Plex Serif', ui-serif, Georgia, serif;
+
+  --radius-md: 2px;
+  --radius-lg: 2px;
+
+  --color-paper: #f4f6f8;
+  --color-card: #ffffff;
+  --color-ink: #141a23;
+  --color-muted: #586272;
+  --color-rule: #dbe0e7;
+  --color-accent: #1f3a68;
+  --color-accent-strong: #152a4d;
+  --color-warn: #8a4b0f;
+}

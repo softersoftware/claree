@@ -1,6 +1,6 @@
 /** What the platform says, in English. Never what a project says: that is never translated. */
 export const en = {
-  description: 'Specifying and planning an application, with the domain experts in the conversation.',
+  description: 'Making digital tools with the people who need them.',
   signingIn: {
     signIn: 'Sign in with GitHub',
     needed: 'You need to be signed in to access your projects.',

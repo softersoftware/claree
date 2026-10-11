@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 export function Page({ title, children }: { title?: string; children: ReactNode }) {
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
-      {title && <h1 className="text-2xl font-semibold tracking-tight break-words">{title}</h1>}
+      {title && <h1 className="font-serif text-3xl font-semibold tracking-tight break-words">{title}</h1>}
       <div className={`space-y-8 ${title ? 'mt-8' : ''}`}>{children}</div>
     </div>
   );
@@ -19,9 +19,7 @@ export function Section({ title, children }: { title: string; children: ReactNod
 }
 
 export function Card({ children }: { children: ReactNode }) {
-  return (
-    <div className="rounded-lg border border-rule bg-card p-4 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">{children}</div>
-  );
+  return <div className="rounded-lg border border-rule bg-card p-4">{children}</div>;
 }
 
 export function Button({ children, onClick }: { children: ReactNode; onClick(): void }) {
@@ -29,7 +27,7 @@ export function Button({ children, onClick }: { children: ReactNode; onClick(): 
     <button
       type="button"
       onClick={onClick}
-      className="rounded-md border border-rule px-3 py-1.5 text-sm text-ink hover:bg-paper"
+      className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-strong"
     >
       {children}
     </button>

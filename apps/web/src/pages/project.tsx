@@ -11,7 +11,7 @@ function Project() {
     <Page title={name}>
       {scope !== '' && (
         <Section title={t.overview.scope}>
-          <p className="text-sm">{scope}</p>
+          <p className="font-serif text-lg">{scope}</p>
         </Section>
       )}
       <Section title={t.overview.repository}>

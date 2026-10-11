@@ -45,8 +45,8 @@ function Projects() {
         {projects.projects.map(({ address, name, scope }) => (
           <Link key={address} to="/projects/$owner/$repository" params={projectParams(address)} className="block">
             <Card>
-              <p className="text-sm font-semibold">{name}</p>
-              {scope !== '' && <p className="mt-1 text-sm text-muted">{scope}</p>}
+              <p className="font-serif text-lg font-semibold">{name}</p>
+              {scope !== '' && <p className="mt-1 font-serif text-muted">{scope}</p>}
             </Card>
           </Link>
         ))}

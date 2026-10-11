@@ -1,7 +1,7 @@
 import { createRootRoute, Link, Outlet, redirect, useLocation, useRouter } from '@tanstack/react-router';
 import { api } from '@/api';
 import { languages, type Language, useLanguage } from '@/language';
-import { productName } from '@/product';
+import { Logo } from '@/logo';
 import { Card, Page } from '@/ui';
 
 /** The person signed in, or nobody: asked again on every navigation, since signing in or out changes it. */
@@ -15,14 +15,15 @@ export const signedIn = ({ context }: { context: { user: { name: string } | null
   if (context.user === null) throw redirect({ to: '/' });
 };
 
-/** A link to the Projects page, except where it would lead nowhere new. */
+/** A link to the Projects page, except where it would lead nowhere new; the sign-in page shows the logo itself. */
 function ProductName() {
-  const className = 'text-sm font-semibold tracking-tight';
-  return ['/', '/projects'].includes(useLocation({ select: (location) => location.pathname })) ? (
-    <span className={className}>{productName}</span>
+  const pathname = useLocation({ select: (location) => location.pathname });
+  if (pathname === '/') return <span />;
+  return pathname === '/projects' ? (
+    <Logo />
   ) : (
-    <Link to="/projects" className={className}>
-      {productName}
+    <Link to="/projects">
+      <Logo />
     </Link>
   );
 }
@@ -61,7 +62,7 @@ function Header() {
     await router.navigate({ to: '/' });
   };
   return (
-    <header className="border-b border-rule bg-card">
+    <header className="border-t-4 border-b border-t-accent border-b-rule bg-card">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-4">
         <ProductName />
         <div className="flex items-center gap-6">
