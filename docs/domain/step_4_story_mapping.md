@@ -4,7 +4,7 @@ Previous: the [prototype](step_3_prototypes.md).
 
 The prototype is cut into a few features, each split into its smallest atomic functionalities: its stories. A story makes a visible change to the interface, is useful, and can be tested. Together they make the story map.
 
-Next: once each story has its value and its effort, the story map is sliced into versions in [version planning](step_5_version_planning.md).
+Next: once each story has its value and its effort, the story map is sliced into milestones in [milestone planning](step_5_milestone_planning.md).
 
 ## Risks
 

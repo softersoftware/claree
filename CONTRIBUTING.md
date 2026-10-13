@@ -6,7 +6,7 @@ How a project built with the method is laid out, and how its files are written. 
 
 ```bash
 README.md               # the scope
-CHANGELOG.md            # each version and the stories it carried
+CHANGELOG.md            # each deployment and the stories it carried
 docs/
 ├── workshops/          # what the domain experts said, as it came
 ├── branding/           # how the digital tool presents itself
@@ -23,7 +23,7 @@ Its title is the project's name. The first paragraph under it is the scope: a fe
 
 ### `CHANGELOG.md`
 
-One section per version, the most recent first: its name, its date, and the stories it carried. A version carries only done stories.
+One section per deployment, the most recent first: its name, its date, and the stories it carried. A deployment carries only done stories.
 
 ### `docs/workshops/`
 

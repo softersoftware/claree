@@ -1,6 +1,6 @@
 # 0008 — The business is in files; the solution is in GitHub issues
 
-**Status**: accepted (2026-09)
+**Status**: accepted (2026-09), points 2 and 3 amended: a milestone may be deployed in parts, and each deployment leaves the trace (2026-10)
 
 ## Context
 
@@ -24,9 +24,9 @@ What 0005 got right still holds. The business (scope, workshops, domains, rules,
    - **business value and effort** are labels: `value: M`, `effort: S`;
    - **what blocks a story** is GitHub's own "blocked by" between issues;
    - **a story is to do** while open, **in progress** while an open pull request closes it, **done** once closed as completed. Its state is never written by hand. Closed as not planned, it is dropped;
-   - **a version being gathered** is a milestone; the stories it carries are those in the milestone.
+   - **a milestone** is a GitHub milestone; its stories are those in it. It is closed once they have all gone out (amended 2026-10).
 
-3. **A version leaves a trace in the repository.** It is a git tag, plus a section of `CHANGELOG.md` listing its stories by number and title, written in the pull request that cuts it. A GitHub release, if there is one, is generated from them.
+3. **A deployment leaves a trace in the repository.** It is a git tag, plus a section of `CHANGELOG.md` listing the stories it carried by number and title, written in the pull request that cuts it. A milestone may take several (amended 2026-10). A GitHub release, if there is one, is generated from them.
 
 4. **Supersoft works with GitHub only.** The domain still knows nothing of it. Each port keeps a name from the business and a mock adapter, and only the real adapters speak to GitHub, through its API rather than by cloning. Identity and rights are GitHub's, as in 0005: Supersoft grants nothing of its own.
 
