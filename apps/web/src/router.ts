@@ -7,7 +7,6 @@ import { featureRoute, featuresRoute, storyRoute } from '@/pages/features';
 import { milestonesRoute } from '@/pages/milestones';
 import { overviewRoute, projectRoute } from '@/pages/project';
 import { projectsRoute } from '@/pages/projects';
-import { prototypesRoute } from '@/pages/prototypes';
 import { callbackRoute, signInRoute } from '@/pages/sign-in';
 import { workshopsRoute } from '@/pages/workshops';
 
@@ -21,7 +20,6 @@ export const router = createRouter({
       workshopsRoute,
       domainsRoute,
       domainRoute,
-      prototypesRoute,
       featuresRoute,
       featureRoute,
       storyRoute,

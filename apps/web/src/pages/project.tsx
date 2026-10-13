@@ -15,7 +15,6 @@ type ProjectPath =
   | '/projects/$owner/$repository'
   | '/projects/$owner/$repository/workshops'
   | '/projects/$owner/$repository/domains'
-  | '/projects/$owner/$repository/prototypes'
   | '/projects/$owner/$repository/features'
   | '/projects/$owner/$repository/milestones'
   | '/projects/$owner/$repository/branding';
@@ -46,12 +45,11 @@ function ProjectNav() {
       <NavLink to="/projects/$owner/$repository" exact>
         {t.nav.overview}
       </NavLink>
+      <NavLink to="/projects/$owner/$repository/branding">{t.nav.branding}</NavLink>
       <NavLink to="/projects/$owner/$repository/workshops">{t.nav.workshops}</NavLink>
       <NavLink to="/projects/$owner/$repository/domains">{t.nav.domains}</NavLink>
-      <NavLink to="/projects/$owner/$repository/prototypes">{t.nav.prototypes}</NavLink>
-      <NavLink to="/projects/$owner/$repository/features">{t.nav.features}</NavLink>
       <NavLink to="/projects/$owner/$repository/milestones">{t.nav.milestones}</NavLink>
-      <NavLink to="/projects/$owner/$repository/branding">{t.nav.branding}</NavLink>
+      <NavLink to="/projects/$owner/$repository/features">{t.nav.features}</NavLink>
     </nav>
   );
 }

@@ -25,7 +25,6 @@ export const en = {
     overview: 'Overview',
     workshops: 'Workshops',
     domains: 'Domains',
-    prototypes: 'Prototypes',
     features: 'Features',
     milestones: 'Milestones',
     branding: 'Branding',
@@ -45,10 +44,6 @@ export const en = {
   },
   domains: {
     none: 'No domains yet.',
-  },
-  prototypes: {
-    none: 'No prototypes yet.',
-    tryIt: 'Try it',
   },
   features: {
     none: 'No features yet.',
@@ -80,6 +75,8 @@ export const en = {
     none: 'No milestones yet.',
     noStories: 'No stories yet.',
     reached: 'Reached',
+    prototype: 'Try its prototype',
+    noPrototype: 'No prototype yet.',
     totals: (value: number, effort: number | undefined) =>
       `Value ${value} · Effort ${effort ?? 'unknown, some stories have none'}`,
     groups: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done', released: 'Released' },
