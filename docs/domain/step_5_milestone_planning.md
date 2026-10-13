@@ -16,3 +16,8 @@ Milestones are meant to be small increments. A milestone with too few stories is
 
 - **Milestone**: a coherent set of stories, planned to reach real people, which can be released in parts as its stories are done.
 - **Blocked by**: the stories a story needs done before it can be done, because it needs what they bring.
+- **To do**, **in progress**, **done**, **in production**: where a milestone is, in that order, from where its stories are.
+
+## Rules
+
+**Rule.** A milestone is to do while all its stories are to do, done once each of them is done or in production, in production once all of them are in production, and in progress in between.

@@ -2,7 +2,7 @@
 
 Previous: the [implementation](step_7_implementation.md).
 
-Done stories are released: put in front of real people. A milestone may be released in parts, as its stories are done; it is reached once all its stories have gone out.
+Done stories are released: put in front of real people. A milestone may be released in parts, as its stories are done; it is in production once all its stories are.
 
 Next: real use brings feedback, which may call for new [workshops](step_1_workshops.md).
 
@@ -15,7 +15,7 @@ Introducing bugs in front of real people. A release is fully tested before it go
 - **Release**: putting done stories in front of real people, at one time.
 - **Version**: the name a release is known by, such as 1.4.
 - **The release that carried a story**: the one it went out in.
-- **A milestone reached**: one whose stories have all gone out.
+- **Putting a story in production**: taking it from done to in production, in the release that carries it.
 
 ## Rules
 
