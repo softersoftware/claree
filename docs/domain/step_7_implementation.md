@@ -4,7 +4,7 @@ Previous: the [story refinement](step_6_refinement.md).
 
 The makers implement the refined stories in the planned order, following their plan of implementation. Each implemented story can be tried by the domain experts before it reaches real people.
 
-Next: done stories are [deployed](step_8_deployment.md).
+Next: done stories are [released](step_8_release.md).
 
 ## Risks
 

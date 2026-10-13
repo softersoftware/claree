@@ -14,5 +14,5 @@ Milestones are meant to be small increments. A milestone with too few stories is
 
 ## Glossary
 
-- **Milestone**: a coherent set of stories, planned to reach real people, which can be deployed in parts as its stories are done.
+- **Milestone**: a coherent set of stories, planned to reach real people, which can be released in parts as its stories are done.
 - **Blocked by**: the stories a story needs done before it can be done, because it needs what they bring.

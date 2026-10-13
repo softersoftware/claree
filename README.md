@@ -4,7 +4,7 @@ A platform where domain experts and makers build an application together, step b
 
 ## What is application co-creation
 
-A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, story mapping, milestone planning, story refinement, implementation, deployment, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
+A project goes round a cycle for every new domain it addresses: workshops, domains, prototype, story mapping, milestone planning, story refinement, implementation, release, feedback. Each step, and its rules, is described in [`docs/domain/`](docs/domain/README.md#the-cycle).
 
 Part of the business belongs to no step, and is [outside the cycle](docs/domain/README.md#outside-the-cycle): the project and its participants, and its branding, chosen once the scope is clear enough.
 
@@ -23,7 +23,7 @@ The business is in files, and changes with the code that applies it:
 ```bash
 project/
 ├── README.md                   # the scope: what the application is for
-├── CHANGELOG.md                # each deployment and the stories it carried
+├── CHANGELOG.md                # each release and the stories it carried
 └── docs/
     ├── workshops/
     │   └── <date> <title>/     # what a workshop left behind: notes, recordings, slides
@@ -45,7 +45,7 @@ Each step of the cycle, and what is outside it, has its place in the project:
 | 5. Milestone planning | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a GitHub milestone gathers the stories of the next one |
 | 6. Story refinement | the story's issue: its plan of implementation; its mock-up, first on the story's branch |
 | 7. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
-| 8. Deployment | the done stories, cut as a git tag and a section of `CHANGELOG.md`; a milestone is closed once all its stories have gone out |
+| 8. Release | the done stories, cut as a git tag named after its version and a section of `CHANGELOG.md`; a milestone is closed once all its stories have gone out |
 | 9. Feedback | an issue, which may call for a new workshop |
 
 

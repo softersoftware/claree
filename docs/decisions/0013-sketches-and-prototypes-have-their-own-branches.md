@@ -18,7 +18,7 @@ The domains now know three, which do not live the same way:
 
 1. **A sketch lives on `sketches/<number>`**, numbered in the order they are made. It is never merged, and what it shows never changes: it stays as it was shown. It may be rebased on `main`, to build with the tooling of the day, as long as its screens stay the same. Its branch may be deleted when nothing calls for it any more, for instance when another sketch shows the same (amended 2026-10).
 
-2. **A prototype lives on `prototypes/<milestone>`**, named after the milestone it prototypes. It is rebased on `main` whenever `main` changes, so that it is always the next milestone on top of what is deployed (amended 2026-10). It is never merged as a whole: once validated, story branches take its screens, as 0006 says.
+2. **A prototype lives on `prototypes/<milestone>`**, named after the milestone it prototypes. It is rebased on `main` whenever `main` changes, so that it is always the next milestone on top of what is released (amended 2026-10). It is never merged as a whole: once validated, story branches take its screens, as 0006 says.
 
 3. **A mock-up is made on its story's branch.** The story's first commits take its screens from the prototype and polish them; the story's code is built under them. A mock-up has no branch of its own.
 
