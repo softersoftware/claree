@@ -5,6 +5,7 @@ const pages = 'https://medito-centre.github.io/medito';
 /** A project well into its cycle: one version out, the next being built, the one after being tried. */
 const medito: Business = {
   language: 'en',
+  demonstrationAt: `${pages}/demonstration/`,
   participants: [
     { name: 'Claire Dubois', roles: ['project owner', 'domain expert'], crafts: [] },
     { name: 'Hugo Lemaire', roles: ['domain expert'], crafts: [] },
@@ -198,6 +199,7 @@ const medito: Business = {
       value: 'L',
       effort: 'S',
       status: 'done',
+      validation: { by: 'Claire Dubois', on: '2026-05-20' },
       blockedBy: [],
       version: '1.0',
       mockUp: `${pages}/stories/1/`,
@@ -213,6 +215,7 @@ const medito: Business = {
       value: 'XL',
       effort: 'M',
       status: 'done',
+      validation: { by: 'Claire Dubois', on: '2026-06-10' },
       blockedBy: ['s1'],
       version: '1.0',
       plan: 'A button on each session; refused when the room is full.',
@@ -227,6 +230,7 @@ const medito: Business = {
       value: 'M',
       effort: 'S',
       status: 'done',
+      validation: { by: 'Hugo Lemaire', on: '2026-06-17' },
       blockedBy: ['s2'],
       version: '1.0',
     },
@@ -240,6 +244,7 @@ const medito: Business = {
       value: 'M',
       effort: 'XS',
       status: 'done',
+      validation: { by: 'Hugo Lemaire', on: '2026-09-15' },
       blockedBy: ['s2'],
       version: '1.1',
     },
@@ -253,6 +258,7 @@ const medito: Business = {
       value: 'L',
       effort: 'M',
       status: 'in progress',
+      demonstrated: '2026-10-09',
       blockedBy: ['s3'],
       version: '1.1',
       mockUp: `${pages}/stories/5/`,

@@ -1,7 +1,7 @@
 import { createRoute } from '@tanstack/react-router';
 import { AgreeBy, isDomainExpert } from '@/agreement';
 import { useLanguage } from '@/language';
-import { inOrder, nextVersion, ratio, type Status, storiesOf, today, whyNotDeployable } from '@/sketch/business';
+import { inOrder, nextVersion, ratio, type Story, storiesOf, today, whyNotDeployable } from '@/sketch/business';
 import { useBusiness } from '@/sketch/store';
 import { Adding, Button, Card, Empty, External, Form, Input, Note, Pill, Section, Select } from '@/ui';
 import { ProjectPage, projectRoute } from './project';
@@ -77,56 +77,112 @@ export const planningRoute = createRoute({
   component: Planning,
 });
 
-const columns: readonly Status[] = ['to do', 'in progress', 'done'];
+const refined = (story: Story) => story.mockUp !== undefined && story.plan !== undefined;
 
-function UnderWay() {
+function Refinement() {
   const { strings: t } = useLanguage();
   const { business } = useBusiness();
   const next = nextVersion(business);
+  const stories = next
+    ? inOrder(business, storiesOf(business, next.name)).filter((story) => story.status === 'to do')
+    : [];
+  const groups = [
+    { title: t.refinement.toRefine, stories: stories.filter((story) => !refined(story)) },
+    { title: t.refinement.refined, stories: stories.filter(refined) },
+  ];
   return (
-    <ProjectPage title={t.underway.title}>
-      <Note>{t.underway.note}</Note>
+    <ProjectPage title={t.steps.refinement}>
+      <Note>{t.refinement.note}</Note>
       {!next ? (
-        <Empty>{t.underway.none}</Empty>
+        <Empty>{t.refinement.none}</Empty>
       ) : (
         <>
-          <p className="font-medium">{t.underway.of(next.name)}</p>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {columns.map((status) => (
-              <Section key={status} title={t.stories.statuses[status]}>
-                {inOrder(business, storiesOf(business, next.name))
-                  .filter((story) => story.status === status)
-                  .map((story) => (
-                    <div key={story.id} className="space-y-2">
-                      <StoryLine story={story} />
-                      <div className="flex flex-wrap gap-1.5 text-xs">
-                        {status === 'to do' && (
-                          <>
-                            <Pill tone={story.mockUp ? 'plain' : 'warn'}>
-                              {story.mockUp ? '✓' : '·'} {t.stories.mockUp}
-                            </Pill>
-                            <Pill tone={story.plan ? 'plain' : 'warn'}>
-                              {story.plan ? '✓' : '·'} {t.stories.plan}
-                            </Pill>
-                          </>
-                        )}
-                      </div>
-                      <Implementing story={story} />
-                    </div>
-                  ))}
-              </Section>
-            ))}
-          </div>
+          <p className="font-medium">{t.refinement.of(next.name)}</p>
+          {groups.map((group) => (
+            <Section key={group.title} title={group.title}>
+              {group.stories.length === 0 && <Empty>{t.refinement.nothing}</Empty>}
+              {group.stories.map((story) => (
+                <div key={story.id} className="space-y-2">
+                  <StoryLine story={story} />
+                  <div className="flex flex-wrap gap-1.5 text-xs">
+                    <Pill tone={story.mockUp ? 'plain' : 'warn'}>
+                      {story.mockUp ? '✓' : '·'} {t.stories.mockUp}
+                    </Pill>
+                    <Pill tone={story.plan ? 'plain' : 'warn'}>
+                      {story.plan ? '✓' : '·'} {t.stories.plan}
+                    </Pill>
+                  </div>
+                </div>
+              ))}
+            </Section>
+          ))}
         </>
       )}
     </ProjectPage>
   );
 }
 
-export const underWayRoute = createRoute({
+export const refinementRoute = createRoute({
   getParentRoute: () => projectRoute,
-  path: 'under-way',
-  component: UnderWay,
+  path: 'refinement',
+  component: Refinement,
+});
+
+function Implementation() {
+  const { strings: t } = useLanguage();
+  const { business } = useBusiness();
+  const next = nextVersion(business);
+  const stories = next ? inOrder(business, storiesOf(business, next.name)) : [];
+  const groups = [
+    { title: t.implementation.ready, stories: stories.filter((story) => story.status === 'to do' && refined(story)) },
+    {
+      title: t.implementation.inProgress,
+      stories: stories.filter((story) => story.status === 'in progress' && !story.demonstrated),
+    },
+    {
+      title: t.implementation.toValidate,
+      stories: stories.filter((story) => story.status === 'in progress' && story.demonstrated),
+    },
+    { title: t.implementation.done, stories: stories.filter((story) => story.status === 'done') },
+  ];
+  return (
+    <ProjectPage title={t.steps.implementation}>
+      <Note>{t.implementation.note}</Note>
+      {!next ? (
+        <Empty>{t.implementation.none}</Empty>
+      ) : (
+        <>
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="font-medium">{t.implementation.of(next.name)}</p>
+            <p className="text-sm">
+              {business.demonstrationAt ? (
+                <External href={business.demonstrationAt}>{t.implementation.environment}</External>
+              ) : (
+                <span className="text-muted">{t.stories.noEnvironment}</span>
+              )}
+            </p>
+          </div>
+          {groups.map((group) => (
+            <Section key={group.title} title={group.title}>
+              {group.stories.length === 0 && <Empty>{t.implementation.nothing}</Empty>}
+              {group.stories.map((story) => (
+                <div key={story.id} className="space-y-2">
+                  <StoryLine story={story} />
+                  <Implementing story={story} />
+                </div>
+              ))}
+            </Section>
+          ))}
+        </>
+      )}
+    </ProjectPage>
+  );
+}
+
+export const implementationRoute = createRoute({
+  getParentRoute: () => projectRoute,
+  path: 'implementation',
+  component: Implementation,
 });
 
 function Deployment() {

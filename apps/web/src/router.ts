@@ -9,7 +9,7 @@ import { projectsRoute } from '@/pages/projects';
 import { prototypesRoute } from '@/pages/prototypes';
 import { callbackRoute, signInRoute } from '@/pages/sign-in';
 import { storyMapRoute, storyRoute } from '@/pages/stories';
-import { deploymentRoute, planningRoute, underWayRoute } from '@/pages/versions';
+import { deploymentRoute, implementationRoute, planningRoute, refinementRoute } from '@/pages/versions';
 import { workshopRoute, workshopsRoute } from '@/pages/workshops';
 
 export const router = createRouter({
@@ -28,7 +28,8 @@ export const router = createRouter({
       storyMapRoute,
       storyRoute,
       planningRoute,
-      underWayRoute,
+      refinementRoute,
+      implementationRoute,
       deploymentRoute,
       feedbackRoute,
     ]),

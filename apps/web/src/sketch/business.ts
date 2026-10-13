@@ -56,6 +56,9 @@ export type Story = {
   version?: string;
   mockUp?: string;
   plan?: string;
+  /** When the maker pushed it to the demonstration environment, for the domain experts to try. */
+  demonstrated?: string;
+  validation?: Agreement;
 };
 
 export type Version = {
@@ -84,6 +87,8 @@ export type Branding = {
 
 export type Business = {
   language: 'en' | 'fr';
+  /** Where the domain experts try each story once implemented, connected to nothing outside it. */
+  demonstrationAt?: string;
   participants: Participant[];
   branding: Branding;
   workshops: Workshop[];

@@ -6,15 +6,15 @@ import { currentStep, nextVersion, openQuestions, steps, type Participant, type 
 import { BusinessProvider, useBusiness } from '@/sketch/store';
 import { Button, Card, Empty, External, Page, Pill, Section } from '@/ui';
 
-/** Where each step of the cycle is shown in a project; refinement and implementation share a page. */
+/** Where each step of the cycle is shown in a project. */
 export const stepPages = {
   workshops: '/projects/$owner/$repository/workshops',
   domains: '/projects/$owner/$repository/domains',
   prototypes: '/projects/$owner/$repository/prototypes',
   'story mapping': '/projects/$owner/$repository/stories',
   'version planning': '/projects/$owner/$repository/versions',
-  refinement: '/projects/$owner/$repository/under-way',
-  implementation: '/projects/$owner/$repository/under-way',
+  refinement: '/projects/$owner/$repository/refinement',
+  implementation: '/projects/$owner/$repository/implementation',
   deployment: '/projects/$owner/$repository/deployment',
   feedback: '/projects/$owner/$repository/feedback',
 } as const satisfies Record<Step, string>;
@@ -45,9 +45,8 @@ function ProjectNav() {
   const { strings: t } = useLanguage();
   const { business } = useBusiness();
   const now = currentStep(business);
-  const pages = [...new Set(steps.map((step) => stepPages[step]))];
   return (
-    <nav className="flex gap-1 overflow-x-auto border-b border-rule px-4 py-2 md:block md:w-64 md:shrink-0 md:space-y-4 md:border-r md:border-b-0 md:py-8">
+    <nav className="flex gap-1 overflow-x-auto border-b border-rule px-4 py-2 md:block md:w-56 md:shrink-0 md:space-y-4 md:border-r md:border-b-0 md:py-8">
       <NavLink to="/projects/$owner/$repository" exact>
         {t.nav.overview}
       </NavLink>
@@ -56,18 +55,13 @@ function ProjectNav() {
           {t.nav.cycle}
         </p>
         <div className="flex gap-1 md:block md:space-y-0.5">
-          {pages.map((page) => {
-            const shown = steps.filter((step) => stepPages[step] === page);
-            const numbers = shown.map((step) => steps.indexOf(step) + 1).join('–');
-            const label = page.endsWith('under-way') ? t.underway.title : t.steps[shown[0] ?? 'workshops'];
-            return (
-              <NavLink key={page} to={page}>
-                <span className="inline-block w-7 text-xs tabular-nums">{numbers}</span>
-                {label}
-                {shown.includes(now) && <span className="ml-1 text-accent">•</span>}
-              </NavLink>
-            );
-          })}
+          {steps.map((step, index) => (
+            <NavLink key={step} to={stepPages[step]}>
+              <span className="inline-block w-5 text-xs tabular-nums">{index + 1}</span>
+              {t.steps[step]}
+              {step === now && <span className="ml-1 text-accent">•</span>}
+            </NavLink>
+          ))}
         </div>
       </div>
       <div className="md:space-y-0.5">

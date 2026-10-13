@@ -1,6 +1,16 @@
 import { createRoute, Link, notFound } from '@tanstack/react-router';
+import { AgreeBy, isDomainExpert } from '@/agreement';
 import { useLanguage, stringsIn } from '@/language';
-import { blockers, type Business, featureStatus, sizes, type Size, type Status, type Story } from '@/sketch/business';
+import {
+  blockers,
+  type Business,
+  featureStatus,
+  sizes,
+  type Size,
+  type Status,
+  type Story,
+  today,
+} from '@/sketch/business';
 import { newId, useBusiness } from '@/sketch/store';
 import { Adding, Button, Card, Empty, External, Form, Input, Note, Pill, Section, Select, Textarea } from '@/ui';
 import { ProjectPage, projectRoute, useProjectParams } from './project';
@@ -125,17 +135,54 @@ export const whyNotStarting = (business: Business, story: Story) => {
   return undefined;
 };
 
-/** Start or finish a story, as implementing it goes. */
+/**
+ * Implementing a story: the maker starts it, then pushes it to the demonstration environment, where a domain
+ * expert tries it. Their validation makes it done; anything else sends it back to the maker.
+ */
 export function Implementing({ story }: { story: Story }) {
   const { strings: t } = useLanguage();
   const { business, change } = useBusiness();
-  const move = (status: Status) =>
+  const edit = (apply: (story: Story) => void) =>
     change((business) => {
       const found = business.stories.find((other) => other.id === story.id);
-      if (found) found.status = status;
+      if (found) apply(found);
     });
-  if (story.status === 'done') return null;
-  if (story.status === 'in progress') return <Button onClick={() => move('done')}>{t.stories.finish}</Button>;
+  if (story.status === 'done')
+    return story.validation ? (
+      <p className="text-xs text-muted">{t.stories.validatedBy(story.validation.by, story.validation.on)}</p>
+    ) : null;
+  if (story.status === 'in progress' && story.demonstrated)
+    return (
+      <div className="space-y-2">
+        <p className="text-xs text-muted">{t.stories.pushed(story.demonstrated)}</p>
+        <AgreeBy
+          label={t.stories.validate}
+          among={isDomainExpert}
+          onAgree={(agreement) =>
+            edit((story) => {
+              story.status = 'done';
+              story.validation = agreement;
+            })
+          }
+        />
+        <Button quiet onClick={() => edit((story) => void delete story.demonstrated)}>
+          {t.stories.sendBack}
+        </Button>
+      </div>
+    );
+  if (story.status === 'in progress')
+    return (
+      <div className="space-y-1">
+        <Button
+          onClick={() => edit((story) => void (story.demonstrated = today()))}
+          disabled={!business.demonstrationAt}
+        >
+          {t.stories.push}
+        </Button>
+        {!business.demonstrationAt && <p className="text-xs text-muted">{t.stories.noEnvironment}</p>}
+      </div>
+    );
+  const move = (status: Status) => edit((story) => void (story.status = status));
   const why = whyNotStarting(business, story);
   return (
     <div className="space-y-1">
@@ -308,11 +355,9 @@ function StoryPage() {
         </Card>
       </Section>
 
-      {story.status !== 'done' && (
-        <Section title={t.stories.implementation}>
-          <Implementing story={story} />
-        </Section>
-      )}
+      <Section title={t.stories.implementation}>
+        <Implementing story={story} />
+      </Section>
     </ProjectPage>
   );
 }
