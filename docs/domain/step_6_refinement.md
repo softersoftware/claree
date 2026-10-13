@@ -1,6 +1,6 @@
 # Story refinement
 
-Previous: [version planning](step_5_version_planning.md).
+Previous: [milestone planning](step_5_milestone_planning.md).
 
 Before a story is implemented, it is refined. A UI designer polishes its part of the prototype into its mock-up, which shows its final interface, and an architect or a coder adds to the story its plan of implementation.
 
@@ -19,7 +19,7 @@ Drifting from what was validated: a final interface that changes what the domain
 - **Final interface**: the interface of a story as real people will see it, polished from the prototype.
 - **Plan of implementation**: how a story will be built, written in the story before it is.
 - **Mock-up**: the final interface of one story, as the domain experts can try it before it is real.
-- **Demonstration**: the mock-ups of a version's stories together, connected to nothing outside them: already a first version of the digital tool.
+- **Demonstration**: the mock-ups of a milestone's stories together, connected to nothing outside them: already the digital tool, before it is connected.
 
 ## Rules
 
