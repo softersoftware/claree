@@ -28,7 +28,6 @@ export const fr: Strings = {
     overview: 'Vue d’ensemble',
     workshops: 'Ateliers',
     domains: 'Domaines',
-    prototypes: 'Prototypes',
     features: 'Fonctionnalités',
     milestones: 'Jalons',
     branding: 'Identité',
@@ -48,10 +47,6 @@ export const fr: Strings = {
   },
   domains: {
     none: 'Aucun domaine pour l’instant.',
-  },
-  prototypes: {
-    none: 'Aucun prototype pour l’instant.',
-    tryIt: 'L’essayer',
   },
   features: {
     none: 'Aucune fonctionnalité pour l’instant.',
@@ -83,6 +78,8 @@ export const fr: Strings = {
     none: 'Aucun jalon pour l’instant.',
     noStories: 'Aucune story pour l’instant.',
     reached: 'Atteint',
+    prototype: 'Essayer son prototype',
+    noPrototype: 'Aucun prototype pour l’instant.',
     totals: (value: number, effort: number | undefined) =>
       `Valeur ${value} · Effort ${effort ?? 'inconnu, certaines stories n’en ont pas'}`,
     groups: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminées', released: 'Livrées' },
