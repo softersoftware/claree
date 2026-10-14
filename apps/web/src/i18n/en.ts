@@ -52,8 +52,8 @@ export const en = {
     more: (count: number) => `${count} more`,
   },
   stories: {
-    states: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done' },
-    released: (version: string) => `Released in ${version}`,
+    states: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done', 'in production': 'In production' },
+    inProduction: (version: string) => `In production · ${version}`,
     blockedBy: (stories: string) => `Blocked by ${stories}`,
     sizes: (value: string, effort: string) => `Value ${value} · Effort ${effort}`,
     value: 'Business value',
@@ -74,12 +74,12 @@ export const en = {
   milestones: {
     none: 'No milestones yet.',
     noStories: 'No stories yet.',
-    reached: 'Reached',
+    states: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done', 'in production': 'In production' },
     prototype: 'Try its prototype',
     noPrototype: 'No prototype yet.',
     totals: (value: number, effort: number | undefined) =>
       `Value ${value} · Effort ${effort ?? 'unknown, some stories have none'}`,
-    groups: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done', released: 'Released' },
+    groups: { 'to do': 'To do', 'in progress': 'In progress', done: 'Done', 'in production': 'In production' },
   },
   branding: {
     none: 'No branding yet.',

@@ -55,8 +55,8 @@ export const fr: Strings = {
     more: (count: number) => `${count} de plus`,
   },
   stories: {
-    states: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminée' },
-    released: (version: string) => `Livrée en ${version}`,
+    states: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminée', 'in production': 'En production' },
+    inProduction: (version: string) => `En production · ${version}`,
     blockedBy: (stories: string) => `Bloquée par ${stories}`,
     sizes: (value: string, effort: string) => `Valeur ${value} · Effort ${effort}`,
     value: 'Valeur métier',
@@ -77,12 +77,12 @@ export const fr: Strings = {
   milestones: {
     none: 'Aucun jalon pour l’instant.',
     noStories: 'Aucune story pour l’instant.',
-    reached: 'Atteint',
+    states: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminé', 'in production': 'En production' },
     prototype: 'Essayer son prototype',
     noPrototype: 'Aucun prototype pour l’instant.',
     totals: (value: number, effort: number | undefined) =>
       `Valeur ${value} · Effort ${effort ?? 'inconnu, certaines stories n’en ont pas'}`,
-    groups: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminées', released: 'Livrées' },
+    groups: { 'to do': 'À faire', 'in progress': 'En cours', done: 'Terminées', 'in production': 'En production' },
   },
   branding: {
     none: 'Aucune identité pour l’instant.',
