@@ -45,7 +45,7 @@ Each step of the cycle, and what is outside it, has its place in the project:
 | 5. Milestone planning | what blocks a story ("blocked by"), and its value for its effort, say what comes next; a GitHub milestone gathers the stories of the next one |
 | 6. Story refinement | the story's issue: its plan of implementation; its mock-up, first on the story's branch |
 | 7. Implementation | a `stories/<number>-<title>` branch, and a pull request that closes the story |
-| 8. Release | the done stories, cut as a git tag named after its version and a section of `CHANGELOG.md`; a milestone is closed once all its stories have gone out |
+| 8. Release | the done stories, cut as a git tag named after its version and a section of `CHANGELOG.md`; a milestone is closed once it is in production |
 | 9. Feedback | an issue, which may call for a new workshop |
 
 

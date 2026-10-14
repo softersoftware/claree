@@ -20,13 +20,13 @@ Underestimating the effort, and losing touch with the business: a story that no 
 - **Effort**: what a story costs to build, as a size.
 - **Size**: one of XXS, XS, S, M, L, XL.
 - **What a size stands for**: 1, 2, 3, 5, 8, 13, so that value and effort can be weighed against each other. The gaps widen on purpose — the larger something is, the less precisely it is known.
-- **To do**, **in progress**, **done**: where a story is, in that order. It is done when the domain expert could see it working, not when the code exists.
+- **To do**, **in progress**, **done**, **in production**: where a story is, in that order. It is done when the domain expert could see it working, not when the code exists, and in production once a release has put it in front of real people.
 
 > As a *member*, I want to *watch a guided meditation from my phone*, so that *I can practise wherever I am*.
 
 ## Rules
 
-**Rule.** A feature is in progress as soon as one of its stories is, and done when all of them are.
+**Rule.** A feature is in progress as soon as one of its stories is, and done when all of them are done or in production.
 
 **Rule.** Every story belongs to exactly one feature.
 
