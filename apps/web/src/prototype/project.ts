@@ -22,7 +22,9 @@ export type Size = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL';
 /** What a size stands for, so that value and effort can be weighed against each other. */
 export const weight: Readonly<Record<Size, number>> = { XXS: 1, XS: 2, S: 3, M: 5, L: 8, XL: 13 };
 
-export type State = 'to do' | 'in progress' | 'done';
+export type State = 'to do' | 'in progress' | 'done' | 'in production';
+
+export const states: readonly State[] = ['to do', 'in progress', 'done', 'in production'];
 
 export type Feature = { number: number; name: string; description: string };
 
@@ -35,7 +37,8 @@ export type Story = {
   reason: string;
   value?: Size;
   effort?: Size;
-  state: State;
+  /** Where it is until a release carries it: then it is in production. */
+  state: Exclude<State, 'in production'>;
   blockedBy: number[];
   mockUp?: string;
   plan?: string;
@@ -105,6 +108,17 @@ export const totals = (stories: readonly Story[]) => ({
     : undefined,
 });
 
-/** A milestone is reached once all its stories have gone out. */
-export const reached = (stories: readonly Story[]) =>
-  stories.length > 0 && stories.every((story) => story.release !== undefined);
+/** A story is in production once a release has carried it. */
+export const stateOf = (story: Story): State => (story.release ? 'in production' : story.state);
+
+/**
+ * A milestone is to do while all its stories are to do, done once each of them is done or in production, in
+ * production once all of them are in production, and in progress in between.
+ */
+export const milestoneState = (stories: readonly Story[]): State => {
+  const states = stories.map(stateOf);
+  if (states.every((state) => state === 'to do')) return 'to do';
+  if (states.every((state) => state === 'in production')) return 'in production';
+  if (states.every((state) => state === 'done' || state === 'in production')) return 'done';
+  return 'in progress';
+};

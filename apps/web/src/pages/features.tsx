@@ -1,15 +1,23 @@
 import { createRoute, Link, notFound } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
 import { useLanguage } from '@/language';
-import { blockers, sentence, type Story } from '@/prototype/project';
+import { blockers, sentence, type State, stateOf, type Story } from '@/prototype/project';
 import { Card, Empty, External, Pill, Section } from '@/ui';
 import { ProjectPage, projectRoute, useContents, useProjectParams } from './project';
 
-/** Where a story is; once it has gone out, the version of the release that carried it. */
-export function StatePill({ story }: { story: Story }) {
+export function StatePill({ state, children }: { state: State; children: ReactNode }) {
+  return <Pill tone={state === 'in progress' ? 'accent' : 'plain'}>{children}</Pill>;
+}
+
+/** Where a story is; once in production, the version of the release that carried it. */
+export function StoryStatePill({ story }: { story: Story }) {
   const { strings: t } = useLanguage();
-  if (story.release) return <Pill>{t.stories.released(story.release)}</Pill>;
-  return <Pill tone={story.state === 'in progress' ? 'accent' : 'plain'}>{t.stories.states[story.state]}</Pill>;
+  const state = stateOf(story);
+  return (
+    <StatePill state={state}>
+      {story.release ? t.stories.inProduction(story.release) : t.stories.states[state]}
+    </StatePill>
+  );
 }
 
 export function StoryLink({ story, children }: { story: Story; children: ReactNode }) {
@@ -39,7 +47,7 @@ export function StoryLine({ story }: { story: Story }) {
         </StoryLink>
       </p>
       <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-muted">
-        <StatePill story={story} />
+        <StoryStatePill story={story} />
         {waitingFor.length > 0 && (
           <Pill tone="warn">{t.stories.blockedBy(waitingFor.map((other) => `#${other.number}`).join(', '))}</Pill>
         )}
@@ -93,7 +101,7 @@ function Features() {
                         <span className="mr-1.5 text-xs text-muted">#{story.number}</span>
                         {story.title}
                       </StoryLink>
-                      <StatePill story={story} />
+                      <StoryStatePill story={story} />
                     </li>
                   ))}
                   {its.length > firstFew && (
@@ -191,7 +199,7 @@ function StoryPage() {
     >
       <div className="-mt-4 flex flex-wrap items-center gap-2">
         <span className="text-sm text-muted">#{story.number}</span>
-        <StatePill story={story} />
+        <StoryStatePill story={story} />
       </div>
       <p className="font-serif text-xl">{sentence(story)}</p>
 

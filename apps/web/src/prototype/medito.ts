@@ -8,7 +8,7 @@ const logo = `data:image/svg+xml,${encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40"><circle cx="20" cy="20" r="14" fill="none" stroke="#5f7a64" stroke-width="3"/><circle cx="20" cy="20" r="4" fill="#5f7a64"/><text x="44" y="27" font-family="Georgia, serif" font-size="20" fill="#2b2a28">Medito</text></svg>',
 )}`;
 
-/** A project well into its cycle: one milestone reached, the next released in part, the one after to do. */
+/** A project well into its cycle: a milestone in each state, one of them released in part. */
 export const medito: Project = {
   workshops: [
     {
@@ -294,10 +294,23 @@ A member pays for the sessions they come to, by the month or by a card of ten se
       state: 'to do',
       blockedBy: [],
     },
+    {
+      number: 16,
+      title: 'See who leads a session',
+      feature: 1,
+      person: 'member',
+      intention: 'see who leads each session',
+      reason: 'I can choose the teacher I prefer',
+      value: 'S',
+      effort: 'XS',
+      state: 'done',
+      blockedBy: [5],
+    },
   ],
 
   milestones: [
     { name: 'Booking', description: 'Members book and cancel on their phone, not at the desk.', stories: [5, 6, 7, 8] },
+    { name: 'Teachers', description: 'Members know who leads each session.', stories: [16] },
     {
       name: 'Waiting list',
       description: 'A place given back goes to the next member waiting.',
