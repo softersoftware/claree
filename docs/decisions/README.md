@@ -26,3 +26,4 @@ Format: **Status** (proposed / accepted / superseded by NNNN), **Context** (the 
 - [0016 — The platform is a single-page application, and its prototypes are static pages](0016-the-platform-is-a-single-page-application.md)
 - [0017 — Sessions are kept in an encrypted cookie, not on the server](0017-sessions-are-kept-in-an-encrypted-cookie.md)
 - [0018 — The application's routes are TanStack Router's](0018-routes-are-tanstack-routers.md)
+- [0019 — Users give feedback without signing in, and see a project's feedback in public](0019-users-give-feedback-without-signing-in.md) — proposed
