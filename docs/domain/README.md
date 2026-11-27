@@ -12,7 +12,7 @@ With or without a supporting platform, a project goes round the same cycle for e
 6. [Story refinement](step_6_refinement.md) — each story's part of the prototype is polished into its mock-up, and the story gets its plan of implementation.
 7. [Implementation](step_7_implementation.md) — each story is implemented, and tried before it reaches real people.
 8. [Release](step_8_release.md) — done stories are put in front of real people, a milestone in one go or in parts.
-9. Feedback — real use brings feedback, which may call for new workshops.
+9. [Feedback](step_9_feedback.md) — real use brings feedback, gathered from everyone, sorted and answered; it may call for new workshops.
 
 ## Outside the cycle
 
